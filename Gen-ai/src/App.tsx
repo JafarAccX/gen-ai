@@ -1,31 +1,46 @@
-import { useState } from 'react';
-import Header from './components/Header';
-import Hero from './components/Hero';
-import ProgramArchitecture from './components/ProgramArchitecture';
-import TrackToggle from './components/TrackToggle';
-import TrackBadge from './components/TrackBadge';
-import Curriculum from './components/Curriculum';
-import AIBuildNinja from './components/AIBuildNinja';
-import CapstoneMenu from './components/CapstoneMenu';
-import CapstoneGrid from './components/CapstoneGrid';
-import OutcomesHiring from './components/OutcomesHiring';
-import OutcomesLogos from './components/OutcomesLogos';
-import MentorsHeader from './components/MentorsHeader';
-import MentorsProfiles from './components/MentorsProfiles';
-import ToolStackHeader from './components/ToolStackHeader';
-import ToolStackGrid from './components/ToolStackGrid';
-import FAQ from './components/FAQ';
-import InvestmentHeader from './components/InvestmentHeader';
-import InvestmentPricing from './components/InvestmentPricing';
-import HonestAnswersHeader from './components/HonestAnswersHeader';
-import CTABanner from './components/CTABanner';
-import Footer from './components/Footer';
+import { useState, useEffect } from 'react';
+import Header from './business/Header';
+import Hero from './business/Hero';
+import ProgramArchitecture from './business/ProgramArchitecture';
+import TrackToggle from './business/TrackToggle';
+import TrackBadge from './business/TrackBadge';
+import Curriculum from './business/Curriculum';
+import AIBuildNinja from './business/AIBuildNinja';
+import CapstoneMenu from './business/CapstoneMenu';
+import CapstoneGrid from './business/CapstoneGrid';
+import OutcomesHiring from './business/OutcomesHiring';
+import OutcomesLogos from './business/OutcomesLogos';
+import MentorsHeader from './business/MentorsHeader';
+import MentorsProfiles from './business/MentorsProfiles';
+import ToolStackHeader from './business/ToolStackHeader';
+import ToolStackGrid from './business/ToolStackGrid';
+import AlternativesComparison from './business/AlternativesComparison';
+import FAQ from './business/FAQ';
+import InvestmentHeader from './business/InvestmentHeader';
+import InvestmentPricing from './business/InvestmentPricing';
+import HonestAnswersHeader from './business/HonestAnswersHeader';
+import CTABanner from './business/CTABanner';
+import Footer from './business/Footer';
+import GenAIPageV2 from './v2/GenAIPageV2';
 
 function App() {
   const [activeTrack, setActiveTrack] = useState<'business' | 'tech'>('business');
 
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'instant' });
+    document.documentElement.setAttribute('data-track', activeTrack);
+  }, [activeTrack]);
+
+  useEffect(() => {
+    document.documentElement.setAttribute('data-track', 'business');
+  }, []);
+
+  if (activeTrack === 'tech') {
+    return <GenAIPageV2 setActiveTrack={setActiveTrack} />;
+  }
+
   return (
-    <div className="relative bg-[#000000] text-white max-w-[1440px] mx-auto flex flex-col items-center overflow-x-clip">
+    <div className="relative bg-[#000000] text-white" style={{ overflowX: 'clip', minHeight: '11830px' }}>
       <Header />
       <TrackToggle activeTrack={activeTrack} onTrackChange={setActiveTrack} />
       <TrackBadge />
@@ -41,13 +56,27 @@ function App() {
       <MentorsProfiles />
       <ToolStackHeader />
       <ToolStackGrid />
-      {/* <AlternativesComparison /> */}
+      <AlternativesComparison />
       <InvestmentHeader />
       <InvestmentPricing />
-      <HonestAnswersHeader />
-      <FAQ />
-      <CTABanner />
-      <Footer />
+      {/* Dynamically Flowing Section Stack */}
+      <div
+        className="responsive-section bottom-section-stack"
+        style={{
+          position: 'absolute',
+          top: '10252px',
+          width: '100%',
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          zIndex: 20,
+        }}
+      >
+        <HonestAnswersHeader />
+        <FAQ />
+        <CTABanner />
+        <Footer />
+      </div>
     </div>
   );
 }

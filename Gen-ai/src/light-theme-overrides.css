@@ -1,4 +1,18 @@
-:root {
+html[data-track="tech"] {
+  /* Override Tailwind theme vars back to light */
+  --color-bg-primary: #f6f6f5;
+  --color-bg-card: #f3ece5;
+  --color-bg-card-hover: #fffaf6;
+  --color-text-white: #121212;
+  --color-text-gray: #5a5959;
+  --color-text-muted: #656464;
+  --color-text-dim: #9c9c9c;
+  --color-text-dark: #121212;
+  --color-border: rgba(150, 67, 13, 0.18);
+  --color-border-light: rgba(150, 67, 13, 0.28);
+  --color-border-dark: rgba(0, 0, 0, 0.1);
+  --color-orange-dark: #96430d;
+
   --bg: #f6f6f5;
   --ink: #121212;
   --ink2: #1a1a1a;
@@ -16,7 +30,6 @@
   --purple: #3e38e0;
   --grad-label: linear-gradient(90deg, #3e38e0 0%, #5b46c1 38.46%, #bf7759 72.12%, #f7921e 100%);
 
-  /* Aliases for the copied reference CSS. */
   --gx-bg: var(--bg);
   --gx-ink: var(--ink);
   --gx-muted: var(--muted);
@@ -27,83 +40,84 @@
   --gx-orange-dark: var(--orange-dark);
 }
 
-html,
-body,
-#root,
-#root > div {
+html[data-track="tech"],
+html[data-track="tech"] body,
+html[data-track="tech"] #root,
+html[data-track="tech"] #root > div {
   background: var(--bg) !important;
+  background-color: var(--bg) !important;
   color: var(--ink) !important;
   color-scheme: light;
 }
 
-#root > div [class*="bg-[#000000]"],
-#root > div [class*="bg-[#0A0A0A]"],
-#root > div [class*="bg-[#141414]"],
-#root > div [class*="bg-black"] {
+html[data-track="tech"] #root > div [class*="bg-[#000000]"],
+html[data-track="tech"] #root > div [class*="bg-[#0A0A0A]"],
+html[data-track="tech"] #root > div [class*="bg-[#141414]"],
+html[data-track="tech"] #root > div [class*="bg-black"] {
   background-color: var(--bg) !important;
 }
 
-#root > div [class*="text-white"],
-#root > div [class*="text-[#F5F7FF]"],
-#root > div [class*="text-[#DFDFDF]"],
-#root > div [class*="text-[#E5E2E1]"] {
+html[data-track="tech"] #root > div [class*="text-white"],
+html[data-track="tech"] #root > div [class*="text-[#F5F7FF]"],
+html[data-track="tech"] #root > div [class*="text-[#DFDFDF]"],
+html[data-track="tech"] #root > div [class*="text-[#E5E2E1]"] {
   color: var(--ink) !important;
 }
 
-#root > div [class*="text-[#C2C2C2]"],
-#root > div [class*="text-[#A3A3A3]"],
-#root > div [class*="text-[#94A3B8]"],
-#root > div [class*="text-[#7C7C7C]"],
-#root > div [class*="text-white/60"],
-#root > div [class*="text-white/70"],
-#root > div [class*="text-white/80"],
-#root > div [class*="text-white/90"] {
+html[data-track="tech"] #root > div [class*="text-[#C2C2C2]"],
+html[data-track="tech"] #root > div [class*="text-[#A3A3A3]"],
+html[data-track="tech"] #root > div [class*="text-[#94A3B8]"],
+html[data-track="tech"] #root > div [class*="text-[#7C7C7C]"],
+html[data-track="tech"] #root > div [class*="text-white/60"],
+html[data-track="tech"] #root > div [class*="text-white/70"],
+html[data-track="tech"] #root > div [class*="text-white/80"],
+html[data-track="tech"] #root > div [class*="text-white/90"] {
   color: var(--muted) !important;
 }
 
-#root > div [class*="border-[#202020]"],
-#root > div [class*="border-[#333]"],
-#root > div [class*="border-[#1A1A1A]"],
-#root > div [class*="border-white"] {
+html[data-track="tech"] #root > div [class*="border-[#202020]"],
+html[data-track="tech"] #root > div [class*="border-[#333]"],
+html[data-track="tech"] #root > div [class*="border-[#1A1A1A]"],
+html[data-track="tech"] #root > div [class*="border-white"] {
   border-color: var(--line2) !important;
 }
 
-#root > div h1,
-#root > div h2,
-#root > div h3,
-#root > div .mobile-hero-title {
+html[data-track="tech"] #root > div h1,
+html[data-track="tech"] #root > div h2,
+html[data-track="tech"] #root > div h3,
+html[data-track="tech"] #root > div .mobile-hero-title {
   color: var(--ink) !important;
   border-color: transparent !important;
 }
 
-#root > div p {
+html[data-track="tech"] #root > div p {
   color: var(--muted);
 }
 
 /* Header and top controls. */
-#root > div header > div {
+html[data-track="tech"] #root > div header > div {
   background: rgba(246, 246, 245, 0.92) !important;
   border: 1px solid var(--line) !important;
   backdrop-filter: blur(12px) !important;
   -webkit-backdrop-filter: blur(12px) !important;
 }
 
-#root > div header a,
-#root > div header button {
+html[data-track="tech"] #root > div header a,
+html[data-track="tech"] #root > div header button {
   color: var(--ink) !important;
 }
 
-#root > div header a[href="/"] {
+html[data-track="tech"] #root > div header a[href="/"] {
   position: relative;
   width: 154px;
   height: 24px;
 }
 
-#root > div header a[href="/"] img {
+html[data-track="tech"] #root > div header a[href="/"] img {
   opacity: 0 !important;
 }
 
-#root > div header a[href="/"]::before {
+html[data-track="tech"] #root > div header a[href="/"]::before {
   content: "Accelerator";
   position: absolute;
   left: 0;
@@ -115,7 +129,7 @@ body,
   color: var(--ink);
 }
 
-#root > div header a[href="/"]::after {
+html[data-track="tech"] #root > div header a[href="/"]::after {
   content: "X";
   position: absolute;
   left: 118px;
@@ -127,330 +141,317 @@ body,
   color: #2a6fdb;
 }
 
-#root > div [style*="height: 54px"][style*="backdrop-filter"] {
+html[data-track="tech"] #root > div [style*="height: 54px"][style*="backdrop-filter"] {
   background: rgba(150, 67, 13, 0.08) !important;
   border-color: rgba(150, 67, 13, 0.18) !important;
 }
 
-#root > div [style*="height: 54px"][style*="backdrop-filter"] button[style*="background: rgb(252, 100, 1)"] {
+html[data-track="tech"] #root > div [style*="height: 54px"][style*="backdrop-filter"] button[style*="background: rgb(252, 100, 1)"] {
   background: var(--orange-dark) !important;
 }
 
-#root > div [style*="height: 54px"][style*="backdrop-filter"] button[style*="background: rgb(252, 100, 1)"] span {
+html[data-track="tech"] #root > div [style*="height: 54px"][style*="backdrop-filter"] button[style*="background: rgb(252, 100, 1)"] span {
   color: #ffffff !important;
 }
 
-#root > div [style*="height: 25px"][style*="rgba(252, 100, 1, 0.05)"] {
+html[data-track="tech"] #root > div [style*="height: 25px"][style*="rgba(252, 100, 1, 0.05)"] {
   background: var(--orange-tint) !important;
   border-color: rgba(202, 85, 9, 0.35) !important;
 }
 
 /* Inline text colors from the dark reference. */
-#root > div [style*="color: rgb(255, 255, 255)"],
-#root > div [style*="color: rgb(252, 252, 252)"],
-#root > div [style*="color: rgb(246, 246, 246)"],
-#root > div [style*="color: rgb(245, 247, 255)"],
-#root > div [style*="color: rgb(229, 226, 225)"],
-#root > div [style*="color: rgb(228, 228, 228)"],
-#root > div [style*="#FFFFFF"],
-#root > div [style*="#F5F7FF"],
-#root > div [style*="#E5E2E1"],
-#root > div [style*="#FCFCFC"] {
+html[data-track="tech"] #root > div [style*="color: rgb(255, 255, 255)"],
+html[data-track="tech"] #root > div [style*="color: rgb(252, 252, 252)"],
+html[data-track="tech"] #root > div [style*="color: rgb(246, 246, 246)"],
+html[data-track="tech"] #root > div [style*="color: rgb(245, 247, 255)"],
+html[data-track="tech"] #root > div [style*="color: rgb(229, 226, 225)"],
+html[data-track="tech"] #root > div [style*="color: rgb(228, 228, 228)"],
+html[data-track="tech"] #root > div [style*="#FFFFFF"],
+html[data-track="tech"] #root > div [style*="#F5F7FF"],
+html[data-track="tech"] #root > div [style*="#E5E2E1"],
+html[data-track="tech"] #root > div [style*="#FCFCFC"] {
   color: var(--ink) !important;
 }
 
-#root > div [style*="color: rgb(207, 207, 207)"],
-#root > div [style*="color: rgb(194, 194, 194)"],
-#root > div [style*="color: rgb(180, 180, 180)"],
-#root > div [style*="color: rgb(160, 168, 184)"],
-#root > div [style*="color: rgb(163, 163, 163)"],
-#root > div [style*="color: rgb(148, 163, 184)"],
-#root > div [style*="color: rgb(153, 153, 153)"],
-#root > div [style*="color: rgb(128, 128, 128)"],
-#root > div [style*="color: rgb(113, 113, 113)"],
-#root > div [style*="#C2C2C2"],
-#root > div [style*="#A0A8B8"],
-#root > div [style*="#A3A3A3"],
-#root > div [style*="#94A3B8"],
-#root > div [style*="#999999"],
-#root > div [style*="#808080"],
-#root > div [style*="#717171"] {
+html[data-track="tech"] #root > div [style*="color: rgb(207, 207, 207)"],
+html[data-track="tech"] #root > div [style*="color: rgb(194, 194, 194)"],
+html[data-track="tech"] #root > div [style*="color: rgb(180, 180, 180)"],
+html[data-track="tech"] #root > div [style*="color: rgb(160, 168, 184)"],
+html[data-track="tech"] #root > div [style*="color: rgb(163, 163, 163)"],
+html[data-track="tech"] #root > div [style*="color: rgb(148, 163, 184)"],
+html[data-track="tech"] #root > div [style*="color: rgb(153, 153, 153)"],
+html[data-track="tech"] #root > div [style*="color: rgb(128, 128, 128)"],
+html[data-track="tech"] #root > div [style*="color: rgb(113, 113, 113)"],
+html[data-track="tech"] #root > div [style*="#C2C2C2"],
+html[data-track="tech"] #root > div [style*="#A0A8B8"],
+html[data-track="tech"] #root > div [style*="#A3A3A3"],
+html[data-track="tech"] #root > div [style*="#94A3B8"],
+html[data-track="tech"] #root > div [style*="#999999"],
+html[data-track="tech"] #root > div [style*="#808080"],
+html[data-track="tech"] #root > div [style*="#717171"] {
   color: var(--muted) !important;
 }
 
-#root > div [style*="color: rgb(252, 100, 1)"],
-#root > div [style*="#FC6401"],
-#root > div .prog-card-content-inner > div:first-child,
-#root > div .prog-card-tags span {
+html[data-track="tech"] #root > div [style*="color: rgb(252, 100, 1)"],
+html[data-track="tech"] #root > div [style*="#FC6401"],
+html[data-track="tech"] #root > div .prog-card-content-inner > div:first-child,
+html[data-track="tech"] #root > div .prog-card-tags span {
   color: var(--orange) !important;
 }
 
 /* Dark inline surfaces converted to the provided tan card palette. */
-#root > div [style*="background: linear-gradient(0deg, rgb(0, 0, 0)"],
-#root > div [style*="background: linear-gradient(90deg, rgb(0, 0, 0)"],
-#root > div [style*="background: linear-gradient(90deg, rgb(10, 10, 10)"],
-#root > div [style*="background: linear-gradient(90deg, rgba(10, 10, 10"],
-#root > div [style*="background: linear-gradient(90deg, rgba(0, 0, 0"],
-#root > div [style*="background: linear-gradient(180deg, rgb(10, 10, 10)"],
-#root > div [style*="background: linear-gradient(180deg, rgb(12, 12, 12)"],
-#root > div [style*="background: linear-gradient(360deg, rgb(10, 10, 10)"],
-#root > div [style*="background: linear-gradient(359.07deg"],
-#root > div [style*="background: rgb(0, 0, 0)"],
-#root > div [style*="background: rgb(10, 10, 10)"],
-#root > div [style*="background-color: rgb(0, 0, 0)"],
-#root > div [style*="background-color: rgb(10, 10, 10)"],
-#root > div [style*="linear-gradient(rgb(10, 10, 10)"],
-#root > div [style*="linear-gradient(rgb(12, 12, 12)"],
-#root > div [style*="linear-gradient(rgb(0, 0, 0)"] {
+html[data-track="tech"] #root > div [style*="background: linear-gradient(0deg, rgb(0, 0, 0)"],
+html[data-track="tech"] #root > div [style*="background: linear-gradient(90deg, rgb(0, 0, 0)"],
+html[data-track="tech"] #root > div [style*="background: linear-gradient(90deg, rgb(10, 10, 10)"],
+html[data-track="tech"] #root > div [style*="background: linear-gradient(90deg, rgba(10, 10, 10"],
+html[data-track="tech"] #root > div [style*="background: linear-gradient(90deg, rgba(0, 0, 0"],
+html[data-track="tech"] #root > div [style*="background: linear-gradient(180deg, rgb(10, 10, 10)"],
+html[data-track="tech"] #root > div [style*="background: linear-gradient(180deg, rgb(12, 12, 12)"],
+html[data-track="tech"] #root > div [style*="background: linear-gradient(360deg, rgb(10, 10, 10)"],
+html[data-track="tech"] #root > div [style*="background: linear-gradient(359.07deg"],
+html[data-track="tech"] #root > div [style*="background: rgb(0, 0, 0)"],
+html[data-track="tech"] #root > div [style*="background: rgb(10, 10, 10)"],
+html[data-track="tech"] #root > div [style*="background-color: rgb(0, 0, 0)"],
+html[data-track="tech"] #root > div [style*="background-color: rgb(10, 10, 10)"],
+html[data-track="tech"] #root > div [style*="linear-gradient(rgb(10, 10, 10)"],
+html[data-track="tech"] #root > div [style*="linear-gradient(rgb(12, 12, 12)"],
+html[data-track="tech"] #root > div [style*="linear-gradient(rgb(0, 0, 0)"] {
   background: var(--card-bg) !important;
   border-color: var(--card-border) !important;
   color: var(--ink) !important;
 }
 
-#root > div [style*="background: rgba(0, 0, 0, 0.3)"],
-#root > div [style*="background: rgba(0, 0, 0, 0.5)"],
-#root > div [style*="background: rgba(255, 255, 255, 0.02)"],
-#root > div [style*="background: rgba(255, 255, 255, 0.05)"] {
+html[data-track="tech"] #root > div [style*="background: rgba(0, 0, 0, 0.3)"],
+html[data-track="tech"] #root > div [style*="background: rgba(0, 0, 0, 0.5)"],
+html[data-track="tech"] #root > div [style*="background: rgba(255, 255, 255, 0.02)"],
+html[data-track="tech"] #root > div [style*="background: rgba(255, 255, 255, 0.05)"] {
   background: rgba(255, 255, 255, 0.6) !important;
   border-color: rgba(202, 85, 9, 0.25) !important;
 }
 
-#root > div [style*="background: rgba(0, 0, 0, 0.01)"] {
+html[data-track="tech"] #root > div [style*="background: rgba(0, 0, 0, 0.01)"] {
   background: rgba(255, 255, 255, 0.55) !important;
 }
 
 /* Hero-specific colors from the supplied palette. */
-#root > div .hero-section {
+html[data-track="tech"] #root > div .hero-section {
   background: var(--bg) !important;
 }
 
-#root > div .hero-section h1 {
+html[data-track="tech"] #root > div .hero-section h1 {
   color: var(--ink) !important;
 }
 
-#root > div .hero-section p,
-#root > div .hero-mobile-curriculum {
+html[data-track="tech"] #root > div .hero-section p,
+html[data-track="tech"] #root > div .hero-mobile-curriculum {
   color: var(--muted) !important;
 }
 
-#root > div .hero-mobile-apply,
-#root > div .hero-mobile-apply *,
-#root > div [class*="bg-[#FC6401]"],
-#root > div [class*="bg-[#FC6401]"] * {
+html[data-track="tech"] #root > div .hero-mobile-apply,
+html[data-track="tech"] #root > div .hero-mobile-apply *,
+html[data-track="tech"] #root > div [class*="bg-[#FC6401]"],
+html[data-track="tech"] #root > div [class*="bg-[#FC6401]"] * {
   background-color: var(--orange-bright) !important;
   color: #ffffff !important;
 }
 
-#root > div .hero-mobile-metrics,
-#root > div [style*="width: 663px"][style*="height: 92px"] {
+html[data-track="tech"] #root > div .hero-mobile-metrics,
+html[data-track="tech"] #root > div [style*="width: 663px"][style*="height: 92px"] {
   background: rgba(202, 85, 9, 0.06) !important;
   border-color: rgba(150, 67, 13, 0.22) !important;
 }
 
-#root > div [style*="border-right: 1px solid rgb(34, 34, 34)"] {
+html[data-track="tech"] #root > div [style*="border-right: 1px solid rgb(34, 34, 34)"] {
   border-right-color: rgba(150, 67, 13, 0.16) !important;
 }
 
-#root > div [style*="background: linear-gradient(0deg, rgb(246, 246, 246)"] {
+html[data-track="tech"] #root > div [style*="background: linear-gradient(0deg, rgb(246, 246, 246)"] {
   background: none !important;
   color: var(--ink) !important;
   -webkit-text-fill-color: var(--ink) !important;
 }
 
-/* Hero card gradient — with OR without 180deg (browser normalizes it away) */
-#root > div [style*="linear-gradient(180deg, rgb(0, 0, 0) 0%, rgb(252, 100, 1)"],
-#root > div [style*="linear-gradient(rgb(0, 0, 0) 0%, rgb(252, 100, 1)"],
-#root > div [class*="from-[#000000]"][class*="to-[#FC6401]"] {
+/* Hero card gradient */
+html[data-track="tech"] #root > div [style*="linear-gradient(180deg, rgb(0, 0, 0) 0%, rgb(252, 100, 1)"],
+html[data-track="tech"] #root > div [style*="linear-gradient(rgb(0, 0, 0) 0%, rgb(252, 100, 1)"],
+html[data-track="tech"] #root > div [class*="from-[#000000]"][class*="to-[#FC6401]"] {
   background: linear-gradient(180deg, var(--bg) 0%, #bc5817 100%) !important;
   border-color: rgba(150, 67, 13, 0.18) !important;
   box-shadow: 0 30px 60px -20px rgba(150, 67, 13, 0.25) !important;
 }
 
-/* Hero card outer container — remove the dark inset bottom shadow */
-#root > div [style*="box-shadow: rgb(0, 0, 0) 0px -50px 50px"] {
+html[data-track="tech"] #root > div [style*="box-shadow: rgb(0, 0, 0) 0px -50px 50px"] {
   box-shadow: 0 30px 60px -20px rgba(150, 67, 13, 0.25) !important;
   background: transparent !important;
 }
 
-/* Hero section logos — render dark/black on light background */
-#root > div .hero-company-logo {
+html[data-track="tech"] #root > div .hero-company-logo {
   filter: brightness(0) opacity(0.75) !important;
 }
 
-/* Social proof logos — brand-coloured text; shield them from the global white→ink override */
-#root > div .outcomes-logos-section [style*="color: rgb(255, 255, 255)"],
-#root > div .outcomes-logos-section [style*="color: #fff"],
-#root > div .outcomes-logos-section [style*="color: white"] {
+html[data-track="tech"] #root > div .outcomes-logos-section [style*="color: rgb(255, 255, 255)"],
+html[data-track="tech"] #root > div .outcomes-logos-section [style*="color: #fff"],
+html[data-track="tech"] #root > div .outcomes-logos-section [style*="color: white"] {
   color: #ffffff !important;
 }
-/* Also prevent the h2/p global rule from flattening span brand colours */
-#root > div .outcomes-logos-section span {
+
+html[data-track="tech"] #root > div .outcomes-logos-section span {
   color: inherit;
 }
 
-/* Marquee fades should fade to the page background, not black. */
-/* Marquee fades removed from components — no override needed */
-
-/* Marquee edge-fades removed from components — no override needed */
-
 /* Program cards. */
-#root > div .prog-card-icon {
+html[data-track="tech"] #root > div .prog-card-icon {
   background: linear-gradient(180deg, #ffe0c5, #f4a461) !important;
   border-color: rgba(150, 67, 13, 0.25) !important;
   box-shadow: 0 4px 12px rgba(150, 67, 13, 0.18) !important;
 }
 
-#root > div .prog-card-icon svg,
-#root > div .prog-card-icon * {
+html[data-track="tech"] #root > div .prog-card-icon svg,
+html[data-track="tech"] #root > div .prog-card-icon * {
   color: var(--orange) !important;
   stroke: var(--orange) !important;
 }
 
-#root > div .prog-card-content-inner,
-#root > div .prog-card-content-inner * {
+html[data-track="tech"] #root > div .prog-card-content-inner,
+html[data-track="tech"] #root > div .prog-card-content-inner * {
   color: var(--ink) !important;
 }
 
-#root > div .prog-card-content-inner > div:first-child {
+html[data-track="tech"] #root > div .prog-card-content-inner > div:first-child {
   color: var(--orange) !important;
 }
 
-#root > div .prog-card-content-inner > div:nth-child(3) {
+html[data-track="tech"] #root > div .prog-card-content-inner > div:nth-child(3) {
   color: var(--muted) !important;
 }
 
-/* Program card tags only — curriculum tags use component inline styles */
-#root > div .prog-card-tags > div,
-#root > div .prog-card-tags span {
+html[data-track="tech"] #root > div .prog-card-tags > div,
+html[data-track="tech"] #root > div .prog-card-tags span {
   background: rgba(255, 255, 255, 0.6) !important;
   border-color: rgba(202, 85, 9, 0.25) !important;
   color: var(--orange) !important;
 }
 
 /* Curriculum rows. */
-#root > div .curriculum-row-head {
+html[data-track="tech"] #root > div .curriculum-row-head {
   color: var(--ink) !important;
 }
 
-/* Title only — exclude the orange badge/number spans */
-#root > div .curriculum-row-head h3,
-#root > div .curriculum-row-head span:not(.curriculum-week-badge):not(.curriculum-row-number) {
+html[data-track="tech"] #root > div .curriculum-row-head h3,
+html[data-track="tech"] #root > div .curriculum-row-head span:not(.curriculum-week-badge):not(.curriculum-row-number) {
   color: var(--ink) !important;
 }
 
-/* Orange elements — higher specificity (.curriculum-row-head parent) wins over the h3/span rule */
-#root > div .curriculum-row-head .curriculum-row-number,
-#root > div .curriculum-row-head .curriculum-week-badge {
+html[data-track="tech"] #root > div .curriculum-row-head .curriculum-row-number,
+html[data-track="tech"] #root > div .curriculum-row-head .curriculum-week-badge {
   color: var(--orange) !important;
 }
 
-#root > div .curriculum-chevron svg {
+html[data-track="tech"] #root > div .curriculum-chevron svg {
   color: var(--orange) !important;
   stroke: var(--orange) !important;
 }
 
 /* Build Ninja cards. */
-#root > div .cards-grid-animate,
-#root > div .ai-build-mobile-rail {
+html[data-track="tech"] #root > div .cards-grid-animate,
+html[data-track="tech"] #root > div .ai-build-mobile-rail {
   background: rgba(150, 67, 13, 0.06) !important;
   border-color: var(--line2) !important;
 }
 
-#root > div .sat-card,
-#root > div [style*="min-height: 280px"][style*="background: linear-gradient(180deg"] {
+html[data-track="tech"] #root > div .sat-card,
+html[data-track="tech"] #root > div [style*="min-height: 280px"][style*="background: linear-gradient(180deg"] {
   background: var(--card-bg) !important;
   border: 1px solid var(--card-border) !important;
   color: var(--ink) !important;
 }
 
-#root > div .sat-card-title,
-#root > div .sat-card-title *,
-#root > div .sat-card h3 {
+html[data-track="tech"] #root > div .sat-card-title,
+html[data-track="tech"] #root > div .sat-card-title *,
+html[data-track="tech"] #root > div .sat-card h3 {
   color: var(--ink) !important;
 }
 
-#root > div .sat-card-badge {
+html[data-track="tech"] #root > div .sat-card-badge {
   background: #3D2410 !important;
 }
 
-#root > div .sat-card-badge span {
+html[data-track="tech"] #root > div .sat-card-badge span {
   color: #f6f6f5 !important;
 }
 
-#root > div .sat-card-lock svg path {
+html[data-track="tech"] #root > div .sat-card-lock svg path {
   fill: #c2afa3 !important;
 }
 
 /* Capstones and acceptance cards. */
-#root > div [style*="min-height: 280px"][style*="border-radius: 12px"] {
+html[data-track="tech"] #root > div [style*="min-height: 280px"][style*="border-radius: 12px"] {
   background: var(--card-bg) !important;
   border: 1px solid var(--card-border) !important;
   box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5) inset !important;
 }
 
-#root > div [style*="min-height: 280px"][style*="border-radius: 12px"]:hover {
+html[data-track="tech"] #root > div [style*="min-height: 280px"][style*="border-radius: 12px"]:hover {
   border-color: rgba(202, 85, 9, 0.3) !important;
   box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5) inset, 0 8px 24px rgba(202, 85, 9, 0.10) !important;
 }
 
-#root > div [style*="min-height: 280px"][style*="border-radius: 12px"] p,
-#root > div [style*="min-height: 280px"][style*="border-radius: 12px"] span:not([style*="#FC6401"]):not([style*="rgb(252, 100, 1)"]) {
+html[data-track="tech"] #root > div [style*="min-height: 280px"][style*="border-radius: 12px"] p,
+html[data-track="tech"] #root > div [style*="min-height: 280px"][style*="border-radius: 12px"] span:not([style*="#FC6401"]):not([style*="rgb(252, 100, 1)"]) {
   color: var(--muted) !important;
 }
 
-#root > div [style*="min-height: 280px"][style*="border-radius: 12px"] h3 {
+html[data-track="tech"] #root > div [style*="min-height: 280px"][style*="border-radius: 12px"] h3 {
   color: var(--ink) !important;
 }
 
-/* Capstone tag pills — dark bg to light */
-#root > div [style*="min-height: 280px"][style*="border-radius: 12px"] [style*="rgba(0, 0, 0, 0.3)"] {
+html[data-track="tech"] #root > div [style*="min-height: 280px"][style*="border-radius: 12px"] [style*="rgba(0, 0, 0, 0.3)"] {
   background: rgba(255, 255, 255, 0.6) !important;
   border-color: rgba(202, 85, 9, 0.25) !important;
 }
 
-/* Capstone category label */
-#root > div [style*="min-height: 280px"][style*="border-radius: 12px"] [style*="color: rgb(252, 100, 1)"] {
+html[data-track="tech"] #root > div [style*="min-height: 280px"][style*="border-radius: 12px"] [style*="color: rgb(252, 100, 1)"] {
   color: var(--orange) !important;
 }
 
 /* Outcomes and mentor cards. */
-#root > div .hiring-table-box,
-#root > div .hiring-table-box + div,
-#root > div [style*="max-width: 508px"][style*="background: linear-gradient(90deg"] {
+html[data-track="tech"] #root > div .hiring-table-box,
+html[data-track="tech"] #root > div .hiring-table-box + div,
+html[data-track="tech"] #root > div [style*="max-width: 508px"][style*="background: linear-gradient(90deg"] {
   background: var(--card-bg) !important;
   border-color: var(--card-border) !important;
 }
 
-#root > div .hiring-table-row span {
+html[data-track="tech"] #root > div .hiring-table-row span {
   color: var(--ink) !important;
 }
 
-#root > div [style*="width: 207px"][style*="height: 207px"] {
+html[data-track="tech"] #root > div [style*="width: 207px"][style*="height: 207px"] {
   background: linear-gradient(180deg, #f8efe6, #d4a068) !important;
 }
 
-#root > div [style*="width: 181px"][style*="height: 58px"] {
+html[data-track="tech"] #root > div [style*="width: 181px"][style*="height: 58px"] {
   background: rgba(246, 246, 245, 0.85) !important;
   border-color: var(--line2) !important;
   box-shadow: none !important;
 }
 
-#root > div [style*="width: 181px"][style*="height: 58px"] div:first-child {
+html[data-track="tech"] #root > div [style*="width: 181px"][style*="height: 58px"] div:first-child {
   color: var(--ink) !important;
 }
 
-#root > div [style*="width: 181px"][style*="height: 58px"] div:nth-child(2) {
+html[data-track="tech"] #root > div [style*="width: 181px"][style*="height: 58px"] div:nth-child(2) {
   color: var(--muted) !important;
 }
 
-#root > div [style*="width: 50px"][style*="height: 50px"] {
+html[data-track="tech"] #root > div [style*="width: 50px"][style*="height: 50px"] {
   background: #ffffff !important;
   border-color: var(--line2) !important;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.10) !important;
 }
 
-/* Tool stack, preserving the existing marquee structure. */
-#root > div .tools-marquee-track {
+/* Tool stack. */
+html[data-track="tech"] #root > div .tools-marquee-track {
   background: var(--card-bg) !important;
   border-color: var(--card-border) !important;
   box-shadow:
@@ -458,119 +459,119 @@ body,
     inset -64px 0 36px -20px rgba(246, 246, 245, 0.98) !important;
 }
 
-#root > div .tools-cat-title-text {
+html[data-track="tech"] #root > div .tools-cat-title-text {
   color: var(--ink) !important;
 }
 
-#root > div .tools-marquee-track [style*="width: 194px"] {
+html[data-track="tech"] #root > div .tools-marquee-track [style*="width: 194px"] {
   background: rgba(255, 255, 255, 0.55) !important;
   border-color: rgba(150, 67, 13, 0.20) !important;
 }
 
-#root > div .tools-marquee-track span {
+html[data-track="tech"] #root > div .tools-marquee-track span {
   color: var(--muted) !important;
 }
 
-#root > div .tools-marquee-track svg {
+html[data-track="tech"] #root > div .tools-marquee-track svg {
   color: var(--orange) !important;
   fill: var(--orange) !important;
 }
 
 /* Investment and FAQ. */
-#root > div [style*="max-width: 503px"][style*="background: linear-gradient(90deg"],
-#root > div [style*="max-width: 517px"] > div[style*="background: linear-gradient(90deg"] {
+html[data-track="tech"] #root > div [style*="max-width: 503px"][style*="background: linear-gradient(90deg"],
+html[data-track="tech"] #root > div [style*="max-width: 517px"] > div[style*="background: linear-gradient(90deg"] {
   background: var(--card-bg) !important;
   border-color: var(--card-border) !important;
   box-shadow: 0 0 20px rgba(202, 85, 9, 0.15) !important;
 }
 
-#root > div [style*="max-width: 503px"] span,
-#root > div [style*="max-width: 503px"] div {
+html[data-track="tech"] #root > div [style*="max-width: 503px"] span,
+html[data-track="tech"] #root > div [style*="max-width: 503px"] div {
   color: inherit;
 }
 
-#root > div [style*="background: rgb(252, 100, 1)"],
-#root > div [style*="background-color: rgb(252, 100, 1)"],
-#root > div button[style*="background: rgb(252, 100, 1)"] {
+html[data-track="tech"] #root > div [style*="background: rgb(252, 100, 1)"],
+html[data-track="tech"] #root > div [style*="background-color: rgb(252, 100, 1)"],
+html[data-track="tech"] #root > div button[style*="background: rgb(252, 100, 1)"] {
   background: var(--orange-bright) !important;
   color: #ffffff !important;
 }
 
-#root > div [style*="background: rgb(252, 100, 1)"] *,
-#root > div [style*="background-color: rgb(252, 100, 1)"] *,
-#root > div button[style*="background: rgb(252, 100, 1)"] * {
+html[data-track="tech"] #root > div [style*="background: rgb(252, 100, 1)"] *,
+html[data-track="tech"] #root > div [style*="background-color: rgb(252, 100, 1)"] *,
+html[data-track="tech"] #root > div button[style*="background: rgb(252, 100, 1)"] * {
   color: #ffffff !important;
 }
 
-#root > div [style*="background: rgba(255, 255, 255, 0.02)"][style*="border-radius: 16px"] {
+html[data-track="tech"] #root > div [style*="background: rgba(255, 255, 255, 0.02)"][style*="border-radius: 16px"] {
   background: rgba(255, 255, 255, 0.4) !important;
   border-color: var(--line2) !important;
 }
 
-#root > div [style*="background: rgba(255, 255, 255, 0.02)"][style*="border-radius: 16px"] span,
-#root > div [style*="background: rgba(255, 255, 255, 0.02)"][style*="border-radius: 16px"] p {
+html[data-track="tech"] #root > div [style*="background: rgba(255, 255, 255, 0.02)"][style*="border-radius: 16px"] span,
+html[data-track="tech"] #root > div [style*="background: rgba(255, 255, 255, 0.02)"][style*="border-radius: 16px"] p {
   color: var(--ink) !important;
 }
 
-#root > div [style*="background: rgba(255, 255, 255, 0.02)"][style*="border-radius: 16px"] p {
+html[data-track="tech"] #root > div [style*="background: rgba(255, 255, 255, 0.02)"][style*="border-radius: 16px"] p {
   color: var(--muted) !important;
 }
 
-#root > div [style*="background: rgba(255, 255, 255, 0.02)"][style*="border-radius: 16px"] svg,
-#root > div [style*="background: rgba(255, 255, 255, 0.02)"][style*="border-radius: 16px"] svg * {
+html[data-track="tech"] #root > div [style*="background: rgba(255, 255, 255, 0.02)"][style*="border-radius: 16px"] svg,
+html[data-track="tech"] #root > div [style*="background: rgba(255, 255, 255, 0.02)"][style*="border-radius: 16px"] svg * {
   color: var(--muted) !important;
   stroke: var(--muted) !important;
 }
 
-/* CTA banner — background set directly in component, keep text colors */
-#root > div #cta-content h2 {
+/* CTA banner. */
+html[data-track="tech"] #root > div #cta-content h2 {
   color: #ffffff !important;
 }
 
-#root > div #cta-content p {
+html[data-track="tech"] #root > div #cta-content p {
   color: rgba(255, 255, 255, 0.85) !important;
 }
 
-#root > div .cta-outer .cta-fine-print {
+html[data-track="tech"] #root > div .cta-outer .cta-fine-print {
   color: rgba(255, 255, 255, 0.65) !important;
 }
 
-#root > div #cta-content .cta-fine-print {
+html[data-track="tech"] #root > div #cta-content .cta-fine-print {
   color: rgba(255, 255, 255, 0.65) !important;
 }
 
 /* Footer. */
-#root > div .footer-wrapper {
+html[data-track="tech"] #root > div .footer-wrapper {
   background: var(--bg) !important;
   border-color: var(--line) !important;
 }
 
-#root > div .footer-wrapper h3 {
+html[data-track="tech"] #root > div .footer-wrapper h3 {
   color: var(--ink) !important;
 }
 
-#root > div .footer-wrapper a,
-#root > div .footer-wrapper p,
-#root > div .footer-bottom p {
+html[data-track="tech"] #root > div .footer-wrapper a,
+html[data-track="tech"] #root > div .footer-wrapper p,
+html[data-track="tech"] #root > div .footer-bottom p {
   color: var(--muted) !important;
 }
 
-#root > div .footer-wrapper h4,
-#root > div .footer-wrapper [style*="color: rgb(252, 100, 1)"] {
+html[data-track="tech"] #root > div .footer-wrapper h4,
+html[data-track="tech"] #root > div .footer-wrapper [style*="color: rgb(252, 100, 1)"] {
   color: var(--orange) !important;
 }
 
-#root > div .footer-wrapper svg path,
-#root > div .footer-wrapper svg circle {
+html[data-track="tech"] #root > div .footer-wrapper svg path,
+html[data-track="tech"] #root > div .footer-wrapper svg circle {
   fill: #a1a1a1 !important;
 }
 
-#root > div .footer-bottom > div {
+html[data-track="tech"] #root > div .footer-bottom > div {
   background: var(--line) !important;
 }
 
 @media (max-width: 767px) {
-  #root > div .tools-marquee-track {
+  html[data-track="tech"] #root > div .tools-marquee-track {
     background: rgba(255, 255, 255, 0.55) !important;
   }
 }

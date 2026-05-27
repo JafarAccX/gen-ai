@@ -1,29 +1,24 @@
-// ============================================================
-// AlternativesComparison.tsx
-// "VS THE ALTERNATIVES" section — competitive comparison table
-// Shows AcceleratorX vs Outskill, 100x Engineers, Scaler GenAI, Be10x
-// Displays 9 feature rows in a responsive grid table layout
-// ============================================================
+import React from 'react';
 
 export default function AlternativesComparison() {
   return (
     <>
-      {/* ── Section Header ──────────────────────────────────────
-          Contains the gradient label "VS THE ALTERNATIVES",
-          the main h2 heading, and the source subtitle text
-      ─────────────────────────────────────────────────────── */}
+      {/* Alternatives Header Section */}
       <div
+        className="responsive-section alternatives-header-section"
         style={{
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'center',
+          padding: '0px',
           gap: '24px',
-          position: 'relative',
+          position: 'absolute',
           width: '100%',
           maxWidth: '1276px',
           height: 'auto',
-          margin: '80px auto 0',
-          padding: '0 16px',
+          left: '50%',
+          transform: 'translateX(-50%)',
+          top: '8576px',
           zIndex: 10,
         }}
       >
@@ -38,7 +33,6 @@ export default function AlternativesComparison() {
             height: 'auto',
           }}
         >
-          {/* Gradient Label: "VS THE ALTERNATIVES" */}
           <div
             style={{
               display: 'flex',
@@ -73,7 +67,6 @@ export default function AlternativesComparison() {
             </div>
           </div>
 
-          {/* Heading + Subtitle */}
           <div
             style={{
               display: 'flex',
@@ -81,11 +74,10 @@ export default function AlternativesComparison() {
               alignItems: 'center',
               padding: '0px',
               gap: '6px',
-              width: '100%',
-              maxWidth: '1239px',
+              width: '1239px',
+              height: '85px',
             }}
           >
-            {/* Main heading */}
             <div
               style={{
                 width: 'auto',
@@ -103,8 +95,6 @@ export default function AlternativesComparison() {
             >
               Why AcceleratorX, in one table.
             </div>
-
-            {/* Subtitle / source attribution */}
             <div
               style={{
                 width: '100%',
@@ -125,33 +115,26 @@ export default function AlternativesComparison() {
         </div>
       </div>
 
-      {/* ── Comparison Table Card ───────────────────────────────
-          Dark glassmorphism card containing:
-          - Absolute-positioned background layer (border + gradient)
-          - Scrollable inner container for the full-width grid
-          - Header row: Description | AcceleratorX | Outskill | 100x | Scaler | Be10x
-          - 9 feature rows with ✓ checkmarks (orange gradient) or text values
-          Grid columns: 2.5fr (description) + 5x 1.2fr (competitors) + 0.8fr (Be10x)
-      ─────────────────────────────────────────────────────── */}
+      {/* Card 7 - The Table */}
       <div
+        className="responsive-section alternatives-table-card"
         style={{
           display: 'flex',
           flexDirection: 'column',
           justifyContent: 'center',
           alignItems: 'flex-start',
+          padding: '20px 24px',
           gap: '10px',
           isolation: 'isolate',
-          position: 'relative',
-          width: '100%',
-          maxWidth: '1301px',
-          minHeight: '484px',
-          margin: '40px auto 0',
-          padding: '0 16px',
+          position: 'absolute',
+          width: '1301px',
+          height: '484px',
+          left: 'calc(50% - 1301px / 2)', // Centered, originally left: 70px
+          top: '8739px', // Moved below Alternatives Header
           borderRadius: '12px',
           zIndex: 10,
         }}
       >
-        {/* Background layer — dark gradient + border, sits behind table content */}
         <div
           style={{
             boxSizing: 'border-box',
@@ -167,10 +150,11 @@ export default function AlternativesComparison() {
           }}
         />
 
-        {/* Scrollable table wrapper — overflowX: auto for narrow viewports */}
-        <div style={{ width: '100%', height: '100%', display: 'flex', flexDirection: 'column', overflowX: 'auto' }}>
-
-          {/* Table Header Row */}
+        <div
+          className="alternatives-table-container"
+          style={{ width: '100%', height: '100%', display: 'flex', flexDirection: 'column' }}
+        >
+          {/* Table Header */}
           <div
             style={{
               display: 'grid',
@@ -181,7 +165,6 @@ export default function AlternativesComparison() {
               borderBottom: '1px solid rgba(255, 255, 255, 0.15)',
             }}
           >
-            {/* Column headers — rendered with orange gradient text */}
             {['Description', 'AcceleratorX', 'Outskill', '100x Engineers', 'Scaler GenAI', 'Be10x'].map((header, i) => (
               <div
                 key={i}
@@ -202,14 +185,7 @@ export default function AlternativesComparison() {
             ))}
           </div>
 
-          {/* ── Feature Rows ──────────────────────────────────────
-              Each row has:
-                - title: feature/description label (col 1)
-                - values[]: one value per competitor column (cols 2–6)
-                - noBorder: true removes the bottom divider on the last row
-              '✓' values render larger (18px) with orange gradient fill
-              All other values render as muted grey (#C2C2C2) text
-          ──────────────────────────────────────────────────── */}
+          {/* Rows */}
           {[
             {
               title: 'Format',
@@ -246,7 +222,7 @@ export default function AlternativesComparison() {
             {
               title: 'Approx. price (₹)',
               values: ['1.25–1.5L', '1–1.6L', '1.5–2L', '3–3.5L', '9–28k'],
-              noBorder: true, // Last row — no bottom border
+              noBorder: true,
             },
           ].map((row, index) => (
             <div
@@ -260,7 +236,6 @@ export default function AlternativesComparison() {
                 borderBottom: row.noBorder ? 'none' : '1px solid rgba(255, 255, 255, 0.05)',
               }}
             >
-              {/* Row label (feature description) */}
               <div
                 style={{
                   fontFamily: 'Inter, sans-serif',
@@ -271,8 +246,6 @@ export default function AlternativesComparison() {
               >
                 {row.title}
               </div>
-
-              {/* Competitor values — ✓ gets orange gradient, text gets muted grey */}
               {row.values.map((val, i) => (
                 <div
                   key={i}

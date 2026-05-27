@@ -1,22 +1,22 @@
 @import "tailwindcss";
 
 @theme {
-  --color-bg-primary: #f6f6f5;
-  --color-bg-card: #f3ece5;
-  --color-bg-card-hover: #fffaf6;
-  --color-orange: #fc6401;
-  --color-orange-dark: #96430d;
-  --color-purple: #3e38e0;
-  --color-green: #2bce34;
-  --color-blue: #2f6bff;
-  --color-text-white: #121212;
-  --color-text-gray: #5a5959;
-  --color-text-muted: #656464;
-  --color-text-dim: #9c9c9c;
-  --color-text-dark: #121212;
-  --color-border: rgba(150, 67, 13, 0.18);
-  --color-border-light: rgba(150, 67, 13, 0.28);
-  --color-border-dark: rgba(0, 0, 0, 0.1);
+  --color-bg-primary: #000000;
+  --color-bg-card: #141414;
+  --color-bg-card-hover: #1A1A1A;
+  --color-orange: #FC6401;
+  --color-orange-dark: #AE4501;
+  --color-purple: #3E38E0;
+  --color-green: #2BCE34;
+  --color-blue: #2F6BFF;
+  --color-text-white: #F5F7FF;
+  --color-text-gray: #C2C2C2;
+  --color-text-muted: #A0A8B8;
+  --color-text-dim: #999999;
+  --color-text-dark: #848484;
+  --color-border: #222222;
+  --color-border-light: #2E2E2E;
+  --color-border-dark: #1D1D1D;
   --font-inter: 'Inter', sans-serif;
   --font-poppins: 'Poppins', sans-serif;
   --font-open-sans: 'Open Sans', sans-serif;
@@ -31,31 +31,83 @@
 
 html {
   scroll-behavior: smooth;
+  background-color: #000000;
+}
+
+html[data-track="tech"] {
   background-color: #f6f6f5;
 }
 
 body {
   font-family: var(--font-inter);
-  background-color: #f6f6f5;
-  color: #121212;
+  background-color: #000000;
+  color: var(--color-text-white);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
+  max-width: 1440px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 #root {
   width: 100%;
+}
+
+/* Tech track layout: flex centering */
+html[data-track="tech"] #root {
   display: flex;
   justify-content: center;
 }
 
-#root > div {
+html[data-track="tech"] #root > div {
   width: 100%;
   max-width: 1440px;
 }
 
-#root > div > * {
+html[data-track="tech"] #root > div > * {
   width: 100%;
+}
+
+/* Dot grid background */
+.dot-grid {
+  background-image: radial-gradient(circle, rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+  background-size: 38px 21px;
+}
+
+/* FAQ accordion transition */
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease, padding 0.4s ease;
+}
+
+.faq-answer.open {
+  max-height: 300px;
+  padding-top: 16px;
+}
+
+/* Glow effects */
+.glow-orange {
+  box-shadow: 0px 0px 20px rgba(252, 100, 1, 0.25);
+}
+
+.glow-purple {
+  box-shadow: 0px 0px 20px rgba(62, 56, 224, 0.25);
+}
+
+/* Hide scrollbars utility */
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+::-webkit-scrollbar {
+  display: none;
 }
 
 .scroll-grid-outer::-webkit-scrollbar {
@@ -784,5 +836,1375 @@ body {
 
   #root > div .footer-bottom {
     margin-top: 32px;
+  }
+}
+
+/* ==========================================================================
+   BUSINESS TRACK: Responsive Overrides from Gen-AI-Page (< 1280px Viewports)
+   Desktop view (>=1280px) is completely untouched.
+   ========================================================================== */
+@media (max-width: 1279px) {
+
+  /* -----------------------------------------------------------------------
+     0. GLOBAL: Body max-width reset
+     ----------------------------------------------------------------------- */
+  html,
+  body {
+    width: 100% !important;
+    max-width: 100% !important;
+    overflow-x: hidden !important;
+  }
+
+  /* -----------------------------------------------------------------------
+     1. GLOBAL: Strip absolute positioning from all sections
+     ----------------------------------------------------------------------- */
+  .responsive-section {
+    position: relative !important;
+    top: auto !important;
+    left: auto !important;
+    right: auto !important;
+    bottom: auto !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    margin: 60px auto 0 !important;
+    transform: none !important;
+    box-sizing: border-box !important;
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+  }
+
+  /* -----------------------------------------------------------------------
+     1.5 GLOBAL: Typography resets for section headings
+     ----------------------------------------------------------------------- */
+  .responsive-section h2 {
+    font-size: clamp(20px, 2.8vw, 30px) !important;
+    line-height: 1.35 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    text-align: center !important;
+    white-space: normal !important;
+  }
+
+  .responsive-section p {
+    font-size: clamp(13px, 1.4vw, 15px) !important;
+    line-height: 1.55 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    text-align: center !important;
+    white-space: normal !important;
+  }
+
+  /* -----------------------------------------------------------------------
+     1.6 GLOBAL: Prevent hardcoded-width children from overflowing
+     ----------------------------------------------------------------------- */
+  .responsive-section>div,
+  .responsive-section>div>div,
+  .responsive-section>div>div>div,
+  .responsive-section>div>div>div>div {
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  /* -----------------------------------------------------------------------
+     2. Responsive Flex Utilities (row -> column on mobile)
+     ----------------------------------------------------------------------- */
+  .responsive-flex-row {
+    flex-direction: column !important;
+    align-items: center !important;
+    width: 100% !important;
+    height: auto !important;
+    gap: 32px !important;
+  }
+
+  /* -----------------------------------------------------------------------
+     3. Program Architecture
+     ----------------------------------------------------------------------- */
+  .program-architecture-section {
+    height: auto !important;
+    padding-bottom: 40px !important;
+  }
+
+  .program-cards-container {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    width: 100% !important;
+    height: auto !important;
+    padding: 0 8px !important;
+    gap: clamp(24px, 4vw, 36px) !important;
+  }
+
+  .program-card {
+    width: 100% !important;
+    max-width: 400px !important;
+    height: 360px !important;
+    margin: 0 auto !important;
+    position: relative !important;
+  }
+
+  .program-card-bg {
+    position: relative !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    height: 350px !important;
+    left: 0 !important;
+    background-image: none !important;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.03) 0%, rgba(252, 100, 1, 0.03) 100%) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    border-radius: 16px !important;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3) !important;
+  }
+
+  .program-card-bg>div:last-child>div:nth-child(2) {
+    font-size: 16px !important;
+    line-height: 24px !important;
+    margin-bottom: 8px !important;
+  }
+
+  .program-card-bg>div:last-child>div:nth-child(3) {
+    font-size: 13px !important;
+    line-height: 18px !important;
+  }
+
+  .program-card-icon {
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+  }
+
+  .program-card-content {
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    width: 276px !important;
+    padding-top: 24px !important;
+  }
+
+  .arch-header-inner {
+    width: 100% !important;
+    height: auto !important;
+    gap: 16px !important;
+  }
+
+  .arch-tag-wrapper {
+    width: 100% !important;
+    height: auto !important;
+  }
+
+  .arch-header-group,
+  .arch-title-wrapper,
+  .curr-header-group,
+  .curr-title-wrapper {
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    white-space: normal !important;
+  }
+
+  .arch-title-heading,
+  .curr-title-heading {
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    font-size: 20px !important;
+    line-height: 1.3 !important;
+    text-align: center !important;
+    white-space: normal !important;
+    margin: 0 auto !important;
+    padding: 0 8px !important;
+  }
+
+  .arch-subtitle-desc,
+  .curr-subtitle-desc {
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    font-size: 14px !important;
+    line-height: 1.4 !important;
+    text-align: center !important;
+    white-space: normal !important;
+    margin: 12px auto 0 !important;
+    padding: 0 8px !important;
+  }
+
+  /* -----------------------------------------------------------------------
+     4. Curriculum Accordions
+     ----------------------------------------------------------------------- */
+  .curriculum-section {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding-left: 12px !important;
+    padding-right: 12px !important;
+  }
+
+  .curriculum-list {
+    width: 100% !important;
+  }
+
+  .curriculum-card {
+    width: 100% !important;
+    height: auto !important;
+    box-sizing: border-box !important;
+    padding: 16px !important;
+  }
+
+  .curriculum-card-row {
+    width: 100% !important;
+    flex-direction: row !important;
+    flex-wrap: wrap !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    gap: 0 !important;
+  }
+
+  .curriculum-card-left-wrapper {
+    width: calc(100% - 36px) !important;
+    flex-grow: 1 !important;
+    gap: 12px !important;
+  }
+
+  .curriculum-card-left {
+    width: 100% !important;
+    max-width: 100% !important;
+    flex-grow: 1 !important;
+  }
+
+  .curriculum-card-left>div {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  .curriculum-card-left h3 {
+    font-size: 15px !important;
+    line-height: 1.3 !important;
+  }
+
+  .curriculum-card-left span {
+    font-size: 11px !important;
+    line-height: 1.3 !important;
+  }
+
+  .curriculum-card-left div {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  .curriculum-card-right {
+    width: 100% !important;
+    height: auto !important;
+    order: 3 !important;
+    justify-content: flex-start !important;
+    flex-wrap: wrap !important;
+    gap: 8px !important;
+    margin-top: 12px !important;
+    padding: 0 !important;
+  }
+
+  .curriculum-card-chevron {
+    width: 24px !important;
+    height: 24px !important;
+    order: 2 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+
+  /* -----------------------------------------------------------------------
+     5. AI Build Ninja
+     ----------------------------------------------------------------------- */
+  .ai-build-ninja-section {
+    width: 100% !important;
+  }
+
+  .ninja-header-group,
+  .ninja-header-container,
+  .ninja-header-label-row,
+  .ninja-header-heading-block {
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+  }
+
+  .ninja-cards-grid {
+    width: 100% !important;
+    padding: 16px !important;
+  }
+
+  .ninja-cards-row {
+    flex-direction: column !important;
+    align-items: center !important;
+    width: 100% !important;
+    gap: 16px !important;
+  }
+
+  .ninja-card {
+    width: 100% !important;
+    max-width: 340px !important;
+  }
+
+  /* -----------------------------------------------------------------------
+     6. Capstone Menu & Grid
+     ----------------------------------------------------------------------- */
+  .capstone-menu-section {
+    margin-top: 60px !important;
+    margin-bottom: 20px !important;
+  }
+
+  .capstone-menu-section>div {
+    width: 100% !important;
+  }
+
+  .capstone-menu-section>div>div {
+    width: 100% !important;
+  }
+
+  .capstone-grid-section {
+    margin-top: 0 !important;
+    padding-bottom: 40px !important;
+  }
+
+  .capstone-row {
+    flex-direction: column !important;
+    align-items: center !important;
+    width: 100% !important;
+    gap: 16px !important;
+  }
+
+  .capstone-card {
+    width: 100% !important;
+    max-width: 360px !important;
+    height: auto !important;
+    padding: clamp(16px, 3.5vw, 24px) clamp(14px, 3vw, 20px) !important;
+  }
+
+  .capstone-card>div {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  .capstone-card>div>div:first-child {
+    width: 100% !important;
+    gap: 4px !important;
+  }
+
+  .capstone-card>div>div:first-child>div:first-child {
+    width: 100% !important;
+  }
+
+  .capstone-card h3 {
+    width: 100% !important;
+    font-size: clamp(15px, 1.8vw, 17px) !important;
+    line-height: 24px !important;
+  }
+
+  .capstone-card p {
+    width: 100% !important;
+    height: auto !important;
+    font-size: clamp(12.5px, 1.5vw, 13px) !important;
+    line-height: 18px !important;
+  }
+
+  .capstone-card>div>div:nth-child(2) {
+    width: 100% !important;
+    gap: 8px !important;
+    padding: 4px 0 !important;
+  }
+
+  .capstone-card>div>div:nth-child(2)>div:last-child {
+    width: 100% !important;
+    min-height: auto !important;
+  }
+
+  .capstone-card>div>div:last-child {
+    width: 100% !important;
+    height: auto !important;
+    padding: 8px 0 0 !important;
+  }
+
+  .capstone-card>div>div:last-child>span {
+    width: 100% !important;
+    height: auto !important;
+    font-size: clamp(12px, 1.4vw, 13px) !important;
+    line-height: 18px !important;
+  }
+
+  /* -----------------------------------------------------------------------
+     7. Outcomes & Hiring
+     ----------------------------------------------------------------------- */
+  .outcomes-hiring-section {
+    width: 100% !important;
+    align-items: center !important;
+  }
+
+  .outcomes-hiring-section>div:first-child {
+    width: 100% !important;
+    align-items: center !important;
+  }
+
+  .outcomes-boxes-container {
+    width: 100% !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 32px !important;
+  }
+
+  .outcomes-left-box {
+    width: 100% !important;
+    min-height: auto !important;
+    padding: 16px !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    align-items: flex-start !important;
+  }
+
+  .outcomes-left-box>div {
+    width: 100% !important;
+    min-width: 500px !important;
+  }
+
+  .outcomes-right-box {
+    width: 100% !important;
+    height: auto !important;
+    padding: 20px 16px !important;
+  }
+
+  .outcomes-right-box>div {
+    width: 100% !important;
+  }
+
+  .outcomes-right-box div[style*="width: 460px"] {
+    width: 100% !important;
+  }
+
+  /* -----------------------------------------------------------------------
+     8. Outcomes Logos & Mentors Profiles Marquees
+     ----------------------------------------------------------------------- */
+  .outcomes-logos-section {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 40px auto !important;
+    overflow: hidden !important;
+    padding: 0 !important;
+    height: 80px !important;
+  }
+
+  .mentors-profiles-section {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 40px auto !important;
+    overflow: hidden !important;
+    padding: 0 !important;
+    height: 280px !important;
+  }
+
+  .outcomes-logos-container,
+  .mentors-profiles-container {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  .mentors-profiles-container>div[style*="width: 100px"] {
+    width: 24px !important;
+  }
+
+  /* -----------------------------------------------------------------------
+     9. Mentors Header
+     ----------------------------------------------------------------------- */
+  .mentors-header-section>div {
+    width: 100% !important;
+    height: auto !important;
+  }
+
+  .mentors-header-section>div>div {
+    width: 100% !important;
+    height: auto !important;
+  }
+
+  .mentors-header-section h2 {
+    width: 100% !important;
+    height: auto !important;
+    line-height: 1.3 !important;
+  }
+
+  .mentors-header-section p {
+    width: 100% !important;
+    height: auto !important;
+  }
+
+  /* -----------------------------------------------------------------------
+     10. Tool Stack Header & Grid
+     ----------------------------------------------------------------------- */
+  .tool-stack-header-section>div {
+    width: 100% !important;
+    height: auto !important;
+  }
+
+  .tool-stack-header-section>div>div {
+    width: 100% !important;
+    height: auto !important;
+  }
+
+  .tool-stack-header-section h2 {
+    width: 100% !important;
+    height: auto !important;
+    line-height: 1.3 !important;
+  }
+
+  .tool-stack-header-section p {
+    width: 100% !important;
+    height: auto !important;
+  }
+
+  .tool-stack-grid-section {
+    width: 100% !important;
+  }
+
+  .tool-stack-row {
+    flex-direction: column !important;
+    height: auto !important;
+    width: 100% !important;
+    gap: 16px !important;
+    margin-bottom: 24px !important;
+  }
+
+  .tool-stack-category-left {
+    width: 100% !important;
+    height: auto !important;
+  }
+
+  .tool-stack-category-title {
+    text-align: center !important;
+    justify-content: center !important;
+    width: 100% !important;
+  }
+
+  .tool-stack-marquee-container {
+    width: 100% !important;
+    max-width: 100% !important;
+    box-shadow: inset 24px 0px 16px -12px #0A0A0A, inset -24px 0px 16px -12px #0A0A0A !important;
+  }
+
+  /* -----------------------------------------------------------------------
+     11. Alternatives Comparison
+     ----------------------------------------------------------------------- */
+  .alternatives-header-section {
+    width: 100% !important;
+  }
+
+  .alternatives-header-section>div>div {
+    width: 100% !important;
+    height: auto !important;
+  }
+
+  .alternatives-table-card {
+    height: auto !important;
+    padding: 16px !important;
+    border-radius: 12px !important;
+  }
+
+  .alternatives-table-container {
+    width: 100% !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    padding-bottom: 8px !important;
+  }
+
+  .alternatives-table-container>div {
+    min-width: 800px !important;
+    max-width: none !important;
+    width: auto !important;
+  }
+
+  /* -----------------------------------------------------------------------
+     12. Investment Header & Pricing
+     ----------------------------------------------------------------------- */
+  .investment-header-section {
+    width: 100% !important;
+  }
+
+  .investment-header-section>div {
+    width: 100% !important;
+    height: auto !important;
+  }
+
+  .investment-header-section>div>div {
+    width: 100% !important;
+    height: auto !important;
+  }
+
+  .investment-header-section>div>div>div {
+    width: 100% !important;
+    height: auto !important;
+  }
+
+  .investment-pricing-section {
+    width: 100% !important;
+    height: auto !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 40px !important;
+  }
+
+  .pricing-card {
+    width: 100% !important;
+    max-width: 503px !important;
+    height: auto !important;
+    min-height: auto !important;
+    padding: clamp(24px, 4.5vw, 36px) clamp(16px, 3.5vw, 24px) !important;
+  }
+
+  .pricing-card>div>div:first-child>div:first-child>span:first-child {
+    font-size: clamp(24px, 4vw, 30px) !important;
+  }
+
+  .pricing-card span {
+    font-size: clamp(12.5px, 1.5vw, 13.5px) !important;
+    line-height: 1.5 !important;
+  }
+
+  .pricing-info-sidebar {
+    width: 100% !important;
+    max-width: 503px !important;
+  }
+
+  .pricing-info-sidebar>div {
+    padding: clamp(20px, 3vw, 28px) clamp(16px, 3vw, 24px) !important;
+  }
+
+  .pricing-info-sidebar span {
+    font-size: clamp(12.5px, 1.5vw, 13.5px) !important;
+    line-height: 1.55 !important;
+  }
+
+  /* -----------------------------------------------------------------------
+     13. Bottom Section Stack (HonestAnswers, FAQ, CTA, Footer)
+     ----------------------------------------------------------------------- */
+  .bottom-section-stack {
+    margin-top: 60px !important;
+    position: relative !important;
+    top: auto !important;
+    width: 100% !important;
+    padding: 0 16px !important;
+    box-sizing: border-box !important;
+  }
+
+  .bottom-section-stack>div:first-child {
+    width: 100% !important;
+    height: auto !important;
+  }
+
+  .bottom-section-stack>div:first-child>div {
+    width: 100% !important;
+    height: auto !important;
+  }
+
+  .bottom-section-stack>div:first-child>div>div {
+    width: auto !important;
+  }
+
+  .bottom-section-stack>div:first-child div[style*="width: 1239px"] {
+    width: 100% !important;
+  }
+
+  #faq-container,
+  .bottom-section-stack>div:nth-child(2) {
+    width: 100% !important;
+  }
+
+  .faq-item {
+    width: 100% !important;
+    padding: clamp(14px, 2.2vw, 18px) clamp(12px, 2vw, 16px) !important;
+  }
+
+  #cta-banner-wrapper {
+    width: 100% !important;
+    height: auto !important;
+    min-height: 300px !important;
+    margin: 80px auto 60px !important;
+    padding: 0 !important;
+  }
+
+  #cta-bg-container {
+    border-radius: 16px !important;
+  }
+
+  #cta-content {
+    position: relative !important;
+    width: 100% !important;
+    left: 0 !important;
+    top: 0 !important;
+    padding: clamp(24px, 4vw, 32px) clamp(16px, 3vw, 24px) !important;
+    box-sizing: border-box !important;
+  }
+
+  #cta-content h2 {
+    font-size: clamp(20px, 2.5vw, 24px) !important;
+    line-height: 1.35 !important;
+  }
+
+  #cta-content p {
+    text-align: left !important;
+    font-size: clamp(12.5px, 1.4vw, 14px) !important;
+    line-height: 1.5 !important;
+  }
+
+  #cta-form-group {
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 12px !important;
+  }
+
+  #cta-form-group>div:first-child {
+    width: 100% !important;
+  }
+
+  #cta-form-group>div:last-child {
+    width: 100% !important;
+  }
+
+  #cta-form-group button {
+    width: 100% !important;
+  }
+
+  #cta-right-graphic {
+    display: none !important;
+  }
+
+  #footer-main-container {
+    width: 100% !important;
+    height: auto !important;
+    margin: 60px auto 0 !important;
+    padding: 0 16px !important;
+    box-sizing: border-box !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 40px !important;
+  }
+
+  #footer-main-container>div {
+    position: relative !important;
+    left: auto !important;
+    top: auto !important;
+    width: 100% !important;
+  }
+
+  #footer-main-container>div:last-child {
+    position: relative !important;
+    left: auto !important;
+    top: auto !important;
+    width: 100% !important;
+    margin-top: 20px !important;
+    padding-bottom: 40px !important;
+  }
+
+  #footer-main-container>div:last-child>div {
+    width: 100% !important;
+  }
+
+  #footer-main-container>div:last-child>p {
+    font-size: 12px !important;
+    text-align: center !important;
+    width: 100% !important;
+  }
+}
+
+/* ==========================================================================
+   BUSINESS TRACK: Tablet-specific overrides (680px - 1279px)
+   ========================================================================== */
+@media (min-width: 680px) and (max-width: 1279px) {
+
+  #footer-main-container {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 32px !important;
+  }
+
+  #footer-main-container>div:last-child {
+    grid-column: 1 / -1 !important;
+  }
+
+  .capstone-row {
+    flex-direction: row !important;
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+  }
+
+  .capstone-card {
+    width: calc(50% - 12px) !important;
+    max-width: none !important;
+  }
+}
+
+/* ==========================================================================
+   BUSINESS TRACK: Phone-specific overrides (<= 480px)
+   ========================================================================== */
+@media (max-width: 480px) {
+  .responsive-section {
+    margin: 40px auto 0 !important;
+    padding-left: 12px !important;
+    padding-right: 12px !important;
+  }
+
+  .responsive-section h2 {
+    font-size: 20px !important;
+  }
+
+  .responsive-section p {
+    font-size: 13px !important;
+  }
+
+  .program-card {
+    max-width: 100% !important;
+    height: 340px !important;
+  }
+
+  .capstone-card {
+    max-width: 100% !important;
+  }
+
+  .ninja-card {
+    max-width: 100% !important;
+  }
+
+  .pricing-card {
+    max-width: 100% !important;
+  }
+
+  .pricing-info-sidebar {
+    max-width: 100% !important;
+  }
+
+  #cta-content {
+    padding: 24px 16px !important;
+  }
+
+  #cta-content h2 {
+    font-size: 20px !important;
+  }
+
+  #footer-main-container {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 32px !important;
+    text-align: center !important;
+  }
+
+  #footer-main-container p {
+    width: 100% !important;
+    text-align: center !important;
+  }
+
+  .faq-item {
+    padding: 16px 12px !important;
+  }
+
+  .faq-item span {
+    font-size: 15px !important;
+  }
+
+  .outcomes-left-box>div {
+    min-width: 420px !important;
+  }
+
+  .alternatives-table-container>div {
+    min-width: 600px !important;
+  }
+}
+
+/* ==========================================================================
+   BUSINESS TRACK: General Mobile/Tablet catch-all overrides (<= 1279px)
+   ========================================================================== */
+@media (max-width: 1279px) {
+  .program-architecture-section {
+    width: 100% !important;
+    height: auto !important;
+    overflow: hidden !important;
+    padding-bottom: 60px !important;
+  }
+
+  .arch-header-group,
+  .arch-header-inner,
+  .arch-tag-wrapper,
+  .arch-title-wrapper,
+  .arch-subtitle-desc {
+    width: 100% !important;
+    height: auto !important;
+    padding: 0 16px !important;
+  }
+
+  .arch-title-heading {
+    width: 100% !important;
+    font-size: clamp(24px, 5vw, 32px) !important;
+    line-height: 1.3 !important;
+    white-space: normal !important;
+    text-align: center !important;
+    height: auto !important;
+  }
+
+  .program-cards-container {
+    width: 100% !important;
+    height: auto !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 24px !important;
+  }
+
+  .program-card {
+    width: 100% !important;
+    max-width: 350px !important;
+    height: 380px !important;
+    margin: 0 !important;
+    z-index: 1 !important;
+  }
+
+  .program-card-bg {
+    width: 100% !important;
+    height: 100% !important;
+    left: 0 !important;
+    background-size: 100% 100% !important;
+  }
+
+  .program-card-icon {
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+  }
+
+  .program-card-content {
+    width: 100% !important;
+    left: 0 !important;
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+  }
+
+  .program-card-tags-wrapper {
+    width: 100% !important;
+    padding: 0 16px !important;
+  }
+}
+
+/* ==========================================================================
+   BUSINESS TRACK: iPad / Tablet (768px - 1024px)
+   ========================================================================== */
+@media (min-width: 768px) and (max-width: 1024px) {
+
+  .hero-mobile-buttons {
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: center !important;
+    align-items: center !important;
+    gap: 32px !important;
+    width: 100% !important;
+  }
+
+  .hero-mobile-btn-apply {
+    padding: 14px 36px !important;
+    white-space: nowrap !important;
+    font-size: 15px !important;
+    font-weight: 700 !important;
+    border-radius: 9999px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: auto !important;
+  }
+
+  .hero-mobile-logos-marquee {
+    max-width: 680px !important;
+    margin: 0 auto !important;
+  }
+
+  .hero-metrics-card {
+    max-width: 720px !important;
+    margin: 0 auto !important;
+  }
+
+  .program-card {
+    width: 100% !important;
+    max-width: 650px !important;
+    height: 380px !important;
+    margin: 0 auto !important;
+  }
+
+  .program-card-bg {
+    width: 100% !important;
+    height: 370px !important;
+  }
+
+  .program-card-content {
+    width: 550px !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    padding-top: 16px !important;
+  }
+
+  .program-card-bg>div:last-child>div:nth-child(2),
+  .program-card-content>div:nth-child(2) {
+    font-size: 22px !important;
+    font-weight: 700 !important;
+    margin-bottom: 12px !important;
+    line-height: 30px !important;
+  }
+
+  .program-card-bg>div:last-child>div:nth-child(3),
+  .program-card-content>div:nth-child(3) {
+    font-size: 15.5px !important;
+    font-weight: 500 !important;
+    line-height: 24px !important;
+    color: #DFDFDF !important;
+  }
+
+  .program-card-tags-wrapper {
+    width: 100% !important;
+    max-width: 550px !important;
+    bottom: 24px !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+  }
+
+  .curriculum-card-right {
+    width: 100% !important;
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+  }
+
+  .curriculum-card-chevron {
+    margin-left: auto !important;
+    align-self: center !important;
+    order: 2 !important;
+  }
+
+  .ninja-cards-row {
+    flex-direction: row !important;
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+    gap: 20px !important;
+  }
+
+  .ninja-card {
+    width: calc(50% - 12px) !important;
+    max-width: 360px !important;
+  }
+
+  .social-proof-subtitle {
+    text-align: center !important;
+    max-width: 680px !important;
+    margin: 0 auto 40px !important;
+    font-size: 15px !important;
+    line-height: 22px !important;
+  }
+
+  .social-proof-logos-wrapper {
+    margin-top: 16px !important;
+  }
+}
+
+/* ==========================================================================
+   BUSINESS TRACK: Nest Hub Max & Entry Desktop (1280px)
+   ========================================================================== */
+@media (min-width: 1280px) and (max-width: 1280px) {
+  .track-badge-desktop {
+    left: 50px !important;
+  }
+
+  .track-toggle-desktop {
+    left: 485px !important;
+  }
+
+  .hero-title-desktop {
+    font-size: 38px !important;
+    line-height: 46px !important;
+    width: 500px !important;
+    left: 50px !important;
+    top: 180px !important;
+  }
+
+  .hero-subtitle-desktop {
+    font-size: 14px !important;
+    line-height: 24px !important;
+    width: 480px !important;
+    left: 50px !important;
+    top: 340px !important;
+  }
+
+  .hero-metrics-desktop {
+    width: 520px !important;
+    height: 80px !important;
+    left: 50px !important;
+    top: 420px !important;
+    padding: 12px 16px !important;
+    gap: 8px !important;
+  }
+
+  .hero-metrics-desktop > div {
+    height: 52px !important;
+    gap: 8px !important;
+  }
+
+  .hero-metrics-desktop > div:nth-child(1) {
+    width: 175px !important;
+  }
+  .hero-metrics-desktop > div:nth-child(1) > div:nth-child(2) {
+    width: 120px !important;
+    height: 52px !important;
+  }
+  .hero-metrics-desktop > div:nth-child(1) > div:nth-child(2) > div {
+    width: 120px !important;
+  }
+
+  .hero-metrics-desktop > div:nth-child(2) {
+    width: 165px !important;
+  }
+  .hero-metrics-desktop > div:nth-child(2) > div:nth-child(2) {
+    width: 110px !important;
+    height: 52px !important;
+  }
+  .hero-metrics-desktop > div:nth-child(2) > div:nth-child(2) > div {
+    width: 110px !important;
+  }
+
+  .hero-metrics-desktop > div:nth-child(3) {
+    width: 140px !important;
+  }
+  .hero-metrics-desktop > div:nth-child(3) > div:nth-child(2) {
+    width: 90px !important;
+    height: 52px !important;
+  }
+  .hero-metrics-desktop > div:nth-child(3) > div:nth-child(2) > div {
+    width: 90px !important;
+  }
+
+  .hero-metrics-desktop > div > div:nth-child(2) > div:first-child {
+    font-size: 14px !important;
+    line-height: 22px !important;
+    height: 22px !important;
+  }
+  .hero-metrics-desktop > div > div:nth-child(2) > div:last-child {
+    font-size: 10px !important;
+    line-height: 16px !important;
+    height: 16px !important;
+  }
+
+  .hero-learners-title-desktop {
+    left: 50px !important;
+    top: 535px !important;
+    font-size: 12px !important;
+    line-height: 28px !important;
+  }
+
+  .hero-logos-desktop {
+    left: 50px !important;
+    top: 570px !important;
+    width: 520px !important;
+    height: 72px !important;
+  }
+  .hero-logos-desktop > div:first-child {
+    width: 520px !important;
+  }
+
+  .hero-actions-desktop {
+    left: 50px !important;
+    top: 675px !important;
+  }
+
+  .hero-image-frame-desktop {
+    width: 500px !important;
+    height: 560px !important;
+    right: 40px !important;
+    top: 160px !important;
+  }
+
+  .hero-image-pm1 {
+    width: 530px !important;
+    height: 520px !important;
+    left: 0px !important;
+    top: 40px !important;
+  }
+
+  .hero-image-collab {
+    width: 120px !important;
+    height: 64px !important;
+    left: 360px !important;
+    top: 25px !important;
+  }
+
+  .badge-happy-students-desktop {
+    right: 440px !important;
+    top: 180px !important;
+  }
+
+  .badge-live-classes-desktop {
+    right: 420px !important;
+    top: 380px !important;
+  }
+
+  .badge-mentor-connect-desktop {
+    right: 60px !important;
+    top: 440px !important;
+  }
+
+  .badge-career-support-desktop {
+    right: 420px !important;
+    top: 610px !important;
+  }
+
+  footer {
+    max-width: 1160px !important;
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+    margin-top: 80px !important;
+  }
+
+  .footer-columns-row {
+    gap: 60px !important;
+    max-width: 750px !important;
+  }
+
+  .footer-columns-row > div {
+    min-width: 130px !important;
+  }
+
+  .footer-bottom-row {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+
+  .footer-bottom-row > p {
+    max-width: 500px !important;
+    font-size: 12px !important;
+  }
+
+  .footer-bottom-row > div {
+    gap: 12px !important;
+    font-size: 10px !important;
+  }
+
+  .program-architecture-section > div {
+    max-width: 1160px !important;
+  }
+  .program-cards-container {
+    transform: scale(0.94) !important;
+    transform-origin: center !important;
+  }
+
+  .curriculum-section {
+    transform: scale(0.91) !important;
+    transform-origin: top center !important;
+  }
+
+  .ai-build-ninja-section {
+    transform: scale(0.9) !important;
+    transform-origin: top center !important;
+  }
+
+  .capstone-menu-section {
+    transform: scale(0.91) !important;
+    transform-origin: top center !important;
+  }
+  .capstone-grid-section {
+    transform: scale(0.86) !important;
+    transform-origin: top center !important;
+  }
+
+  .outcomes-hiring-section {
+    transform: scale(0.91) !important;
+    transform-origin: top center !important;
+    left: calc(50% - 1276px / 2) !important;
+  }
+  .outcomes-logos-section {
+    transform: scale(0.91) !important;
+    transform-origin: top center !important;
+  }
+
+  .mentors-header-section {
+    transform: scale(0.91) !important;
+    transform-origin: top center !important;
+    left: calc(50% - 1276px / 2) !important;
+  }
+  .mentors-profiles-section {
+    transform: scale(0.91) !important;
+    transform-origin: top center !important;
+    left: 0 !important;
+    width: 100% !important;
+  }
+
+  .tool-stack-header-section {
+    transform: scale(0.91) !important;
+    transform-origin: top center !important;
+    left: calc(50% - 1239px / 2) !important;
+  }
+  .tool-stack-grid-section {
+    transform: scale(0.89) !important;
+    transform-origin: top center !important;
+    left: calc(50% - 1301px / 2) !important;
+  }
+
+  .alternatives-header-section {
+    transform: scale(0.91) !important;
+    transform-origin: top center !important;
+    left: calc(50% - 1239px / 2) !important;
+  }
+  .alternatives-table-card {
+    transform: scale(0.89) !important;
+    transform-origin: top center !important;
+    left: calc(50% - 1301px / 2) !important;
+  }
+
+  .investment-header-section {
+    transform: scale(0.91) !important;
+    transform-origin: top center !important;
+    left: calc(50% - 1239px / 2) !important;
+  }
+  .investment-pricing-section {
+    transform: scale(0.91) !important;
+    transform-origin: top center !important;
+    left: calc(50% - 1060px / 2) !important;
+  }
+
+  .bottom-section-stack > div:nth-child(1) {
+    width: 1160px !important;
+  }
+  .bottom-section-stack > div:nth-child(1) > div {
+    width: 100% !important;
+  }
+
+  #faq-container {
+    width: 1160px !important;
+  }
+  .faq-item {
+    width: 100% !important;
+  }
+
+  #cta-banner-wrapper {
+    width: 1160px !important;
+    height: 330px !important;
+    margin: 120px auto 100px !important;
+  }
+  #cta-bg-container {
+    width: 100% !important;
+    height: 100% !important;
+    border-radius: 24px !important;
+  }
+  #cta-content {
+    left: 60px !important;
+    width: 520px !important;
+    top: 40px !important;
+  }
+  #cta-content h2 {
+    font-size: 28px !important;
+    line-height: 38px !important;
+  }
+  #cta-content p {
+    font-size: 14px !important;
+    line-height: 22px !important;
+    max-width: 480px !important;
+  }
+  #cta-right-graphic {
+    right: 20px !important;
+    top: -100px !important;
+    width: 400px !important;
+    height: 450px !important;
   }
 }

@@ -7,11 +7,19 @@ import { Curriculum } from "./GenAIv2Part3";
 import { BuildNinja, Capstone } from "./GenAIv2Part4";
 import { Outcomes, Mentors, ToolStack, Pricing } from "./GenAIv2Part5";
 
-export default function GenAIPageV2() {
-  const [activeTrack, setActiveTrack] = useState("tech");
+export default function GenAIPageV2({ setActiveTrack: externalSetActiveTrack } = {}) {
+  const [activeTrack, setLocalTrack] = useState("tech");
   const [openCurr, setOpenCurr] = useState(0);
   const [openFaq, setOpenFaq] = useState(0);
   const [mobileNav, setMobileNav] = useState(false);
+
+  const handleTrackChange = (track) => {
+    if (externalSetActiveTrack) {
+      externalSetActiveTrack(track);
+    } else {
+      setLocalTrack(track);
+    }
+  };
 
   return (
     <div className="ax-root">
@@ -19,7 +27,7 @@ export default function GenAIPageV2() {
       <Header mobileNav={mobileNav} setMobileNav={setMobileNav} />
 
       {/* ═══ HERO & SOCIAL PROOF ═══ */}
-      <Hero activeTrack={activeTrack} setActiveTrack={setActiveTrack} />
+      <Hero activeTrack={activeTrack} setActiveTrack={handleTrackChange} />
 
       {/* ═══ PROGRAM ARCHITECTURE ═══ */}
       <ProgramArchitecture />
