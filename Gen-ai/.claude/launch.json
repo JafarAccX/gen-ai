@@ -1,0 +1,18 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "dev",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": ["vite", "--port", "5175"],
+      "port": 5175
+    },
+    {
+      "name": "ref",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": ["vite", "--port", "5176"],
+      "cwd": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\GENPAGE\\Gen-AI-Page",
+      "port": 5176
+    }
+  ]
+}

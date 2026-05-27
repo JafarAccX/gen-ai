@@ -1,0 +1,2021 @@
+@import "tailwindcss";
+
+@theme {
+  --color-bg-primary: #000000;
+  --color-bg-card: #141414;
+  --color-bg-card-hover: #1A1A1A;
+  --color-orange: #FC6401;
+  --color-orange-dark: #AE4501;
+  --color-purple: #3E38E0;
+  --color-green: #2BCE34;
+  --color-blue: #2F6BFF;
+  --color-text-white: #F5F7FF;
+  --color-text-gray: #C2C2C2;
+  --color-text-muted: #A0A8B8;
+  --color-text-dim: #999999;
+  --color-text-dark: #848484;
+  --color-border: #222222;
+  --color-border-light: #2E2E2E;
+  --color-border-dark: #1D1D1D;
+  --font-inter: 'Inter', sans-serif;
+  --font-poppins: 'Poppins', sans-serif;
+  --font-open-sans: 'Open Sans', sans-serif;
+  --font-space: 'Space Grotesk', sans-serif;
+}
+
+/* Base styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  background-color: #000000;
+}
+
+body {
+  font-family: var(--font-inter);
+  background-color: #000000;
+  color: var(--color-text-white);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  max-width: 1440px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Gradient text utility */
+.gradient-text {
+  background: linear-gradient(90deg, #3E38E0 0%, #5B46C1 38.46%, #BF7759 72.12%, #F7921E 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.gradient-text-orange {
+  background: linear-gradient(270deg, #FFB889 35.58%, #FC6401 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Scrolling logo animation */
+@keyframes scroll-left {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-scroll-left {
+  animation: scroll-left 30s linear infinite;
+}
+
+/* Dot grid background */
+.dot-grid {
+  background-image: radial-gradient(circle, rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+  background-size: 38px 21px;
+}
+
+/* FAQ accordion transition */
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease, padding 0.4s ease;
+}
+
+.faq-answer.open {
+  max-height: 300px;
+  padding-top: 16px;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  display: none;
+}
+
+body {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Glow effects */
+.glow-orange {
+  box-shadow: 0px 0px 20px rgba(252, 100, 1, 0.25);
+}
+
+.glow-purple {
+  box-shadow: 0px 0px 20px rgba(62, 56, 224, 0.25);
+}
+
+/* Hide scrollbars utility */
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */
+}
+
+/* ==========================================================================
+   Responsive Overrides (< 1280px Viewports)
+   Desktop view (≥1280px) is completely untouched.
+   ========================================================================== */
+@media (max-width: 1279px) {
+
+  /* -----------------------------------------------------------------------
+     0. GLOBAL: Body max-width reset
+     ----------------------------------------------------------------------- */
+  html,
+  body {
+    width: 100% !important;
+    max-width: 100% !important;
+    overflow-x: hidden !important;
+  }
+
+  /* -----------------------------------------------------------------------
+     1. GLOBAL: Strip absolute positioning from all sections
+     ----------------------------------------------------------------------- */
+  .responsive-section {
+    position: relative !important;
+    top: auto !important;
+    left: auto !important;
+    right: auto !important;
+    bottom: auto !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    margin: 60px auto 0 !important;
+    transform: none !important;
+    box-sizing: border-box !important;
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+  }
+
+  /* -----------------------------------------------------------------------
+     1.5 GLOBAL: Typography resets for section headings
+     ----------------------------------------------------------------------- */
+  .responsive-section h2 {
+    font-size: clamp(20px, 2.8vw, 30px) !important;
+    line-height: 1.35 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    text-align: center !important;
+    white-space: normal !important;
+  }
+
+  .responsive-section p {
+    font-size: clamp(13px, 1.4vw, 15px) !important;
+    line-height: 1.55 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    text-align: center !important;
+    white-space: normal !important;
+  }
+
+  /* -----------------------------------------------------------------------
+     1.6 GLOBAL: Prevent hardcoded-width children from overflowing
+     This is the key rule — it caps max-width on ALL descendants of
+     responsive sections so inline width:"649px" etc. won't overflow,
+     while still letting flex/grid layouts work naturally.
+     ----------------------------------------------------------------------- */
+  .responsive-section>div,
+  .responsive-section>div>div,
+  .responsive-section>div>div>div,
+  .responsive-section>div>div>div>div {
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  /* -----------------------------------------------------------------------
+     2. Responsive Flex Utilities (row → column on mobile)
+     ----------------------------------------------------------------------- */
+  .responsive-flex-row {
+    flex-direction: column !important;
+    align-items: center !important;
+    width: 100% !important;
+    height: auto !important;
+    gap: 32px !important;
+  }
+
+  /* -----------------------------------------------------------------------
+     3. Program Architecture
+     ----------------------------------------------------------------------- */
+  .program-architecture-section {
+    height: auto !important;
+    padding-bottom: 40px !important;
+  }
+
+  .program-cards-container {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    width: 100% !important;
+    height: auto !important;
+    padding: 0 8px !important;
+    gap: clamp(24px, 4vw, 36px) !important;
+  }
+
+  .program-card {
+    width: 100% !important;
+    max-width: 400px !important;
+    height: 360px !important;
+    margin: 0 auto !important;
+    position: relative !important;
+  }
+
+  .program-card-bg {
+    position: relative !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    height: 350px !important;
+    left: 0 !important;
+    background-image: none !important;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.03) 0%, rgba(252, 100, 1, 0.03) 100%) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    border-radius: 16px !important;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3) !important;
+  }
+
+  .program-card-bg>div:last-child>div:nth-child(2) {
+    font-size: 16px !important;
+    line-height: 24px !important;
+    margin-bottom: 8px !important;
+  }
+
+  .program-card-bg>div:last-child>div:nth-child(3) {
+    font-size: 13px !important;
+    line-height: 18px !important;
+  }
+
+  .program-card-icon {
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+  }
+
+  .program-card-content {
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    width: 276px !important;
+    padding-top: 24px !important;
+  }
+
+  .arch-header-inner {
+    width: 100% !important;
+    height: auto !important;
+    gap: 16px !important;
+  }
+
+  .arch-tag-wrapper {
+    width: 100% !important;
+    height: auto !important;
+  }
+
+  /* Program Architecture header classes */
+  .arch-header-group,
+  .arch-title-wrapper,
+  .curr-header-group,
+  .curr-title-wrapper {
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    white-space: normal !important;
+  }
+
+  .arch-title-heading,
+  .curr-title-heading {
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    font-size: 20px !important;
+    line-height: 1.3 !important;
+    text-align: center !important;
+    white-space: normal !important;
+    margin: 0 auto !important;
+    padding: 0 8px !important;
+  }
+
+  .arch-subtitle-desc,
+  .curr-subtitle-desc {
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    font-size: 14px !important;
+    line-height: 1.4 !important;
+    text-align: center !important;
+    white-space: normal !important;
+    margin: 12px auto 0 !important;
+    padding: 0 8px !important;
+  }
+
+  /* -----------------------------------------------------------------------
+     4. Curriculum Accordions
+     ----------------------------------------------------------------------- */
+  .curriculum-section {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding-left: 12px !important;
+    padding-right: 12px !important;
+  }
+
+  .curriculum-list {
+    width: 100% !important;
+  }
+
+  .curriculum-card {
+    width: 100% !important;
+    height: auto !important;
+    box-sizing: border-box !important;
+    padding: 16px !important;
+  }
+
+  .curriculum-card-row {
+    width: 100% !important;
+    flex-direction: row !important;
+    flex-wrap: wrap !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    gap: 0 !important;
+  }
+
+  .curriculum-card-left-wrapper {
+    width: calc(100% - 36px) !important;
+    flex-grow: 1 !important;
+    gap: 12px !important;
+  }
+
+  .curriculum-card-left {
+    width: 100% !important;
+    max-width: 100% !important;
+    flex-grow: 1 !important;
+  }
+
+  .curriculum-card-left>div {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  .curriculum-card-left h3 {
+    font-size: 15px !important;
+    line-height: 1.3 !important;
+  }
+
+  .curriculum-card-left span {
+    font-size: 11px !important;
+    line-height: 1.3 !important;
+  }
+
+  .curriculum-card-left div {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  .curriculum-card-right {
+    width: 100% !important;
+    height: auto !important;
+    order: 3 !important;
+    justify-content: flex-start !important;
+    flex-wrap: wrap !important;
+    gap: 8px !important;
+    margin-top: 12px !important;
+    padding: 0 !important;
+  }
+
+  .curriculum-card-chevron {
+    width: 24px !important;
+    height: 24px !important;
+    order: 2 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+
+  /* -----------------------------------------------------------------------
+     5. AI Build Ninja
+     ----------------------------------------------------------------------- */
+  .ai-build-ninja-section {
+    width: 100% !important;
+  }
+
+  .ninja-header-group,
+  .ninja-header-container,
+  .ninja-header-label-row,
+  .ninja-header-heading-block {
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+  }
+
+  .ninja-cards-grid {
+    width: 100% !important;
+    padding: 16px !important;
+  }
+
+  .ninja-cards-row {
+    flex-direction: column !important;
+    align-items: center !important;
+    width: 100% !important;
+    gap: 16px !important;
+  }
+
+  .ninja-card {
+    width: 100% !important;
+    max-width: 340px !important;
+  }
+
+  /* -----------------------------------------------------------------------
+     6. Capstone Menu & Grid
+     ----------------------------------------------------------------------- */
+  .capstone-menu-section {
+    margin-top: 60px !important;
+    margin-bottom: 20px !important;
+  }
+
+  .capstone-menu-section>div {
+    width: 100% !important;
+  }
+
+  .capstone-menu-section>div>div {
+    width: 100% !important;
+  }
+
+  .capstone-grid-section {
+    margin-top: 0 !important;
+    padding-bottom: 40px !important;
+  }
+
+  .capstone-row {
+    flex-direction: column !important;
+    align-items: center !important;
+    width: 100% !important;
+    gap: 16px !important;
+  }
+
+  .capstone-card {
+    width: 100% !important;
+    max-width: 360px !important;
+    height: auto !important;
+    padding: clamp(16px, 3.5vw, 24px) clamp(14px, 3vw, 20px) !important;
+  }
+
+  .capstone-card>div {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  .capstone-card>div>div:first-child {
+    width: 100% !important;
+    gap: 4px !important;
+  }
+
+  .capstone-card>div>div:first-child>div:first-child {
+    width: 100% !important;
+  }
+
+  .capstone-card h3 {
+    width: 100% !important;
+    font-size: clamp(15px, 1.8vw, 17px) !important;
+    line-height: 24px !important;
+  }
+
+  .capstone-card p {
+    width: 100% !important;
+    height: auto !important;
+    font-size: clamp(12.5px, 1.5vw, 13px) !important;
+    line-height: 18px !important;
+  }
+
+  .capstone-card>div>div:nth-child(2) {
+    width: 100% !important;
+    gap: 8px !important;
+    padding: 4px 0 !important;
+  }
+
+  .capstone-card>div>div:nth-child(2)>div:last-child {
+    width: 100% !important;
+    min-height: auto !important;
+  }
+
+  .capstone-card>div>div:last-child {
+    width: 100% !important;
+    height: auto !important;
+    padding: 8px 0 0 !important;
+  }
+
+  .capstone-card>div>div:last-child>span {
+    width: 100% !important;
+    height: auto !important;
+    font-size: clamp(12px, 1.4vw, 13px) !important;
+    line-height: 18px !important;
+  }
+
+  /* -----------------------------------------------------------------------
+     7. Outcomes & Hiring
+     ----------------------------------------------------------------------- */
+  .outcomes-hiring-section {
+    width: 100% !important;
+    align-items: center !important;
+  }
+
+  .outcomes-hiring-section>div:first-child {
+    width: 100% !important;
+    align-items: center !important;
+  }
+
+  .outcomes-boxes-container {
+    width: 100% !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 32px !important;
+  }
+
+  .outcomes-left-box {
+    width: 100% !important;
+    min-height: auto !important;
+    padding: 16px !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    align-items: flex-start !important;
+  }
+
+  .outcomes-left-box>div {
+    width: 100% !important;
+    min-width: 500px !important;
+    /* Allow horizontal scroll for table */
+  }
+
+  .outcomes-right-box {
+    width: 100% !important;
+    height: auto !important;
+    padding: 20px 16px !important;
+  }
+
+  .outcomes-right-box>div {
+    width: 100% !important;
+  }
+
+  /* Force right-box list items to be fluid */
+  .outcomes-right-box div[style*="width: 460px"] {
+    width: 100% !important;
+  }
+
+  /* -----------------------------------------------------------------------
+     8. Outcomes Logos & Mentors Profiles Marquees
+     ----------------------------------------------------------------------- */
+  .outcomes-logos-section {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 40px auto !important;
+    overflow: hidden !important;
+    padding: 0 !important;
+    height: 80px !important;
+  }
+
+  .mentors-profiles-section {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 40px auto !important;
+    overflow: hidden !important;
+    padding: 0 !important;
+    height: 280px !important;
+  }
+
+  .outcomes-logos-container,
+  .mentors-profiles-container {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  .mentors-profiles-container>div[style*="width: 100px"] {
+    width: 24px !important;
+  }
+
+  /* -----------------------------------------------------------------------
+     9. Mentors Header
+     ----------------------------------------------------------------------- */
+  .mentors-header-section>div {
+    width: 100% !important;
+    height: auto !important;
+  }
+
+  .mentors-header-section>div>div {
+    width: 100% !important;
+    height: auto !important;
+  }
+
+  .mentors-header-section h2 {
+    width: 100% !important;
+    height: auto !important;
+    line-height: 1.3 !important;
+  }
+
+  .mentors-header-section p {
+    width: 100% !important;
+    height: auto !important;
+  }
+
+  /* -----------------------------------------------------------------------
+     10. Tool Stack Header & Grid
+     ----------------------------------------------------------------------- */
+  .tool-stack-header-section>div {
+    width: 100% !important;
+    height: auto !important;
+  }
+
+  .tool-stack-header-section>div>div {
+    width: 100% !important;
+    height: auto !important;
+  }
+
+  .tool-stack-header-section h2 {
+    width: 100% !important;
+    height: auto !important;
+    line-height: 1.3 !important;
+  }
+
+  .tool-stack-header-section p {
+    width: 100% !important;
+    height: auto !important;
+  }
+
+  .tool-stack-grid-section {
+    width: 100% !important;
+  }
+
+  .tool-stack-row {
+    flex-direction: column !important;
+    height: auto !important;
+    width: 100% !important;
+    gap: 16px !important;
+    margin-bottom: 24px !important;
+  }
+
+  .tool-stack-category-left {
+    width: 100% !important;
+    height: auto !important;
+  }
+
+  .tool-stack-category-title {
+    text-align: center !important;
+    justify-content: center !important;
+    width: 100% !important;
+  }
+
+  .tool-stack-marquee-container {
+    width: 100% !important;
+    max-width: 100% !important;
+    box-shadow: inset 24px 0px 16px -12px #0A0A0A, inset -24px 0px 16px -12px #0A0A0A !important;
+  }
+
+  /* -----------------------------------------------------------------------
+     11. Alternatives Comparison
+     ----------------------------------------------------------------------- */
+  .alternatives-header-section {
+    width: 100% !important;
+  }
+
+  .alternatives-header-section>div>div {
+    width: 100% !important;
+    height: auto !important;
+  }
+
+  .alternatives-table-card {
+    height: auto !important;
+    padding: 16px !important;
+    border-radius: 12px !important;
+  }
+
+  .alternatives-table-container {
+    width: 100% !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    padding-bottom: 8px !important;
+  }
+
+  .alternatives-table-container>div {
+    min-width: 800px !important;
+    max-width: none !important;
+    width: auto !important;
+  }
+
+  /* -----------------------------------------------------------------------
+     12. Investment Header & Pricing
+     ----------------------------------------------------------------------- */
+  .investment-header-section {
+    width: 100% !important;
+  }
+
+  .investment-header-section>div {
+    width: 100% !important;
+    height: auto !important;
+  }
+
+  .investment-header-section>div>div {
+    width: 100% !important;
+    height: auto !important;
+  }
+
+  .investment-header-section>div>div>div {
+    width: 100% !important;
+    height: auto !important;
+  }
+
+  .investment-pricing-section {
+    width: 100% !important;
+    height: auto !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 40px !important;
+  }
+
+  .pricing-card {
+    width: 100% !important;
+    max-width: 503px !important;
+    height: auto !important;
+    min-height: auto !important;
+    padding: clamp(24px, 4.5vw, 36px) clamp(16px, 3.5vw, 24px) !important;
+  }
+
+  .pricing-card>div>div:first-child>div:first-child>span:first-child {
+    font-size: clamp(24px, 4vw, 30px) !important;
+  }
+
+  .pricing-card span {
+    font-size: clamp(12.5px, 1.5vw, 13.5px) !important;
+    line-height: 1.5 !important;
+  }
+
+  .pricing-info-sidebar {
+    width: 100% !important;
+    max-width: 503px !important;
+  }
+
+  .pricing-info-sidebar>div {
+    padding: clamp(20px, 3vw, 28px) clamp(16px, 3vw, 24px) !important;
+  }
+
+  .pricing-info-sidebar span {
+    font-size: clamp(12.5px, 1.5vw, 13.5px) !important;
+    line-height: 1.55 !important;
+  }
+
+  /* -----------------------------------------------------------------------
+     13. Bottom Section Stack (HonestAnswers, FAQ, CTA, Footer)
+     ----------------------------------------------------------------------- */
+  .bottom-section-stack {
+    margin-top: 60px !important;
+    position: relative !important;
+    top: auto !important;
+    width: 100% !important;
+    padding: 0 16px !important;
+    box-sizing: border-box !important;
+  }
+
+  /* HonestAnswersHeader */
+  .bottom-section-stack>div:first-child {
+    width: 100% !important;
+    height: auto !important;
+  }
+
+  .bottom-section-stack>div:first-child>div {
+    width: 100% !important;
+    height: auto !important;
+  }
+
+  .bottom-section-stack>div:first-child>div>div {
+    width: auto !important;
+  }
+
+  .bottom-section-stack>div:first-child div[style*="width: 1239px"] {
+    width: 100% !important;
+  }
+
+  /* FAQ */
+  #faq-container,
+  .bottom-section-stack>div:nth-child(2) {
+    width: 100% !important;
+  }
+
+  .faq-item {
+    width: 100% !important;
+    padding: clamp(14px, 2.2vw, 18px) clamp(12px, 2vw, 16px) !important;
+  }
+
+  /* CTA Banner */
+  #cta-banner-wrapper {
+    width: 100% !important;
+    height: auto !important;
+    min-height: 300px !important;
+    margin: 80px auto 60px !important;
+    padding: 0 !important;
+  }
+
+  #cta-bg-container {
+    border-radius: 16px !important;
+  }
+
+  #cta-content {
+    position: relative !important;
+    width: 100% !important;
+    left: 0 !important;
+    top: 0 !important;
+    padding: clamp(24px, 4vw, 32px) clamp(16px, 3vw, 24px) !important;
+    box-sizing: border-box !important;
+  }
+
+  #cta-content h2 {
+    font-size: clamp(20px, 2.5vw, 24px) !important;
+    line-height: 1.35 !important;
+  }
+
+  #cta-content p {
+    text-align: left !important;
+    font-size: clamp(12.5px, 1.4vw, 14px) !important;
+    line-height: 1.5 !important;
+  }
+
+  #cta-form-group {
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 12px !important;
+  }
+
+  #cta-form-group>div:first-child {
+    width: 100% !important;
+  }
+
+  #cta-form-group>div:last-child {
+    width: 100% !important;
+  }
+
+  #cta-form-group button {
+    width: 100% !important;
+  }
+
+  #cta-right-graphic {
+    display: none !important;
+    /* Hide the oversized graphic on mobile */
+  }
+
+  /* Footer */
+  #footer-main-container {
+    width: 100% !important;
+    height: auto !important;
+    margin: 60px auto 0 !important;
+    padding: 0 16px !important;
+    box-sizing: border-box !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 40px !important;
+  }
+
+  #footer-main-container>div {
+    position: relative !important;
+    left: auto !important;
+    top: auto !important;
+    width: 100% !important;
+  }
+
+  /* Footer divider & copyright */
+  #footer-main-container>div:last-child {
+    position: relative !important;
+    left: auto !important;
+    top: auto !important;
+    width: 100% !important;
+    margin-top: 20px !important;
+    padding-bottom: 40px !important;
+  }
+
+  #footer-main-container>div:last-child>div {
+    width: 100% !important;
+  }
+
+  #footer-main-container>div:last-child>p {
+    font-size: 12px !important;
+    text-align: center !important;
+    width: 100% !important;
+  }
+}
+
+/* ==========================================================================
+   Tablet-specific overrides (680px – 1279px)
+   ========================================================================== */
+@media (min-width: 680px) and (max-width: 1279px) {
+
+  /* Footer goes 2-column grid for link columns */
+  #footer-main-container {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 32px !important;
+  }
+
+  #footer-main-container>div:last-child {
+    grid-column: 1 / -1 !important;
+  }
+
+  /* Capstone cards: 2 per row on tablets */
+  .capstone-row {
+    flex-direction: row !important;
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+  }
+
+  .capstone-card {
+    width: calc(50% - 12px) !important;
+    max-width: none !important;
+  }
+}
+
+/* ==========================================================================
+   Phone-specific overrides (≤ 480px)
+   ========================================================================== */
+@media (max-width: 480px) {
+  .responsive-section {
+    margin: 40px auto 0 !important;
+    padding-left: 12px !important;
+    padding-right: 12px !important;
+  }
+
+  .responsive-section h2 {
+    font-size: 20px !important;
+  }
+
+  .responsive-section p {
+    font-size: 13px !important;
+  }
+
+  /* Program cards smaller on phones */
+  .program-card {
+    max-width: 100% !important;
+    height: 340px !important;
+  }
+
+  /* Capstone cards full width */
+  .capstone-card {
+    max-width: 100% !important;
+  }
+
+  /* Ninja cards full width */
+  .ninja-card {
+    max-width: 100% !important;
+  }
+
+  /* Pricing card full width */
+  .pricing-card {
+    max-width: 100% !important;
+  }
+
+  .pricing-info-sidebar {
+    max-width: 100% !important;
+  }
+
+  /* CTA banner tighter padding */
+  #cta-content {
+    padding: 24px 16px !important;
+  }
+
+  #cta-content h2 {
+    font-size: 20px !important;
+  }
+
+  /* Footer stacks fully on phones */
+  #footer-main-container {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 32px !important;
+    text-align: center !important;
+  }
+
+  #footer-main-container p {
+    width: 100% !important;
+    text-align: center !important;
+  }
+
+  /* FAQ tighter on phones */
+  .faq-item {
+    padding: 16px 12px !important;
+  }
+
+  .faq-item span {
+    font-size: 15px !important;
+  }
+
+  /* Outcomes table: allow scroll with smaller min-width */
+  .outcomes-left-box>div {
+    min-width: 420px !important;
+  }
+
+  /* Alternatives table: smaller min-width */
+  .alternatives-table-container>div {
+    min-width: 600px !important;
+  }
+}
+
+/* ==========================================================================
+   General Mobile/Tablet responsive catch-all overrides (≤ 1279px)
+   ========================================================================== */
+@media (max-width: 1279px) {
+  .program-architecture-section {
+    width: 100% !important;
+    height: auto !important;
+    overflow: hidden !important;
+    padding-bottom: 60px !important;
+  }
+
+  .arch-header-group,
+  .arch-header-inner,
+  .arch-tag-wrapper,
+  .arch-title-wrapper,
+  .arch-subtitle-desc {
+    width: 100% !important;
+    height: auto !important;
+    padding: 0 16px !important;
+  }
+
+  .arch-title-heading {
+    width: 100% !important;
+    font-size: clamp(24px, 5vw, 32px) !important;
+    line-height: 1.3 !important;
+    white-space: normal !important;
+    text-align: center !important;
+    height: auto !important;
+  }
+
+  .program-cards-container {
+    width: 100% !important;
+    height: auto !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 24px !important;
+  }
+
+  .program-card {
+    width: 100% !important;
+    max-width: 350px !important;
+    height: 380px !important;
+    margin: 0 !important;
+    z-index: 1 !important;
+  }
+
+  .program-card-bg {
+    width: 100% !important;
+    height: 100% !important;
+    left: 0 !important;
+    background-size: 100% 100% !important;
+  }
+
+  .program-card-icon {
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+  }
+
+  .program-card-content {
+    width: 100% !important;
+    left: 0 !important;
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+  }
+
+  .program-card-tags-wrapper {
+    width: 100% !important;
+    padding: 0 16px !important;
+  }
+}
+
+/* ==========================================================================
+   iPad / Tablet Viewport Adjustments (min-width: 768px and max-width: 1024px)
+   ========================================================================== */
+@media (min-width: 768px) and (max-width: 1024px) {
+
+  /* 1. Hero Alignment, Button Padding, and Logo Scaling (Image 1) */
+  .hero-mobile-buttons {
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: center !important;
+    align-items: center !important;
+    gap: 32px !important;
+    width: 100% !important;
+  }
+
+  .hero-mobile-btn-apply {
+    padding: 14px 36px !important;
+    white-space: nowrap !important;
+    font-size: 15px !important;
+    font-weight: 700 !important;
+    border-radius: 9999px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: auto !important;
+  }
+
+  .hero-mobile-logos-marquee {
+    max-width: 680px !important;
+    margin: 0 auto !important;
+  }
+
+  .hero-metrics-card {
+    max-width: 720px !important;
+    margin: 0 auto !important;
+  }
+
+  /* 2. Track Card Typography & Size Enhancement (Image 2) */
+  .program-card {
+    width: 100% !important;
+    max-width: 650px !important;
+    height: 380px !important;
+    margin: 0 auto !important;
+  }
+
+  .program-card-bg {
+    width: 100% !important;
+    height: 370px !important;
+  }
+
+  .program-card-content {
+    width: 550px !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    padding-top: 16px !important;
+  }
+
+  .program-card-bg>div:last-child>div:nth-child(2),
+  .program-card-content>div:nth-child(2) {
+    /* Title */
+    font-size: 22px !important;
+    font-weight: 700 !important;
+    margin-bottom: 12px !important;
+    line-height: 30px !important;
+  }
+
+  .program-card-bg>div:last-child>div:nth-child(3),
+  .program-card-content>div:nth-child(3) {
+    /* Description */
+    font-size: 15.5px !important;
+    font-weight: 500 !important;
+    line-height: 24px !important;
+    color: #DFDFDF !important;
+  }
+
+  .program-card-tags-wrapper {
+    width: 100% !important;
+    max-width: 550px !important;
+    bottom: 24px !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+  }
+
+  /* 3. Curriculum Accordion Chevron Alignment (Image 3) */
+  .curriculum-card-right {
+    width: 100% !important;
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+  }
+
+  .curriculum-card-chevron {
+    margin-left: auto !important;
+    align-self: center !important;
+    order: 2 !important;
+  }
+
+  /* 4. Two-Column AI Build Ninja Card Grid (Image 4) */
+  .ninja-cards-row {
+    flex-direction: row !important;
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+    gap: 20px !important;
+  }
+
+  .ninja-card {
+    width: calc(50% - 12px) !important;
+    max-width: 360px !important;
+  }
+
+  /* 5. Alumni Subtitle Centering & Vertical Spacing (Image 5) */
+  .social-proof-subtitle {
+    text-align: center !important;
+    max-width: 680px !important;
+    margin: 0 auto 40px !important;
+    /* Spacing between subtitle and icons below */
+    font-size: 15px !important;
+    line-height: 22px !important;
+  }
+
+  .social-proof-logos-wrapper {
+    margin-top: 16px !important;
+  }
+}
+
+/* ==========================================================================
+   Nest Hub Max & Entry Desktop Override (Strictly 1280px Wide Screen)
+   ========================================================================== */
+@media (min-width: 1280px) and (max-width: 1280px) {
+  /* Track Badge Alignment */
+  .track-badge-desktop {
+    left: 50px !important;
+  }
+
+  /* Track Toggle Center Alignment */
+  .track-toggle-desktop {
+    left: 485px !important; /* Center mathematically: (1280 - 309) / 2 = 485.5px */
+  }
+
+  /* Hero Section Title Scaling & Shifting */
+  .hero-title-desktop {
+    font-size: 38px !important;
+    line-height: 46px !important;
+    width: 500px !important;
+    left: 50px !important;
+    top: 180px !important;
+  }
+
+  /* Hero Section Subtitle Scaling & Shifting */
+  .hero-subtitle-desktop {
+    font-size: 14px !important;
+    line-height: 24px !important;
+    width: 480px !important;
+    left: 50px !important;
+    top: 340px !important;
+  }
+
+  /* Hero Section Metrics Card Squeezing */
+  .hero-metrics-desktop {
+    width: 520px !important;
+    height: 80px !important;
+    left: 50px !important;
+    top: 420px !important;
+    padding: 12px 16px !important;
+    gap: 8px !important;
+  }
+
+  .hero-metrics-desktop > div {
+    height: 52px !important;
+    gap: 8px !important;
+  }
+
+  /* First Column: 16 Weeks */
+  .hero-metrics-desktop > div:nth-child(1) {
+    width: 175px !important;
+  }
+  .hero-metrics-desktop > div:nth-child(1) > div:nth-child(2) {
+    width: 120px !important;
+    height: 52px !important;
+  }
+  .hero-metrics-desktop > div:nth-child(1) > div:nth-child(2) > div {
+    width: 120px !important;
+  }
+
+  /* Second Column: 16 Public Ships */
+  .hero-metrics-desktop > div:nth-child(2) {
+    width: 165px !important;
+  }
+  .hero-metrics-desktop > div:nth-child(2) > div:nth-child(2) {
+    width: 110px !important;
+    height: 52px !important;
+  }
+  .hero-metrics-desktop > div:nth-child(2) > div:nth-child(2) > div {
+    width: 110px !important;
+  }
+
+  /* Third Column: Price */
+  .hero-metrics-desktop > div:nth-child(3) {
+    width: 140px !important;
+  }
+  .hero-metrics-desktop > div:nth-child(3) > div:nth-child(2) {
+    width: 90px !important;
+    height: 52px !important;
+  }
+  .hero-metrics-desktop > div:nth-child(3) > div:nth-child(2) > div {
+    width: 90px !important;
+  }
+
+  /* Internal Stat & Subtext Typography Clamp */
+  .hero-metrics-desktop > div > div:nth-child(2) > div:first-child {
+    font-size: 14px !important;
+    line-height: 22px !important;
+    height: 22px !important;
+  }
+  .hero-metrics-desktop > div > div:nth-child(2) > div:last-child {
+    font-size: 10px !important;
+    line-height: 16px !important;
+    height: 16px !important;
+  }
+
+  /* Learners Heading Shifting */
+  .hero-learners-title-desktop {
+    left: 50px !important;
+    top: 535px !important;
+    font-size: 12px !important;
+    line-height: 28px !important;
+  }
+
+  /* Vacancies Logos Marquee Squeezing */
+  .hero-logos-desktop {
+    left: 50px !important;
+    top: 570px !important;
+    width: 520px !important;
+    height: 72px !important;
+  }
+  .hero-logos-desktop > div:first-child {
+    width: 520px !important;
+  }
+
+  /* Actions Buttons Shifting */
+  .hero-actions-desktop {
+    left: 50px !important;
+    top: 675px !important;
+  }
+
+  /* Right-Side Girl Image Frame Downscaling */
+  .hero-image-frame-desktop {
+    width: 500px !important;
+    height: 560px !important;
+    right: 40px !important;
+    top: 160px !important;
+  }
+
+  /* Inner Girl Image Adjusting */
+  .hero-image-pm1 {
+    width: 530px !important;
+    height: 520px !important;
+    left: 0px !important;
+    top: 40px !important;
+  }
+
+  /* Inner Collaboration Badge Logo Adjusting */
+  .hero-image-collab {
+    width: 120px !important;
+    height: 64px !important;
+    left: 360px !important;
+    top: 25px !important;
+  }
+
+  /* Float Badges Position Recalculation */
+  .badge-happy-students-desktop {
+    right: 440px !important;
+    top: 180px !important;
+  }
+
+  .badge-live-classes-desktop {
+    right: 420px !important;
+    top: 380px !important;
+  }
+
+  .badge-mentor-connect-desktop {
+    right: 60px !important;
+    top: 440px !important;
+  }
+
+  .badge-career-support-desktop {
+    right: 420px !important;
+    top: 610px !important;
+  }
+
+  /* Footer Squeezing & Padding Overrides */
+  footer {
+    max-width: 1160px !important;
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+    margin-top: 80px !important;
+  }
+
+  /* Columns Grid Squeezing */
+  .footer-columns-row {
+    gap: 60px !important;
+    max-width: 750px !important;
+  }
+
+  .footer-columns-row > div {
+    min-width: 130px !important;
+  }
+
+  /* Footer Bottom Copyright & Links Row */
+  .footer-bottom-row {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+
+  .footer-bottom-row > p {
+    max-width: 500px !important;
+    font-size: 12px !important;
+  }
+
+  .footer-bottom-row > div {
+    gap: 12px !important;
+    font-size: 10px !important;
+  }
+
+  /* =========================================================
+     COMPREHENSIVE RESPONSIVE OVERRIDES & MARGINS (1280x800)
+     ========================================================= */
+
+  /* Program Architecture */
+  .program-architecture-section > div {
+    max-width: 1160px !important;
+  }
+  .program-cards-container {
+    transform: scale(0.94) !important;
+    transform-origin: center !important;
+  }
+
+  /* Curriculum */
+  .curriculum-section {
+    transform: scale(0.91) !important;
+    transform-origin: top center !important;
+  }
+
+  /* AI Build Ninja */
+  .ai-build-ninja-section {
+    transform: scale(0.9) !important;
+    transform-origin: top center !important;
+  }
+
+  /* Capstone Menu & Grid */
+  .capstone-menu-section {
+    transform: scale(0.91) !important;
+    transform-origin: top center !important;
+  }
+  .capstone-grid-section {
+    transform: scale(0.86) !important;
+    transform-origin: top center !important;
+  }
+
+  /* Outcomes Hiring & Logos */
+  .outcomes-hiring-section {
+    transform: scale(0.91) !important;
+    transform-origin: top center !important;
+    left: calc(50% - 1276px / 2) !important;
+  }
+  .outcomes-logos-section {
+    transform: scale(0.91) !important;
+    transform-origin: top center !important;
+  }
+
+  /* Mentors Header & Profiles */
+  .mentors-header-section {
+    transform: scale(0.91) !important;
+    transform-origin: top center !important;
+    left: calc(50% - 1276px / 2) !important;
+  }
+  .mentors-profiles-section {
+    transform: scale(0.91) !important;
+    transform-origin: top center !important;
+    left: 0 !important;
+    width: 100% !important;
+  }
+
+  /* Tool Stack Header & Grid */
+  .tool-stack-header-section {
+    transform: scale(0.91) !important;
+    transform-origin: top center !important;
+    left: calc(50% - 1239px / 2) !important;
+  }
+  .tool-stack-grid-section {
+    transform: scale(0.89) !important;
+    transform-origin: top center !important;
+    left: calc(50% - 1301px / 2) !important;
+  }
+
+  /* Alternatives Comparison */
+  .alternatives-header-section {
+    transform: scale(0.91) !important;
+    transform-origin: top center !important;
+    left: calc(50% - 1239px / 2) !important;
+  }
+  .alternatives-table-card {
+    transform: scale(0.89) !important;
+    transform-origin: top center !important;
+    left: calc(50% - 1301px / 2) !important;
+  }
+
+  /* Investment Header & Pricing */
+  .investment-header-section {
+    transform: scale(0.91) !important;
+    transform-origin: top center !important;
+    left: calc(50% - 1239px / 2) !important;
+  }
+  .investment-pricing-section {
+    transform: scale(0.91) !important;
+    transform-origin: top center !important;
+    left: calc(50% - 1060px / 2) !important;
+  }
+
+  /* Bottom Section Stack: Honest Answers Header */
+  .bottom-section-stack > div:nth-child(1) {
+    width: 1160px !important;
+  }
+  .bottom-section-stack > div:nth-child(1) > div {
+    width: 100% !important;
+  }
+
+  /* Bottom Section Stack: FAQ */
+  #faq-container {
+    width: 1160px !important;
+  }
+  .faq-item {
+    width: 100% !important;
+  }
+
+  /* Bottom Section Stack: CTA Banner Overrides */
+  #cta-banner-wrapper {
+    width: 1160px !important;
+    height: 330px !important;
+    margin: 120px auto 100px !important;
+  }
+  #cta-bg-container {
+    width: 100% !important;
+    height: 100% !important;
+    border-radius: 24px !important;
+  }
+  #cta-content {
+    left: 60px !important;
+    width: 520px !important;
+    top: 40px !important;
+  }
+  #cta-content h2 {
+    font-size: 28px !important;
+    line-height: 38px !important;
+  }
+  #cta-content p {
+    font-size: 14px !important;
+    line-height: 22px !important;
+    max-width: 480px !important;
+  }
+  #cta-right-graphic {
+    right: 20px !important;
+    top: -100px !important;
+    width: 400px !important;
+    height: 450px !important;
+  }
+}
+
+/* ==========================================================================
+   Landscape Tablet Override (Strictly 1024px Wide Screen)
+   ========================================================================== */
+@media (min-width: 1024px) and (max-width: 1024px) {
+  /* Force Desktop Layout at 1024px screen size instead of stacked mobile cards */
+  .xl\:block { display: block !important; }
+  .xl\:flex { display: flex !important; }
+  .xl\:grid { display: grid !important; }
+  .xl\:hidden { display: none !important; }
+
+  /* Track Badge & Toggle Center Alignment */
+  .track-badge-desktop {
+    left: 40px !important;
+  }
+  .track-toggle-desktop {
+    left: 357px !important; /* Centered: (1024 - 309) / 2 = 357.5px */
+  }
+
+  /* Hero Section Root Height & Scale Container */
+  section.w-full.relative.min-h-\[600px\] {
+    height: 700px !important;
+    min-height: 700px !important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+  }
+  .hero-section-desktop-container {
+    display: block !important;
+    position: absolute !important;
+    width: 1280px !important;
+    height: 800px !important;
+    left: calc(50% - 1280px / 2) !important;
+    top: 0 !important;
+    transform: scale(0.78) !important;
+    transform-origin: top center !important;
+  }
+
+  /* Hero Section Title Scaling & Shifting for 1024px */
+  .hero-title-desktop {
+    font-size: 36px !important;
+    line-height: 44px !important;
+    width: 540px !important;
+    left: 70px !important;
+    top: 220px !important;
+  }
+
+  /* Hero Section Subtitle Scaling & Shifting for 1024px */
+  .hero-subtitle-desktop {
+    font-size: 13.5px !important;
+    line-height: 22px !important;
+    width: 500px !important;
+    left: 70px !important;
+    top: 360px !important;
+  }
+
+  /* Hero Section Metrics Card Squeezing for 1024px */
+  .hero-metrics-desktop {
+    width: 520px !important;
+    height: 80px !important;
+    left: 70px !important;
+    top: 460px !important;
+    padding: 12px 16px !important;
+    gap: 8px !important;
+  }
+
+  .hero-metrics-desktop > div {
+    height: 52px !important;
+    gap: 8px !important;
+  }
+
+  .hero-metrics-desktop > div:nth-child(1) {
+    width: 175px !important;
+  }
+  .hero-metrics-desktop > div:nth-child(1) > div:nth-child(2) {
+    width: 120px !important;
+    height: 52px !important;
+  }
+  .hero-metrics-desktop > div:nth-child(1) > div:nth-child(2) > div {
+    width: 120px !important;
+  }
+
+  .hero-metrics-desktop > div:nth-child(2) {
+    width: 165px !important;
+  }
+  .hero-metrics-desktop > div:nth-child(2) > div:nth-child(2) {
+    width: 110px !important;
+    height: 52px !important;
+  }
+  .hero-metrics-desktop > div:nth-child(2) > div:nth-child(2) > div {
+    width: 110px !important;
+  }
+
+  .hero-metrics-desktop > div:nth-child(3) {
+    width: 140px !important;
+  }
+  .hero-metrics-desktop > div:nth-child(3) > div:nth-child(2) {
+    width: 90px !important;
+    height: 52px !important;
+  }
+  .hero-metrics-desktop > div:nth-child(3) > div:nth-child(2) > div {
+    width: 90px !important;
+  }
+
+  .hero-metrics-desktop > div > div:nth-child(2) > div:first-child {
+    font-size: 14px !important;
+    line-height: 22px !important;
+    height: 22px !important;
+  }
+  .hero-metrics-desktop > div > div:nth-child(2) > div:last-child {
+    font-size: 10px !important;
+    line-height: 16px !important;
+    height: 16px !important;
+  }
+
+  /* Learners Heading Shifting for 1024px */
+  .hero-learners-title-desktop {
+    left: 70px !important;
+    top: 565px !important;
+    font-size: 12px !important;
+    line-height: 28px !important;
+  }
+
+  /* Vacancies Logos Marquee Squeezing for 1024px */
+  .hero-logos-desktop {
+    left: 70px !important;
+    top: 600px !important;
+    width: 520px !important;
+    height: 72px !important;
+  }
+  .hero-logos-desktop > div:first-child {
+    width: 520px !important;
+  }
+
+  /* Actions Buttons Shifting for 1024px */
+  .hero-actions-desktop {
+    left: 70px !important;
+    top: 695px !important;
+  }
+
+  /* Right-Side Girl Image Frame Downscaling for 1024px */
+  .hero-image-frame-desktop {
+    width: 440px !important;
+    height: 500px !important;
+    right: 40px !important;
+    top: 180px !important;
+  }
+
+  .hero-image-pm1 {
+    width: 460px !important;
+    height: 460px !important;
+    left: 0px !important;
+    top: 40px !important;
+  }
+
+  .hero-image-collab {
+    width: 100px !important;
+    height: 54px !important;
+    left: 310px !important;
+    top: 25px !important;
+  }
+
+  /* Scaled Floating Badges with customized coordinates for 1024px */
+  .badge-happy-students-desktop {
+    right: 320px !important;
+    top: 200px !important;
+    transform: scale(0.78) !important;
+    transform-origin: top right !important;
+  }
+
+  .badge-live-classes-desktop {
+    right: 300px !important;
+    top: 380px !important;
+    transform: scale(0.78) !important;
+    transform-origin: top right !important;
+  }
+
+  .badge-mentor-connect-desktop {
+    right: 50px !important;
+    top: 440px !important;
+    transform: scale(0.78) !important;
+    transform-origin: top right !important;
+  }
+
+  .badge-career-support-desktop {
+    right: 300px !important;
+    top: 590px !important;
+    transform: scale(0.78) !important;
+    transform-origin: top right !important;
+  }
+
+  /* Restore absolute positions and scaled structures for Middle sections with perfectly balanced vertical gaps */
+  .program-architecture-section {
+    position: absolute !important;
+    left: calc(50% - 1233px / 2) !important;
+    top: 780px !important;
+    width: 1233px !important;
+    height: 700px !important;
+    transform: scale(0.75) !important;
+    transform-origin: top center !important;
+  }
+  .curriculum-section {
+    position: absolute !important;
+    left: calc(50% - 1276px / 2) !important;
+    top: 1320px !important;
+    width: 1276px !important;
+    height: 1100px !important;
+    transform: scale(0.72) !important;
+    transform-origin: top center !important;
+  }
+  .ai-build-ninja-section {
+    position: absolute !important;
+    left: calc(50% - 1288px / 2) !important;
+    top: 2420px !important;
+    width: 1288px !important;
+    height: 900px !important;
+    transform: scale(0.71) !important;
+    transform-origin: top center !important;
+  }
+  .capstone-menu-section {
+    position: absolute !important;
+    left: calc(50% - 1276px / 2) !important;
+    top: 3300px !important;
+    width: 1276px !important;
+    height: 150px !important;
+    transform: scale(0.72) !important;
+    transform-origin: top center !important;
+  }
+  .capstone-grid-section {
+    position: absolute !important;
+    left: calc(50% - 1348px / 2) !important;
+    top: 3480px !important;
+    width: 1348px !important;
+    height: 650px !important;
+    transform: scale(0.68) !important;
+    transform-origin: top center !important;
+  }
+
+  /* Outcomes Side-by-Side Centered Row Layout */
+  .outcomes-hiring-section {
+    position: absolute !important;
+    left: calc(50% - 1276px / 2) !important;
+    top: 4120px !important;
+    width: 1276px !important;
+    height: 800px !important;
+    transform: scale(0.72) !important;
+    transform-origin: top center !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+  }
+  .outcomes-boxes-container {
+    display: flex !important;
+    flex-direction: row !important;
+    width: 1276px !important;
+    gap: 40px !important;
+  }
+  .outcomes-left-box {
+    width: 697px !important;
+  }
+  .outcomes-right-box {
+    width: 508px !important;
+  }
+  .outcomes-logos-section {
+    position: absolute !important;
+    left: 0 !important;
+    width: 100% !important;
+    top: 4950px !important;
+    height: 120px !important;
+    transform: scale(0.72) !important;
+    transform-origin: top center !important;
+  }
+
+  /* Mentors Header & Profiles */
+  .mentors-header-section {
+    position: absolute !important;
+    left: calc(50% - 1276px / 2) !important;
+    top: 5120px !important;
+    width: 1276px !important;
+    height: 140px !important;
+    transform: scale(0.72) !important;
+    transform-origin: top center !important;
+  }
+  .mentors-profiles-section {
+    position: absolute !important;
+    left: 0 !important;
+    width: 100% !important;
+    top: 5300px !important;
+    height: 280px !important;
+    transform: scale(0.72) !important;
+    transform-origin: top center !important;
+  }
+
+  /* Tool Stack Header & Grid */
+  .tool-stack-header-section {
+    position: absolute !important;
+    left: calc(50% - 1239px / 2) !important;
+    top: 5580px !important;
+    width: 1239px !important;
+    height: 150px !important;
+    transform: scale(0.72) !important;
+    transform-origin: top center !important;
+  }
+  .tool-stack-grid-section {
+    position: absolute !important;
+    left: calc(50% - 1301px / 2) !important;
+    top: 5760px !important;
+    width: 1301px !important;
+    height: 650px !important;
+    transform: scale(0.70) !important;
+    transform-origin: top center !important;
+  }
+
+  /* Alternatives Comparison Table */
+  .alternatives-header-section {
+    position: absolute !important;
+    left: calc(50% - 1239px / 2) !important;
+    top: 6420px !important;
+    width: 1239px !important;
+    height: 150px !important;
+    transform: scale(0.72) !important;
+    transform-origin: top center !important;
+  }
+  .alternatives-table-card {
+    position: absolute !important;
+    left: calc(50% - 1301px / 2) !important;
+    top: 6600px !important;
+    width: 1301px !important;
+    height: 650px !important;
+    transform: scale(0.70) !important;
+    transform-origin: top center !important;
+  }
+
+  /* Investment Header & Side-by-Side Pricing cards */
+  .investment-header-section {
+    position: absolute !important;
+    left: calc(50% - 1239px / 2) !important;
+    top: 7280px !important;
+    width: 1239px !important;
+    height: 140px !important;
+    transform: scale(0.72) !important;
+    transform-origin: top center !important;
+  }
+  .investment-pricing-section {
+    position: absolute !important;
+    left: calc(50% - 1060px / 2) !important;
+    top: 7460px !important;
+    width: 1060px !important;
+    height: 600px !important;
+    transform: scale(0.868) !important;
+    transform-origin: top center !important;
+    display: flex !important;
+    flex-direction: row !important;
+    gap: 40px !important;
+  }
+  .pricing-card {
+    width: 503px !important;
+    height: 587px !important;
+  }
+  .pricing-info-sidebar {
+    width: 517px !important;
+  }
+
+  /* Bottom Section Stack absolute positioning baseline (completely eliminates overlaps) */
+  .bottom-section-stack {
+    position: absolute !important;
+    top: 8100px !important;
+    width: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    z-index: 20 !important;
+    margin-top: 0 !important;
+    padding: 0 !important;
+    left: 0 !important;
+  }
+
+  /* Bottom Section Stack: Honest Answers Header */
+  .bottom-section-stack > div:nth-child(1) {
+    width: 920px !important;
+  }
+  .bottom-section-stack > div:nth-child(1) > div {
+    width: 100% !important;
+  }
+
+  /* Bottom Section Stack: FAQ */
+  #faq-container {
+    width: 920px !important;
+  }
+  .faq-item {
+    width: 100% !important;
+  }
+
+  /* Bottom Section Stack: CTA Banner Overrides */
+  #cta-banner-wrapper {
+    width: 920px !important;
+    height: 280px !important;
+    margin: 80px auto 60px !important;
+  }
+  #cta-bg-container {
+    width: 100% !important;
+    height: 100% !important;
+    border-radius: 20px !important;
+  }
+  #cta-content {
+    left: 40px !important;
+    width: 460px !important;
+    top: 30px !important;
+  }
+  #cta-content h2 {
+    font-size: 24px !important;
+    line-height: 32px !important;
+  }
+  #cta-content p {
+    font-size: 12px !important;
+    line-height: 18px !important;
+    max-width: 440px !important;
+  }
+  #cta-right-graphic {
+    right: 10px !important;
+    top: -95px !important;
+    width: 320px !important;
+    height: 380px !important;
+  }
+
+  /* Footer Squeezing & Padding Overrides */
+  footer {
+    max-width: 920px !important;
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+    margin-top: 40px !important;
+  }
+
+  /* Columns Grid Squeezing */
+  .footer-columns-row {
+    gap: 40px !important;
+    max-width: 600px !important;
+  }
+
+  .footer-columns-row > div {
+    min-width: 110px !important;
+  }
+
+  /* Footer Bottom Copyright & Links Row */
+  .footer-bottom-row {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+
+  .footer-bottom-row > p {
+    max-width: 400px !important;
+    font-size: 11px !important;
+  }
+
+  .footer-bottom-row > div {
+    gap: 10px !important;
+    font-size: 9.5px !important;
+  }
+}
