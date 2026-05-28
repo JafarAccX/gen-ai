@@ -1,4 +1,5 @@
 import { Zap, Code, BarChart3 } from 'lucide-react';
+import MobileMarquee from '../components/MobileMarquee';
 
 const phases = [
     {
@@ -85,7 +86,7 @@ export default function ProgramArchitecture() {
                                 justifyContent: 'center',
                                 letterSpacing: '1.2px',
                                 textTransform: 'uppercase',
-                                background: 'linear-gradient(90deg, #3E38E0 0%, #5B46C1 38.46%, #BF7759 72.12%, #F7921E 100%)',
+                                background: 'linear-gradient(90deg, #6366F1 0%, #A855F7 35%, #FC6401 70%, #F59E0B 100%)',
                                 WebkitBackgroundClip: 'text',
                                 WebkitTextFillColor: 'transparent',
                                 backgroundClip: 'text',
@@ -151,15 +152,17 @@ export default function ProgramArchitecture() {
                     </div>
                 </div>
 
-                {/* Phase Cards */}
-                <div className="program-cards-container" style={{
+                {/* Phase Cards — Desktop */}
+                <div className="mobile-marquee-desktop-only prog-cards-outer" style={{
                     display: 'flex',
                     flexDirection: 'row',
+                    flexWrap: 'nowrap',
                     alignItems: 'flex-start',
                     justifyContent: 'center',
                     padding: '0px',
-                    width: '1233px',
-                    height: '351px',
+                    width: '100%',
+                    maxWidth: '1320px',
+                    overflow: 'visible',
                 }}>
                     {phases.map((phase, idx) => {
                         const isCenter = idx === 1;
@@ -168,7 +171,7 @@ export default function ProgramArchitecture() {
                         return (
                             <div
                                 key={idx}
-                                className="program-card"
+                                className="prog-card-outer"
                                 style={{
                                     width: cardWidth,
                                     height: '351px',
@@ -180,7 +183,7 @@ export default function ProgramArchitecture() {
                                     zIndex: isCenter ? 10 : 1
                                 }}
                             >
-                                <div className="program-card-bg" style={{
+                                <div className="prog-card-bg" style={{
                                     boxSizing: 'border-box',
                                     position: 'absolute',
                                     width: isCenter ? '479px' : '435px',
@@ -193,7 +196,7 @@ export default function ProgramArchitecture() {
                                     backgroundPosition: 'center',
                                 }}>
                                     {/* Background+Border Icon */}
-                                    <div className="program-card-icon" style={{
+                                    <div className="prog-card-icon" style={{
                                         boxSizing: 'border-box',
                                         display: 'flex',
                                         flexDirection: 'row',
@@ -215,7 +218,7 @@ export default function ProgramArchitecture() {
                                     </div>
 
                                     {/* Content Area */}
-                                    <div className="program-card-content" style={{
+                                    <div className="prog-card-content-inner" style={{
                                         display: 'flex',
                                         flexDirection: 'column',
                                         alignItems: 'center',
@@ -279,7 +282,7 @@ export default function ProgramArchitecture() {
                                     </div>
 
                                     {/* Tags - pinned to bottom of card for cross-card alignment */}
-                                    <div className="program-card-tags-wrapper" style={{
+                                    <div className="prog-card-tags" style={{
                                         display: 'flex',
                                         flexDirection: 'row',
                                         flexWrap: 'wrap',
@@ -322,6 +325,172 @@ export default function ProgramArchitecture() {
                             </div>
                         );
                     })}
+                </div>
+
+                {/* Phase Cards — Mobile Marquee (same card structure as desktop but with dark theme colors) */}
+                <div className="mobile-marquee-mobile-only prog-cards-mobile-marquee" style={{ width: '100%' }}>
+                    <MobileMarquee speed={25} gap={0}>
+                        {phases.map((phase, idx) => {
+                            const isCenter = idx === 1;
+                            const cardWidth = isCenter ? '487px' : '439px';
+
+                            return (
+                                <div key={idx} className="prog-mobile-card-item" style={{ 
+                                    flexShrink: 0, 
+                                    width: cardWidth,
+                                    margin: isCenter ? '0px -66px' : '0px',
+                                    zIndex: isCenter ? 10 : 1,
+                                    position: 'relative'
+                                }}>
+                                    <div
+                                        className="prog-card-outer"
+                                        style={{
+                                            width: cardWidth,
+                                            height: '351px',
+                                            flex: 'none',
+                                            position: 'relative',
+                                            zIndex: 1,
+                                        }}
+                                    >
+                                        <div className="prog-card-bg" style={{
+                                            boxSizing: 'border-box',
+                                            position: 'absolute',
+                                            width: isCenter ? '479px' : '435px',
+                                            height: '350px',
+                                            left: isCenter ? '4px' : '0px',
+                                            top: '0.3px',
+                                            backgroundImage: phase.bgImg,
+                                            backgroundSize: 'cover',
+                                            backgroundRepeat: 'no-repeat',
+                                            backgroundPosition: 'center',
+                                        }}>
+                                            {/* Icon */}
+                                            <div className="prog-card-icon" style={{
+                                                boxSizing: 'border-box',
+                                                display: 'flex',
+                                                flexDirection: 'row',
+                                                justifyContent: 'center',
+                                                alignItems: 'center',
+                                                padding: '0px',
+                                                position: 'absolute',
+                                                width: '80px',
+                                                height: '80px',
+                                                left: isCenter ? '199.5px' : '177.5px',
+                                                top: '24px',
+                                                background: 'linear-gradient(90deg, #0A0A0A 0%, #282828 100%)',
+                                                border: '2px solid rgba(255, 255, 255, 0.1)',
+                                                borderRadius: '9999px'
+                                            }}>
+                                                <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', padding: '0px', width: '25px', height: '25px', flex: 'none', order: 0, flexGrow: 0 }}>
+                                                    {phase.icon}
+                                                </div>
+                                            </div>
+
+                                            {/* Content Area */}
+                                            <div className="prog-card-content-inner" style={{
+                                                display: 'flex',
+                                                flexDirection: 'column',
+                                                alignItems: 'center',
+                                                padding: '24px 0px 0px',
+                                                position: 'absolute',
+                                                width: isCenter ? '278px' : '276px',
+                                                left: isCenter ? '100px' : '79.5px',
+                                                top: '104px'
+                                            }}>
+                                                <div style={{
+                                                    fontFamily: "'Inter', sans-serif",
+                                                    fontStyle: 'normal',
+                                                    fontWeight: 700,
+                                                    fontSize: '10px',
+                                                    lineHeight: '15px',
+                                                    display: 'flex',
+                                                    alignItems: 'center',
+                                                    justifyContent: 'center',
+                                                    textAlign: 'center',
+                                                    letterSpacing: '1px',
+                                                    textTransform: 'uppercase',
+                                                    color: '#FC6401',
+                                                    marginBottom: '8px'
+                                                }}>
+                                                    {phase.phase}
+                                                </div>
+                                                <div style={{
+                                                    fontFamily: "'Inter', sans-serif",
+                                                    fontStyle: 'normal',
+                                                    fontWeight: 700,
+                                                    fontSize: '18px',
+                                                    lineHeight: '28px',
+                                                    display: 'flex',
+                                                    alignItems: 'center',
+                                                    justifyContent: 'center',
+                                                    textAlign: 'center',
+                                                    color: '#FFFFFF',
+                                                    marginBottom: '12px'
+                                                }}>
+                                                    {phase.title}
+                                                </div>
+                                                <div style={{
+                                                    fontFamily: "'Inter', sans-serif",
+                                                    fontStyle: 'normal',
+                                                    fontWeight: 400,
+                                                    fontSize: '14px',
+                                                    lineHeight: '20px',
+                                                    display: 'flex',
+                                                    alignItems: 'center',
+                                                    justifyContent: 'center',
+                                                    textAlign: 'center',
+                                                    color: '#A0A8B8',
+                                                }}>
+                                                    {phase.desc}
+                                                </div>
+                                            </div>
+
+                                            {/* Tags */}
+                                            <div className="prog-card-tags" style={{
+                                                display: 'flex',
+                                                flexDirection: 'row',
+                                                flexWrap: 'wrap',
+                                                justifyContent: 'center',
+                                                gap: '6px',
+                                                position: 'absolute',
+                                                bottom: '18px',
+                                                left: '50%',
+                                                transform: 'translateX(-50%)',
+                                                width: idx === 0 ? '280px' : '240px',
+                                            }}>
+                                                {phase.tags.map((tag, ti) => (
+                                                    <div key={ti} style={{
+                                                        boxSizing: 'border-box',
+                                                        display: 'flex',
+                                                        flexDirection: 'row',
+                                                        alignItems: 'center',
+                                                        padding: '4px 12px',
+                                                        height: '25px',
+                                                        background: 'rgba(0, 0, 0, 0.5)',
+                                                        border: '1px solid rgba(252, 100, 1, 0.25)',
+                                                        borderRadius: '12.5px',
+                                                    }}>
+                                                        <span style={{
+                                                            fontFamily: "'Inter', sans-serif",
+                                                            fontStyle: 'normal',
+                                                            fontWeight: 400,
+                                                            fontSize: '10px',
+                                                            lineHeight: '15px',
+                                                            display: 'flex',
+                                                            alignItems: 'center',
+                                                            letterSpacing: '0.5px',
+                                                            textTransform: 'uppercase',
+                                                            color: '#FC6401'
+                                                        }}>{tag}</span>
+                                                    </div>
+                                                ))}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            );
+                        })}
+                    </MobileMarquee>
                 </div>
             </div>
         </section>

@@ -60,12 +60,12 @@ html[data-track="tech"] #root {
   justify-content: center;
 }
 
-html[data-track="tech"] #root > div {
+html[data-track="tech"] #root>div {
   width: 100%;
   max-width: 1440px;
 }
 
-html[data-track="tech"] #root > div > * {
+html[data-track="tech"] #root>div>* {
   width: 100%;
 }
 
@@ -120,7 +120,7 @@ html[data-track="tech"] #root > div > * {
 }
 
 .gradient-text {
-  background: linear-gradient(90deg, #3e38e0 0%, #5b46c1 38.46%, #bf7759 72.12%, #f7921e 100%);
+  background: linear-gradient(90deg, #6366F1 0%, #A855F7 35%, #FC6401 70%, #F59E0B 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -356,7 +356,7 @@ html[data-track="tech"] #root > div > * {
     line-height: 1.12 !important;
   }
 
-  .mobile-hero-layout > p {
+  .mobile-hero-layout>p {
     max-width: 356px;
     font-size: 18px !important;
     line-height: 1.65 !important;
@@ -374,13 +374,13 @@ html[data-track="tech"] #root > div > * {
     border-radius: 18px !important;
   }
 
-  .hero-mobile-metrics > div {
+  .hero-mobile-metrics>div {
     min-width: 0;
     justify-content: center;
     padding: 0 4px;
   }
 
-  .hero-mobile-metrics > div > div {
+  .hero-mobile-metrics>div>div {
     width: 100%;
     align-items: center;
     text-align: center;
@@ -406,7 +406,7 @@ html[data-track="tech"] #root > div > * {
     gap: 18px !important;
   }
 
-  .hero-company-section-mobile > div:first-child {
+  .hero-company-section-mobile>div:first-child {
     max-width: 320px;
     font-size: 12px !important;
     line-height: 1.35 !important;
@@ -463,16 +463,16 @@ html[data-track="tech"] #root > div > * {
   }
 
   .hero-social-proof-mobile {
-    margin-top: 34px !important;
-    padding-top: 28px !important;
-    padding-bottom: 48px;
+    margin-top: 60px !important;
+    padding-top: 60px !important;
+    padding-bottom: 60px !important;
   }
 
-  .hero-social-proof-mobile > div:first-child {
+  .hero-social-proof-mobile>div:first-child {
     margin-bottom: 8px !important;
   }
 
-  .hero-social-proof-mobile > p:first-of-type {
+  .hero-social-proof-mobile>p:first-of-type {
     max-width: 360px;
     margin-left: auto;
     margin-right: auto;
@@ -484,7 +484,7 @@ html[data-track="tech"] #root > div > * {
     text-wrap: balance;
   }
 
-  .hero-social-proof-mobile > p:nth-of-type(2) {
+  .hero-social-proof-mobile>p:nth-of-type(2) {
     max-width: 356px;
     margin-left: auto;
     margin-right: auto;
@@ -553,7 +553,7 @@ html[data-track="tech"] #root > div > * {
     font-size: 17px !important;
   }
 
-  .hero-social-proof-mobile > p:first-of-type {
+  .hero-social-proof-mobile>p:first-of-type {
     font-size: 24px !important;
   }
 
@@ -586,47 +586,47 @@ html[data-track="tech"] #root > div > * {
   animation: fade-up-in 0.6s ease forwards;
 }
 
-.cards-grid-animate > * {
+.cards-grid-animate>* {
   opacity: 0;
 }
 
-.cards-grid-animate.in-view > * {
+.cards-grid-animate.in-view>* {
   animation: fade-up-in 0.45s ease forwards;
 }
 
-.cards-grid-animate.in-view > *:nth-child(1) {
+.cards-grid-animate.in-view>*:nth-child(1) {
   animation-delay: 0ms;
 }
 
-.cards-grid-animate.in-view > *:nth-child(2) {
+.cards-grid-animate.in-view>*:nth-child(2) {
   animation-delay: 50ms;
 }
 
-.cards-grid-animate.in-view > *:nth-child(3) {
+.cards-grid-animate.in-view>*:nth-child(3) {
   animation-delay: 100ms;
 }
 
-.cards-grid-animate.in-view > *:nth-child(4) {
+.cards-grid-animate.in-view>*:nth-child(4) {
   animation-delay: 150ms;
 }
 
-.cards-grid-animate.in-view > *:nth-child(5) {
+.cards-grid-animate.in-view>*:nth-child(5) {
   animation-delay: 200ms;
 }
 
-.cards-grid-animate.in-view > *:nth-child(6) {
+.cards-grid-animate.in-view>*:nth-child(6) {
   animation-delay: 250ms;
 }
 
-.cards-grid-animate.in-view > *:nth-child(7) {
+.cards-grid-animate.in-view>*:nth-child(7) {
   animation-delay: 300ms;
 }
 
-.cards-grid-animate.in-view > *:nth-child(8) {
+.cards-grid-animate.in-view>*:nth-child(8) {
   animation-delay: 350ms;
 }
 
-.cards-grid-animate.in-view > *:nth-child(n+9) {
+.cards-grid-animate.in-view>*:nth-child(n+9) {
   animation-delay: 400ms;
 }
 
@@ -678,7 +678,7 @@ html[data-track="tech"] #root > div > * {
   display: block;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1279px) {
   .mobile-marquee-mobile-only {
     display: flex !important;
   }
@@ -693,24 +693,24 @@ html[data-track="tech"] #root > div > * {
 }
 
 /* Final CTA and footer layout */
-#root > div .cta-outer {
+#root>div .cta-outer {
   width: min(100%, 1296px);
 }
 
-#root > div #cta-bg-container {
+#root>div #cta-bg-container {
   isolation: isolate;
   overflow: visible !important;
 }
 
-#root > div #cta-content {
+#root>div #cta-content {
   min-width: 0;
 }
 
-#root > div #cta-right-graphic img {
+#root>div #cta-right-graphic img {
   max-width: none;
 }
 
-#root > div .footer-wrapper {
+#root>div .footer-wrapper {
   width: 100%;
   max-width: 1440px;
   margin: 40px auto 0;
@@ -719,7 +719,7 @@ html[data-track="tech"] #root > div > * {
   box-sizing: border-box;
 }
 
-#root > div .footer-grid {
+#root>div .footer-grid {
   display: grid;
   grid-template-columns: minmax(240px, 1.35fr) repeat(3, minmax(140px, 1fr));
   gap: clamp(28px, 4vw, 56px);
@@ -727,20 +727,20 @@ html[data-track="tech"] #root > div > * {
   width: 100%;
 }
 
-#root > div .footer-brand-col,
-#root > div .footer-link-col {
+#root>div .footer-brand-col,
+#root>div .footer-link-col {
   min-width: 0;
 }
 
-#root > div .footer-brand-col h3 {
+#root>div .footer-brand-col h3 {
   margin-bottom: 16px !important;
 }
 
-#root > div .footer-link-col h4 {
+#root>div .footer-link-col h4 {
   margin-bottom: 18px !important;
 }
 
-#root > div .footer-bottom {
+#root>div .footer-bottom {
   display: flex;
   flex-direction: column;
   gap: 22px;
@@ -748,7 +748,7 @@ html[data-track="tech"] #root > div > * {
 }
 
 @media (min-width: 900px) {
-  #root > div #cta-content {
+  #root>div #cta-content {
     max-width: 63% !important;
     padding-left: clamp(72px, 7.8vw, 100px) !important;
     padding-right: clamp(28px, 4vw, 52px) !important;
@@ -756,87 +756,109 @@ html[data-track="tech"] #root > div > * {
 }
 
 @media (max-width: 900px) {
-  #root > div .cta-outer {
+  #root>div .cta-outer {
     padding: 0 24px !important;
+    width: 100% !important;
+    height: auto !important;
   }
 
-  #root > div #cta-bg-container {
+  #root>div #cta-bg-container {
     min-height: 280px !important;
   }
 
-  #root > div #cta-content {
+  #root>div #cta-content {
     max-width: 62% !important;
     padding: 34px 28px !important;
     gap: 14px !important;
   }
 
-  #root > div #cta-right-graphic {
+  #root>div #cta-right-graphic {
     right: -18px !important;
     top: -86px !important;
     width: 340px !important;
     height: 388px !important;
   }
 
-  #root > div .footer-grid {
+  #root>div .footer-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  #root > div .footer-brand-col {
+  #root>div .footer-brand-col {
     grid-column: 1 / -1;
   }
 }
 
 @media (max-width: 767px) {
-  #root > div .cta-outer {
+  #root>div .cta-outer {
     margin-top: 56px !important;
     padding: 0 16px !important;
+    width: 100% !important;
+    height: auto !important;
   }
 
-  #root > div #cta-bg-container {
+  #root>div #cta-bg-container {
     min-height: auto !important;
     overflow: hidden !important;
   }
 
-  #root > div #cta-content {
+  #root>div #cta-content {
+    position: relative !important;
+    left: auto !important;
+    top: auto !important;
     max-width: 100% !important;
     padding: 32px 24px !important;
   }
 
-  #root > div #cta-right-graphic {
+  #root>div #cta-right-graphic {
     display: none !important;
   }
 
-  #root > div .footer-wrapper {
+  #root>div .footer-wrapper {
     margin-top: 32px;
     padding: 42px 20px 26px;
   }
 }
 
 @media (max-width: 520px) {
-  #root > div #cta-form-group {
+  #root>div #cta-form-group {
     align-items: stretch !important;
     flex-direction: column !important;
   }
 
-  #root > div #cta-email-input {
+  #root>div #cta-email-input {
     flex-basis: auto !important;
     min-width: 0 !important;
     max-width: none !important;
     width: 100%;
   }
 
-  #root > div #cta-form-group button {
+  #root>div #cta-button-wrapper {
+    width: 100% !important;
+  }
+
+  #root>div #cta-form-group button {
     width: 100%;
   }
 
-  #root > div .footer-grid {
+  #root>div .footer-grid {
     grid-template-columns: 1fr;
     gap: 30px;
   }
 
-  #root > div .footer-bottom {
+  #root>div .footer-bottom {
     margin-top: 32px;
   }
+}
+
+.track-toggle {
+  left: 544px;
+  top: 104px;
+}
+
+.capstone-card-wrapper {
+  width: 318.96px;
+  height: 311px;
+  flex-shrink: 0;
 }
 
 /* ==========================================================================
@@ -855,6 +877,18 @@ html[data-track="tech"] #root > div > * {
     overflow-x: hidden !important;
   }
 
+  #root>div {
+    min-height: auto !important;
+  }
+
+  .track-toggle {
+    position: relative !important;
+    left: auto !important;
+    transform: none !important;
+    top: auto !important;
+    margin: 104px auto 20px !important;
+  }
+
   /* -----------------------------------------------------------------------
      1. GLOBAL: Strip absolute positioning from all sections
      ----------------------------------------------------------------------- */
@@ -867,7 +901,7 @@ html[data-track="tech"] #root > div > * {
     width: 100% !important;
     max-width: 100% !important;
     height: auto !important;
-    margin: 60px auto 0 !important;
+    margin: 90px auto 0 !important;
     transform: none !important;
     box-sizing: border-box !important;
     padding-left: 16px !important;
@@ -878,8 +912,9 @@ html[data-track="tech"] #root > div > * {
      1.5 GLOBAL: Typography resets for section headings
      ----------------------------------------------------------------------- */
   .responsive-section h2 {
-    font-size: clamp(20px, 2.8vw, 30px) !important;
-    line-height: 1.35 !important;
+    font-size: clamp(22px, 3vw, 32px) !important;
+    font-weight: 700 !important;
+    line-height: 1.3 !important;
     width: 100% !important;
     max-width: 100% !important;
     height: auto !important;
@@ -889,7 +924,9 @@ html[data-track="tech"] #root > div > * {
 
   .responsive-section p {
     font-size: clamp(13px, 1.4vw, 15px) !important;
-    line-height: 1.55 !important;
+    font-weight: 400 !important;
+    line-height: 1.60 !important;
+    color: #A0A8B8 !important;
     width: 100% !important;
     max-width: 100% !important;
     height: auto !important;
@@ -1052,22 +1089,64 @@ html[data-track="tech"] #root > div > * {
   .curriculum-card-row {
     width: 100% !important;
     flex-direction: row !important;
-    flex-wrap: wrap !important;
+    flex-wrap: nowrap !important;
     align-items: center !important;
     justify-content: space-between !important;
     gap: 0 !important;
   }
 
-  .curriculum-card-left-wrapper {
-    width: calc(100% - 36px) !important;
-    flex-grow: 1 !important;
+  .curriculum-card-title-row {
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    height: auto !important;
+    width: 100% !important;
     gap: 12px !important;
+    min-width: 0 !important;
+  }
+
+  .curriculum-card-title-row h3 {
+    order: 1 !important;
+    font-size: 15px !important;
+    font-weight: 700 !important;
+    line-height: 1.4 !important;
+    color: #FFFFFF !important;
+    white-space: normal !important;
+    flex-grow: 1 !important;
+    flex-shrink: 1 !important;
+    margin-top: 0 !important;
+  }
+
+  .curriculum-card-title-row span {
+    order: 2 !important;
+    font-size: 11px !important;
+    font-weight: 700 !important;
+    color: #FC6401 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.05em !important;
+    flex-shrink: 0 !important;
+    white-space: nowrap !important;
+    margin-right: 8px !important;
+  }
+
+  .curriculum-card-left-wrapper {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    width: calc(100% - 64px) !important;
+    max-width: calc(100% - 64px) !important;
+    flex-grow: 0 !important;
+    flex-shrink: 1 !important;
+    gap: 12px !important;
+    min-width: 0 !important;
   }
 
   .curriculum-card-left {
     width: 100% !important;
     max-width: 100% !important;
     flex-grow: 1 !important;
+    min-width: 0 !important;
   }
 
   .curriculum-card-left>div {
@@ -1078,6 +1157,7 @@ html[data-track="tech"] #root > div > * {
   .curriculum-card-left h3 {
     font-size: 15px !important;
     line-height: 1.3 !important;
+    min-width: 0 !important;
   }
 
   .curriculum-card-left span {
@@ -1091,23 +1171,28 @@ html[data-track="tech"] #root > div > * {
   }
 
   .curriculum-card-right {
-    width: 100% !important;
-    height: auto !important;
-    order: 3 !important;
-    justify-content: flex-start !important;
-    flex-wrap: wrap !important;
-    gap: 8px !important;
-    margin-top: 12px !important;
-    padding: 0 !important;
+    display: none !important;
   }
 
   .curriculum-card-chevron {
     width: 24px !important;
     height: 24px !important;
-    order: 2 !important;
+    border: none !important;
+    border-radius: 0 !important;
+    background: transparent !important;
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
+    flex-shrink: 0 !important;
+    margin-left: auto !important;
+    order: 2 !important;
+    align-self: center !important;
+  }
+
+  .curriculum-card-chevron svg {
+    width: 20px !important;
+    height: 20px !important;
+    color: #A0A8B8 !important;
   }
 
   /* -----------------------------------------------------------------------
@@ -1169,6 +1254,13 @@ html[data-track="tech"] #root > div > * {
     align-items: center !important;
     width: 100% !important;
     gap: 16px !important;
+  }
+
+  .capstone-card-wrapper {
+    width: 100% !important;
+    max-width: 360px !important;
+    height: auto !important;
+    flex-shrink: 0 !important;
   }
 
   .capstone-card {
@@ -1361,28 +1453,66 @@ html[data-track="tech"] #root > div > * {
   }
 
   .tool-stack-row {
-    flex-direction: column !important;
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: space-between !important;
     height: auto !important;
     width: 100% !important;
     gap: 16px !important;
-    margin-bottom: 24px !important;
+    margin-bottom: 16px !important;
   }
 
   .tool-stack-category-left {
-    width: 100% !important;
+    width: 32% !important;
+    min-width: 95px !important;
+    max-width: 130px !important;
     height: auto !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
   }
 
-  .tool-stack-category-title {
-    text-align: center !important;
-    justify-content: center !important;
+  .responsive-section h2.tool-stack-category-title {
+    text-align: left !important;
+    justify-content: flex-start !important;
     width: 100% !important;
+    font-size: 12.5px !important;
+    font-weight: 700 !important;
+    line-height: 1.25 !important;
+    white-space: normal !important;
+    color: #FFFFFF !important;
+    margin: 0 !important;
   }
 
   .tool-stack-marquee-container {
-    width: 100% !important;
-    max-width: 100% !important;
-    box-shadow: inset 24px 0px 16px -12px #0A0A0A, inset -24px 0px 16px -12px #0A0A0A !important;
+    width: 68% !important;
+    max-width: 68% !important;
+    flex-grow: 1 !important;
+    height: 56px !important;
+    padding: 6px 0 !important;
+    box-shadow: inset 16px 0px 12px -8px #0A0A0A, inset -16px 0px 12px -8px #0A0A0A !important;
+    border-radius: 8px !important;
+  }
+
+  .tool-stack-marquee-container > div > div {
+    width: 124px !important;
+    height: 44px !important;
+    padding: 0 10px !important;
+    margin-right: 10px !important;
+    gap: 6px !important;
+    border-radius: 8px !important;
+  }
+
+  .tool-stack-marquee-container span {
+    font-size: 11px !important;
+    line-height: 1.2 !important;
+    font-weight: 600 !important;
+  }
+
+  .tool-stack-marquee-container svg {
+    width: 14px !important;
+    height: 14px !important;
   }
 
   /* -----------------------------------------------------------------------
@@ -1624,15 +1754,68 @@ html[data-track="tech"] #root > div > * {
     grid-column: 1 / -1 !important;
   }
 
+  .desktop-only-grid {
+    display: block !important;
+  }
+
+  /* Only hide the mobile marquee for sections that have a desktop-grid fallback.
+     Program Architecture uses mobile-marquee-mobile-only as its ONLY sub-1280px
+     container (its desktop view is mobile-marquee-desktop-only, hidden globally),
+     so we must NOT blanket-hide it here. */
+  .ai-build-ninja-section .mobile-marquee-mobile-only,
+  .capstone-grid-section .mobile-marquee-mobile-only {
+    display: none !important;
+  }
+
+  /* Program Architecture: horizontal scrolling marquee centred at tablet widths */
+  .prog-cards-mobile-marquee {
+    display: flex !important;
+    justify-content: center !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    gap: 0 !important;
+    padding: 0 16px 12px !important;
+    scrollbar-width: none !important;
+  }
+
+  .prog-cards-mobile-marquee::-webkit-scrollbar {
+    display: none !important;
+  }
+
+  /* AI Build Ninja: wrap cards into a responsive grid at tablet/medium sizes */
+  .ninja-cards-row {
+    flex-direction: row !important;
+    flex-wrap: wrap !important;
+    align-items: flex-start !important;
+    justify-content: center !important;
+    gap: 16px !important;
+  }
+
+  .ninja-card {
+    width: 280px !important;
+    max-width: 100% !important;
+    flex-shrink: 0 !important;
+    height: auto !important;
+    min-height: 141px !important;
+  }
+
   .capstone-row {
     flex-direction: row !important;
     flex-wrap: wrap !important;
     justify-content: center !important;
+    gap: 24px !important;
+  }
+
+  .capstone-card-wrapper {
+    width: calc(50% - 12px) !important;
+    max-width: 360px !important;
+    height: auto !important;
   }
 
   .capstone-card {
-    width: calc(50% - 12px) !important;
+    width: 100% !important;
     max-width: none !important;
+    height: 100% !important;
   }
 }
 
@@ -1641,7 +1824,7 @@ html[data-track="tech"] #root > div > * {
    ========================================================================== */
 @media (max-width: 480px) {
   .responsive-section {
-    margin: 40px auto 0 !important;
+    margin: 80px auto 0 !important;
     padding-left: 12px !important;
     padding-right: 12px !important;
   }
@@ -1716,10 +1899,17 @@ html[data-track="tech"] #root > div > * {
    BUSINESS TRACK: General Mobile/Tablet catch-all overrides (<= 1279px)
    ========================================================================== */
 @media (max-width: 1279px) {
+  .hero-social-proof-mobile {
+    margin-top: 80px !important;
+    padding-top: 60px !important;
+    padding-bottom: 60px !important;
+  }
+
   .program-architecture-section {
     width: 100% !important;
     height: auto !important;
     overflow: hidden !important;
+    padding-top: 60px !important;
     padding-bottom: 60px !important;
   }
 
@@ -1819,55 +2009,39 @@ html[data-track="tech"] #root > div > * {
     margin: 0 auto !important;
   }
 
-  .program-card {
+  /* Program Architecture — actual class names from the component are prog-card-* */
+  .prog-card-outer {
     width: 100% !important;
-    max-width: 650px !important;
+    max-width: 560px !important;
     height: 380px !important;
     margin: 0 auto !important;
+    flex-shrink: 0 !important;
   }
 
-  .program-card-bg {
+  .prog-card-bg {
     width: 100% !important;
     height: 370px !important;
+    left: 0 !important;
+    background-size: 100% 100% !important;
   }
 
-  .program-card-content {
-    width: 550px !important;
-    left: 50% !important;
-    transform: translateX(-50%) !important;
-    padding-top: 16px !important;
-  }
-
-  .program-card-bg>div:last-child>div:nth-child(2),
-  .program-card-content>div:nth-child(2) {
-    font-size: 22px !important;
-    font-weight: 700 !important;
-    margin-bottom: 12px !important;
-    line-height: 30px !important;
-  }
-
-  .program-card-bg>div:last-child>div:nth-child(3),
-  .program-card-content>div:nth-child(3) {
-    font-size: 15.5px !important;
-    font-weight: 500 !important;
-    line-height: 24px !important;
-    color: #DFDFDF !important;
-  }
-
-  .program-card-tags-wrapper {
-    width: 100% !important;
-    max-width: 550px !important;
-    bottom: 24px !important;
+  .prog-card-icon {
     left: 50% !important;
     transform: translateX(-50%) !important;
   }
 
+  .prog-card-content-inner {
+    width: 80% !important;
+    left: 10% !important;
+  }
+
+  .prog-card-tags {
+    width: 80% !important;
+  }
+
+  /* Curriculum — explicitly keep tags hidden and chevron aligned */
   .curriculum-card-right {
-    width: 100% !important;
-    display: flex !important;
-    flex-direction: row !important;
-    justify-content: space-between !important;
-    align-items: center !important;
+    display: none !important;
   }
 
   .curriculum-card-chevron {
@@ -1879,13 +2053,16 @@ html[data-track="tech"] #root > div > * {
   .ninja-cards-row {
     flex-direction: row !important;
     flex-wrap: wrap !important;
+    align-items: flex-start !important;
     justify-content: center !important;
-    gap: 20px !important;
+    gap: 16px !important;
   }
 
   .ninja-card {
-    width: calc(50% - 12px) !important;
-    max-width: 360px !important;
+    width: 280px !important;
+    max-width: 100% !important;
+    flex-shrink: 0 !important;
+    height: auto !important;
   }
 
   .social-proof-subtitle {
@@ -1909,7 +2086,7 @@ html[data-track="tech"] #root > div > * {
     left: 50px !important;
   }
 
-  .track-toggle-desktop {
+  .track-toggle {
     left: 485px !important;
   }
 
@@ -1938,50 +2115,57 @@ html[data-track="tech"] #root > div > * {
     gap: 8px !important;
   }
 
-  .hero-metrics-desktop > div {
+  .hero-metrics-desktop>div {
     height: 52px !important;
     gap: 8px !important;
   }
 
-  .hero-metrics-desktop > div:nth-child(1) {
+  .hero-metrics-desktop>div:nth-child(1) {
     width: 175px !important;
   }
-  .hero-metrics-desktop > div:nth-child(1) > div:nth-child(2) {
+
+  .hero-metrics-desktop>div:nth-child(1)>div:nth-child(2) {
     width: 120px !important;
     height: 52px !important;
   }
-  .hero-metrics-desktop > div:nth-child(1) > div:nth-child(2) > div {
+
+  .hero-metrics-desktop>div:nth-child(1)>div:nth-child(2)>div {
     width: 120px !important;
   }
 
-  .hero-metrics-desktop > div:nth-child(2) {
+  .hero-metrics-desktop>div:nth-child(2) {
     width: 165px !important;
   }
-  .hero-metrics-desktop > div:nth-child(2) > div:nth-child(2) {
+
+  .hero-metrics-desktop>div:nth-child(2)>div:nth-child(2) {
     width: 110px !important;
     height: 52px !important;
   }
-  .hero-metrics-desktop > div:nth-child(2) > div:nth-child(2) > div {
+
+  .hero-metrics-desktop>div:nth-child(2)>div:nth-child(2)>div {
     width: 110px !important;
   }
 
-  .hero-metrics-desktop > div:nth-child(3) {
+  .hero-metrics-desktop>div:nth-child(3) {
     width: 140px !important;
   }
-  .hero-metrics-desktop > div:nth-child(3) > div:nth-child(2) {
+
+  .hero-metrics-desktop>div:nth-child(3)>div:nth-child(2) {
     width: 90px !important;
     height: 52px !important;
   }
-  .hero-metrics-desktop > div:nth-child(3) > div:nth-child(2) > div {
+
+  .hero-metrics-desktop>div:nth-child(3)>div:nth-child(2)>div {
     width: 90px !important;
   }
 
-  .hero-metrics-desktop > div > div:nth-child(2) > div:first-child {
+  .hero-metrics-desktop>div>div:nth-child(2)>div:first-child {
     font-size: 14px !important;
     line-height: 22px !important;
     height: 22px !important;
   }
-  .hero-metrics-desktop > div > div:nth-child(2) > div:last-child {
+
+  .hero-metrics-desktop>div>div:nth-child(2)>div:last-child {
     font-size: 10px !important;
     line-height: 16px !important;
     height: 16px !important;
@@ -2000,7 +2184,8 @@ html[data-track="tech"] #root > div > * {
     width: 520px !important;
     height: 72px !important;
   }
-  .hero-logos-desktop > div:first-child {
+
+  .hero-logos-desktop>div:first-child {
     width: 520px !important;
   }
 
@@ -2062,7 +2247,7 @@ html[data-track="tech"] #root > div > * {
     max-width: 750px !important;
   }
 
-  .footer-columns-row > div {
+  .footer-columns-row>div {
     min-width: 130px !important;
   }
 
@@ -2071,19 +2256,20 @@ html[data-track="tech"] #root > div > * {
     padding-right: 0 !important;
   }
 
-  .footer-bottom-row > p {
+  .footer-bottom-row>p {
     max-width: 500px !important;
     font-size: 12px !important;
   }
 
-  .footer-bottom-row > div {
+  .footer-bottom-row>div {
     gap: 12px !important;
     font-size: 10px !important;
   }
 
-  .program-architecture-section > div {
+  .program-architecture-section>div {
     max-width: 1160px !important;
   }
+
   .program-cards-container {
     transform: scale(0.94) !important;
     transform-origin: center !important;
@@ -2103,6 +2289,7 @@ html[data-track="tech"] #root > div > * {
     transform: scale(0.91) !important;
     transform-origin: top center !important;
   }
+
   .capstone-grid-section {
     transform: scale(0.86) !important;
     transform-origin: top center !important;
@@ -2113,6 +2300,7 @@ html[data-track="tech"] #root > div > * {
     transform-origin: top center !important;
     left: calc(50% - 1276px / 2) !important;
   }
+
   .outcomes-logos-section {
     transform: scale(0.91) !important;
     transform-origin: top center !important;
@@ -2123,6 +2311,7 @@ html[data-track="tech"] #root > div > * {
     transform-origin: top center !important;
     left: calc(50% - 1276px / 2) !important;
   }
+
   .mentors-profiles-section {
     transform: scale(0.91) !important;
     transform-origin: top center !important;
@@ -2135,6 +2324,7 @@ html[data-track="tech"] #root > div > * {
     transform-origin: top center !important;
     left: calc(50% - 1239px / 2) !important;
   }
+
   .tool-stack-grid-section {
     transform: scale(0.89) !important;
     transform-origin: top center !important;
@@ -2146,6 +2336,7 @@ html[data-track="tech"] #root > div > * {
     transform-origin: top center !important;
     left: calc(50% - 1239px / 2) !important;
   }
+
   .alternatives-table-card {
     transform: scale(0.89) !important;
     transform-origin: top center !important;
@@ -2157,54 +2348,63 @@ html[data-track="tech"] #root > div > * {
     transform-origin: top center !important;
     left: calc(50% - 1239px / 2) !important;
   }
+
   .investment-pricing-section {
     transform: scale(0.91) !important;
     transform-origin: top center !important;
     left: calc(50% - 1060px / 2) !important;
   }
 
-  .bottom-section-stack > div:nth-child(1) {
+  .bottom-section-stack>div:nth-child(1) {
     width: 1160px !important;
   }
-  .bottom-section-stack > div:nth-child(1) > div {
+
+  .bottom-section-stack>div:nth-child(1)>div {
     width: 100% !important;
   }
 
   #faq-container {
     width: 1160px !important;
   }
+
   .faq-item {
     width: 100% !important;
   }
 
+  /* Bottom Section Stack: CTA Banner Overrides */
   #cta-banner-wrapper {
-    width: 1160px !important;
-    height: 330px !important;
-    margin: 120px auto 100px !important;
+    width: 920px !important;
+    height: 280px !important;
+    margin: 80px auto 60px !important;
   }
+
   #cta-bg-container {
     width: 100% !important;
     height: 100% !important;
-    border-radius: 24px !important;
+    border-radius: 20px !important;
   }
+
   #cta-content {
-    left: 60px !important;
-    width: 520px !important;
-    top: 40px !important;
+    left: 40px !important;
+    width: 460px !important;
+    top: 30px !important;
   }
+
   #cta-content h2 {
-    font-size: 28px !important;
-    line-height: 38px !important;
+    font-size: 24px !important;
+    line-height: 32px !important;
   }
+
   #cta-content p {
-    font-size: 14px !important;
-    line-height: 22px !important;
-    max-width: 480px !important;
+    font-size: 12px !important;
+    line-height: 18px !important;
+    max-width: 440px !important;
   }
+
   #cta-right-graphic {
-    right: 20px !important;
-    top: -100px !important;
-    width: 400px !important;
-    height: 450px !important;
+    right: 10px !important;
+    top: -95px !important;
+    width: 320px !important;
+    height: 380px !important;
   }
 }

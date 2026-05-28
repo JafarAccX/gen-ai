@@ -7,14 +7,12 @@ export default function TrackToggle({ activeTrack, onTrackChange }: TrackToggleP
 
   return (
     <div
-      className="hidden xl:flex flex-row items-center absolute box-border rounded-full select-none z-[60] track-toggle-desktop"
+      className="flex flex-row items-center absolute box-border rounded-full select-none z-[60] track-toggle"
       style={{
         padding: '6px',
         gap: '13px',
         width: 'fit-content',
         height: '54px',
-        left: '544px',
-        top: '104px',
         background: 'rgba(255, 255, 255, 0.05)',
         border: '1px solid rgba(255, 255, 255, 0.1)',
         backdropFilter: 'blur(10px)',

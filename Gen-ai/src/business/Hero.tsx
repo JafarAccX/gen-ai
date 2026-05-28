@@ -748,7 +748,8 @@ export default function Hero({ onDownloadBrochure }: { onDownloadBrochure?: () =
                  MOBILE RESPONSIVE LAYOUT (xl:hidden)
                  =========================================
                 */}
-                <div className="xl:hidden w-full flex flex-col gap-5 sm:gap-7 items-center text-center mt-6 px-4 sm:px-6 md:px-8" style={{ paddingTop: '100px' }}>
+                <div className="xl:hidden w-full flex flex-col gap-5 sm:gap-7 items-center text-center mt-6 px-4 sm:px-6 md:px-8" style={{ paddingTop: '20px' }}>
+                    {/* ① Title & Subtitle */}
                     <div className="flex flex-col gap-3 sm:gap-5">
                         <h1 className="text-[22px] xs:text-[25px] sm:text-[30px] md:text-[34px] font-medium leading-[1.25] tracking-tight max-w-[580px] text-white mx-auto font-['Inter']">
                             Lead AI inside your company.{" "}
@@ -761,33 +762,34 @@ export default function Hero({ onDownloadBrochure }: { onDownloadBrochure?: () =
                         </p>
                     </div>
 
-                    {/* Metrics Card Mobile */}
-                    <div className="hero-metrics-card w-full max-w-[720px] rounded-[16px] flex flex-col sm:flex-row items-center justify-center py-4 px-5 gap-3 sm:gap-6 relative overflow-hidden border border-white/[0.08] bg-white/[0.02] backdrop-blur-md select-none mt-2">
+                    {/* ② Girl Image Mobile - Shifted here to sit between Title and Content */}
+                    <div className="w-full h-auto relative flex justify-center mt-4">
+                        <div className="relative w-full max-w-[320px] sm:max-w-[450px] aspect-[620/650] bg-gradient-to-b from-[#000000] to-[#FC6401] rounded-[21px] border border-[#202020] overflow-hidden shadow-2xl shadow-orange-950/20">
+                            <img src="/pm1.png" alt="Lead AI" className="absolute bottom-[-10px] left-[50%] -translate-x-1/2 h-[92%] w-auto object-contain z-10 pointer-events-none" />
+                        </div>
+                    </div>
+
+                    {/* ③ Metrics Card Mobile - Forced horizontal */}
+                    <div className="hero-metrics-card w-full max-w-[720px] rounded-[16px] flex flex-row items-stretch justify-between py-3 px-2 sm:px-4 gap-1 sm:gap-4 relative overflow-hidden border border-white/[0.08] bg-white/[0.02] backdrop-blur-md select-none mt-2">
                         {/* 16 weeks */}
-                        <div className="flex-1 flex flex-row items-center justify-center gap-3">
-                            <div className="flex flex-col text-center">
-                                <span className="text-[15px] sm:text-[16px] font-bold text-white font-['Inter'] leading-tight">16 weeks</span>
-                                <span className="text-[10px] sm:text-[11px] text-[#7C7C7C] font-['Inter'] mt-1">3 tracks · 48+ live sessions</span>
-                            </div>
+                        <div className="flex-1 flex flex-col items-center justify-center text-center px-1 border-r border-white/10">
+                            <span className="text-[13px] sm:text-[16px] font-bold text-white font-['Inter'] leading-tight">16 weeks</span>
+                            <span className="text-[9px] sm:text-[11px] text-[#7C7C7C] font-['Inter'] mt-1">3 tracks · 48+ live sessions</span>
                         </div>
                         {/* 16 ships */}
-                        <div className="flex-1 flex flex-row items-center justify-center gap-3">
-                            <div className="flex flex-col text-center">
-                                <span className="text-[15px] sm:text-[16px] font-bold text-white font-['Inter'] leading-tight">16 ships</span>
-                                <span className="text-[10px] sm:text-[11px] text-[#7C7C7C] font-['Inter'] mt-1">Saturday domain projects</span>
-                            </div>
+                        <div className="flex-1 flex flex-col items-center justify-center text-center px-1 border-r border-white/10">
+                            <span className="text-[13px] sm:text-[16px] font-bold text-white font-['Inter'] leading-tight">16 ships</span>
+                            <span className="text-[9px] sm:text-[11px] text-[#7C7C7C] font-['Inter'] mt-1">Saturday domain projects</span>
                         </div>
                         {/* Price */}
-                        <div className="flex-1 flex flex-row items-center justify-center gap-3">
-                            <div className="flex flex-col text-center">
-                                <span className="text-[15px] sm:text-[16px] font-bold text-white font-['Inter'] leading-tight">₹1,25,000</span>
-                                <span className="text-[10px] sm:text-[11px] text-[#7C7C7C] font-['Inter'] mt-1">EMI from ₹11,500/mo</span>
-                            </div>
+                        <div className="flex-1 flex flex-col items-center justify-center text-center px-1">
+                            <span className="text-[13px] sm:text-[16px] font-bold text-white font-['Inter'] leading-tight">₹1,25,000</span>
+                            <span className="text-[9px] sm:text-[11px] text-[#7C7C7C] font-['Inter'] mt-1">EMI from ₹11,500/mo</span>
                         </div>
                     </div>
  
-                    {/* Company Logos Section Mobile — Sliding Marquee */}
-                    <div className="w-full flex flex-col gap-3 items-center mt-3 overflow-hidden">
+                    {/* ④ Company Logos Section Mobile — Sliding Marquee */}
+                    <div className="w-full flex flex-col gap-3 items-center mt-6 overflow-hidden">
                         <div className="text-[10px] sm:text-[11px] font-bold text-white/60 tracking-[0.1em] uppercase">
                             LEARNERS WORKING ACROSS 1700+ COMPANIES
                         </div>
@@ -814,8 +816,8 @@ export default function Hero({ onDownloadBrochure }: { onDownloadBrochure?: () =
                         </div>
                     </div>
  
-                    {/* Actions Mobile */}
-                    <div className="hero-mobile-buttons flex flex-col sm:flex-row items-center justify-center gap-6 sm:gap-10 pt-4">
+                    {/* ⑤ Actions Mobile */}
+                    <div className="hero-mobile-buttons flex flex-row flex-wrap items-center justify-center gap-4 sm:gap-10 pt-8">
                         <a href="#apply" className="group flex items-center justify-center cursor-pointer select-none">
                             <button className="hero-mobile-btn-apply inline-flex items-center justify-center px-6 py-3 min-h-[48px] sm:min-h-[52px] bg-[#FC6401] border-none rounded-full font-bold text-white text-[13px] xs:text-[14px] sm:text-[15px] tracking-wide transition-all duration-300 shadow-[0_4px_20px_rgba(252,100,1,0.2)] w-auto max-w-[90vw]">
                                 Apply for Business Track
@@ -826,18 +828,12 @@ export default function Hero({ onDownloadBrochure }: { onDownloadBrochure?: () =
                         </a>
                     </div>
 
-                    {/* Girl Image Mobile */}
-                    <div className="w-full h-auto relative flex justify-center mt-8">
-                        <div className="relative w-full max-w-[400px] sm:max-w-[500px] aspect-[620/650] bg-gradient-to-b from-[#000000] to-[#FC6401] rounded-[21px] border border-[#202020] overflow-hidden shadow-2xl shadow-orange-950/20">
-                            <img src="/pm1.png" alt="Lead AI" className="absolute bottom-[-10px] left-[50%] -translate-x-1/2 h-[92%] w-auto object-contain z-10 pointer-events-none" />
-                        </div>
-                    </div>
-                    {/* Social Proof Mobile Section */}
-                    <div className="mt-16 border-t border-white/5 pt-12 w-full overflow-hidden">
+                    {/* ⑥ Social Proof Mobile Section */}
+                    <div className="hero-social-proof-mobile mt-24 border-t border-white/5 pt-16 pb-16 w-full overflow-hidden">
                         <div className="flex justify-center mb-4">
                             <div
                                 className="font-['Open_Sans',sans-serif] font-bold text-[12px] leading-[16px] tracking-[1.2px] uppercase bg-clip-text text-transparent flex gap-0"
-                                style={{ backgroundImage: "linear-gradient(90deg, #3E38E0 0%, #5B46C1 33%, #BF7759 66%, #F7921E 100%)", WebkitBackgroundClip: "text" }}
+                                style={{ backgroundImage: "linear-gradient(90deg, #6366F1 0%, #A855F7 35%, #FC6401 70%, #F59E0B 100%)", WebkitBackgroundClip: "text" }}
                             >
                                 SOCIAL PROOF
                             </div>
@@ -846,13 +842,13 @@ export default function Hero({ onDownloadBrochure }: { onDownloadBrochure?: () =
                         <p className="social-proof-subtitle text-center text-[#94A3B8] text-sm sm:text-base font-medium mb-10 max-w-[500px] mx-auto px-4 font-['Inter']">
                             Our learners are building AI-powered workflows, automation systems, and real-world applications across top companies.
                         </p>
-                        <div className="social-proof-logos-wrapper relative w-full overflow-hidden" style={{
+                        <div className="social-proof-logos-wrapper relative w-full overflow-hidden mt-8 mb-4" style={{
                             WebkitMaskImage: 'linear-gradient(to right, transparent, black 15%, black 85%, transparent)',
                             maskImage: 'linear-gradient(to right, transparent, black 15%, black 85%, transparent)',
                         }}>
-                            <div className="flex w-max gap-6 animate-scroll">
+                            <div className="flex w-max gap-12 sm:gap-16 animate-scroll">
                                 {[...ALUMNI_LOGOS, ...ALUMNI_LOGOS].map((brand, idx) => (
-                                    <div key={`${brand.name}-${idx}`} className="flex items-center justify-center px-4">
+                                    <div key={`${brand.name}-${idx}`} className="flex items-center justify-center px-6 sm:px-8">
                                         <img src={brand.url} alt={brand.name} loading="lazy" style={{ height: '24px' }} className="object-contain" />
                                     </div>
                                 ))}

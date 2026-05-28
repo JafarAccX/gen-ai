@@ -210,7 +210,7 @@ export default function Curriculum() {
           <span
             className="whitespace-nowrap h-[16px] font-['Open_Sans'] font-semibold text-[12px] leading-[16px] flex items-center justify-center tracking-[1.2px] uppercase flex-none order-0 grow-0"
             style={{
-              background: 'linear-gradient(90deg, #3E38E0 0%, #5B46C1 38.46%, #BF7759 72.12%, #F7921E 100%)',
+              background: 'linear-gradient(90deg, #6366F1 0%, #A855F7 35%, #FC6401 70%, #F59E0B 100%)',
               WebkitBackgroundClip: 'text',
               WebkitTextFillColor: 'transparent',
               backgroundClip: 'text',
@@ -266,11 +266,11 @@ export default function Curriculum() {
                 gap: '16px',
                 width: '1276px',
                 height: isOpen ? 'auto' : '76px',
-                background: isOpen 
-                  ? 'linear-gradient(90deg, #0A0A0A 0%, #282828 100%)' 
+                background: isOpen
+                  ? 'linear-gradient(90deg, #0A0A0A 0%, #282828 100%)'
                   : 'linear-gradient(90deg, rgba(10, 10, 10, 0.6) 0%, rgba(40, 40, 40, 0.6) 100%)',
                 border: (isOpen || isHovered)
-                  ? '1px solid rgba(252, 100, 1, 0.3)' 
+                  ? '1px solid rgba(252, 100, 1, 0.3)'
                   : '1px solid rgba(252, 100, 1, 0.05)',
                 backdropFilter: 'blur(4px)',
                 borderRadius: '16px',
@@ -318,34 +318,40 @@ export default function Curriculum() {
                   }}
                 >
                   {/* Number Container */}
-                  <div style={{
-                    display: 'flex',
-                    flexDirection: 'column',
-                    alignItems: 'flex-start',
-                    padding: '0px',
-                    width: '23px',
-                    height: 'auto',
-                    opacity: 0.5,
-                    flex: 'none',
-                    order: 0,
-                    alignSelf: 'stretch',
-                    flexGrow: 0
-                  }}>
-                    <span style={{
-                      width: '23px',
-                      height: '28px',
-                      fontFamily: "'Inter', sans-serif",
-                      fontStyle: 'normal',
-                      fontWeight: 500,
-                      fontSize: '20px',
-                      lineHeight: '28px',
+                  <div
+                    className="curriculum-card-number-box"
+                    style={{
                       display: 'flex',
-                      alignItems: 'center',
-                      color: '#FC6401',
+                      flexDirection: 'column',
+                      alignItems: 'flex-start',
+                      padding: '0px',
+                      width: '23px',
+                      height: 'auto',
+                      opacity: 0.5,
                       flex: 'none',
                       order: 0,
+                      alignSelf: 'stretch',
                       flexGrow: 0
-                    }}>
+                    }}
+                  >
+                    <span
+                      className="curriculum-card-number"
+                      style={{
+                        width: '23px',
+                        height: '28px',
+                        fontFamily: "'Inter', sans-serif",
+                        fontStyle: 'normal',
+                        fontWeight: 500,
+                        fontSize: '20px',
+                        lineHeight: '28px',
+                        display: 'flex',
+                        alignItems: 'center',
+                        color: '#FC6401',
+                        flex: 'none',
+                        order: 0,
+                        flexGrow: 0
+                      }}
+                    >
                       {formatNumber(index + 1)}
                     </span>
                   </div>
@@ -368,19 +374,21 @@ export default function Curriculum() {
                     }}
                   >
                     {/* Heading 3 */}
-                    <div style={{
-                      display: 'flex',
-                      flexDirection: 'row',
-                      alignItems: 'center',
-                      padding: '0px',
-                      gap: '8px',
-                      width: '658px',
-                      height: '28px',
-                      flex: 'none',
-                      order: 0,
-                      alignSelf: 'stretch',
-                      flexGrow: 0
-                    }}>
+                    <div
+                      className="curriculum-card-title-row"
+                      style={{
+                        display: 'flex',
+                        flexDirection: 'row',
+                        alignItems: 'center',
+                        padding: '0px',
+                        gap: '8px',
+                        width: '658px',
+                        height: '28px',
+                        flex: 'none',
+                        order: 0,
+                        alignSelf: 'stretch',
+                        flexGrow: 0
+                      }}>
                       <h3 style={{
                         margin: 0,
                         fontFamily: "'Inter', sans-serif",
@@ -411,7 +419,7 @@ export default function Curriculum() {
                         order: 1,
                         flexGrow: 0
                       }}>
-                        {module.week}
+                        {module.week.replace(/^WEEK 0/, 'WEEK ')}
                       </span>
                     </div>
 
@@ -467,7 +475,7 @@ export default function Curriculum() {
                   </div>
                 </div>
 
-                {/* Right Side Container — Frame 51611 */}
+                {/* Right Side Container — Tags Only */}
                 <div
                   className="curriculum-card-right"
                   style={{
@@ -475,91 +483,80 @@ export default function Curriculum() {
                     flexDirection: 'row',
                     alignItems: 'center',
                     padding: '0px',
-                    gap: '32px',
-                    width: 'auto', // Let content define width, but standard is 463px in figma
-                    height: '28px',
-                    flex: 'none',
-                    order: 1,
-                    flexGrow: 0
-                  }}
-                >
-                  {/* Frame 51610 — Tags */}
-                  <div style={{
-                    display: 'flex',
-                    flexDirection: 'row',
-                    alignItems: 'center',
-                    padding: '0px',
                     gap: '10px',
                     height: '25px',
+                    width: 'auto',
                     flex: 'none',
-                    order: 0,
-                    flexGrow: 0
-                  }}>
-                    {module.tags.map((tag, tagIdx) => (
-                      <div
-                        key={tagIdx}
-                        style={{
-                          boxSizing: 'border-box',
-                          display: 'flex',
-                          flexDirection: 'row',
-                          alignItems: 'flex-start',
-                          padding: '4px 12px',
-                          height: '25px',
-                          background: 'rgba(252, 100, 1, 0.1)',
-                          border: '1px solid rgba(252, 100, 1, 0.1)',
-                          borderRadius: '25px',
-                          flex: 'none',
-                          order: tagIdx,
-                          flexGrow: 0
-                        }}
-                      >
-                        <span style={{
-                          fontFamily: "'Inter', sans-serif",
-                          fontStyle: 'normal',
-                          fontWeight: 400,
-                          fontSize: '10px',
-                          lineHeight: '15px',
-                          display: 'flex',
-                          alignItems: 'center',
-                          letterSpacing: '0.5px',
-                          textTransform: 'uppercase',
-                          color: '#FC6401',
-                          flex: 'none',
-                          order: 0,
-                          flexGrow: 0,
-                          whiteSpace: 'nowrap'
-                        }}>
-                          {tag}
-                        </span>
-                      </div>
-                    ))}
-                  </div>
-
-                  {/* SVG — Chevron */}
-                  <div
-                    className="curriculum-card-chevron"
-                    style={{
-                      width: '24px',
-                      height: '24px',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      flex: 'none',
-                      order: 1,
-                      flexGrow: 0,
-                      marginTop: '1px' // Align with line height of title
-                    }}
-                  >
-                    <ChevronDown
-                      size={24}
+                    order: 1,
+                    flexGrow: 0,
+                    marginLeft: 'auto'
+                  }}
+                >
+                  {module.tags.map((tag, tagIdx) => (
+                    <div
+                      key={tagIdx}
                       style={{
-                        color: '#A0A8B8',
-                        transition: 'transform 0.3s ease',
-                        transform: isOpen ? 'rotate(180deg)' : 'rotate(0deg)',
+                        boxSizing: 'border-box',
+                        display: 'flex',
+                        flexDirection: 'row',
+                        alignItems: 'flex-start',
+                        padding: '4px 12px',
+                        height: '25px',
+                        background: 'rgba(252, 100, 1, 0.1)',
+                        border: '1px solid rgba(252, 100, 1, 0.1)',
+                        borderRadius: '25px',
+                        flex: 'none',
+                        order: tagIdx,
+                        flexGrow: 0
                       }}
-                      strokeWidth={2}
-                    />
-                  </div>
+                    >
+                      <span style={{
+                        fontFamily: "'Inter', sans-serif",
+                        fontStyle: 'normal',
+                        fontWeight: 400,
+                        fontSize: '10px',
+                        lineHeight: '15px',
+                        display: 'flex',
+                        alignItems: 'center',
+                        letterSpacing: '0.5px',
+                        textTransform: 'uppercase',
+                        color: '#FC6401',
+                        flex: 'none',
+                        order: 0,
+                        flexGrow: 0,
+                        whiteSpace: 'nowrap'
+                      }}>
+                        {tag}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+
+                {/* SVG — Chevron (Direct child of row) */}
+                <div
+                  className="curriculum-card-chevron"
+                  style={{
+                    width: '24px',
+                    height: '24px',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    flex: 'none',
+                    order: 2,
+                    flexGrow: 0,
+                    marginTop: '1px',
+                    marginLeft: '32px'
+                  }}
+                >
+                  <ChevronDown
+                    size={24}
+                    style={{
+                      color: '#A0A8B8',
+                      transition: 'transform 0.3s ease',
+                      transform: isOpen ? 'rotate(180deg)' : 'rotate(0deg)',
+                    }}
+                    strokeWidth={2}
+                  />
                 </div>
               </div>
             </div>

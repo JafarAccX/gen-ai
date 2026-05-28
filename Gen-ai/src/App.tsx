@@ -14,7 +14,7 @@ import MentorsHeader from './business/MentorsHeader';
 import MentorsProfiles from './business/MentorsProfiles';
 import ToolStackHeader from './business/ToolStackHeader';
 import ToolStackGrid from './business/ToolStackGrid';
-import AlternativesComparison from './business/AlternativesComparison';
+// import AlternativesComparison from './business/AlternativesComparison';
 import FAQ from './business/FAQ';
 import InvestmentHeader from './business/InvestmentHeader';
 import InvestmentPricing from './business/InvestmentPricing';
@@ -56,7 +56,7 @@ function App() {
       <MentorsProfiles />
       <ToolStackHeader />
       <ToolStackGrid />
-      <AlternativesComparison />
+      {/* <AlternativesComparison /> */}
       <InvestmentHeader />
       <InvestmentPricing />
       {/* Dynamically Flowing Section Stack */}

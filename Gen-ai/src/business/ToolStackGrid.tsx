@@ -66,6 +66,195 @@ const toolCategories = [
   }
 ];
 
+function ToolMarqueeTrack({ 
+  category, 
+  rowIndex 
+}: { 
+  category: typeof toolCategories[0]; 
+  rowIndex: number;
+}) {
+  const trackRef = React.useRef<HTMLDivElement>(null);
+  const [isDragging, setIsDragging] = React.useState(false);
+  const dragState = React.useRef({
+    startX: 0,
+    currentTranslateX: 0,
+    lastTranslateX: 0,
+  });
+
+  const speed = rowIndex % 2 === 0 ? 40 : 45;
+
+  const getCurrentTranslateX = React.useCallback(() => {
+    if (!trackRef.current) return 0;
+    const style = window.getComputedStyle(trackRef.current);
+    const matrix = style.transform;
+    if (matrix === 'none' || !matrix) return 0;
+    const values = matrix.match(/matrix.*\((.+)\)/);
+    if (values && values[1]) {
+      const parts = values[1].split(', ');
+      return parseFloat(parts[4]) || 0;
+    }
+    return 0;
+  }, []);
+
+  const pauseAnimation = React.useCallback(() => {
+    if (!trackRef.current) return;
+    const currentX = getCurrentTranslateX();
+    dragState.current.currentTranslateX = currentX;
+    dragState.current.lastTranslateX = currentX;
+    trackRef.current.style.animationPlayState = 'paused';
+    trackRef.current.style.transform = `translateX(${currentX}px)`;
+    trackRef.current.style.animation = 'none';
+  }, [getCurrentTranslateX]);
+
+  const resumeAnimation = React.useCallback(() => {
+    if (!trackRef.current) return;
+    const el = trackRef.current;
+    const totalWidth = el.scrollWidth / 2;
+    const currentX = dragState.current.currentTranslateX;
+    let normalizedX = currentX % totalWidth;
+    if (normalizedX > 0) normalizedX -= totalWidth;
+    const progress = Math.abs(normalizedX) / totalWidth;
+
+    el.style.transform = `translateX(${normalizedX}px)`;
+    void el.offsetHeight;
+    el.style.animation = 'none';
+    void el.offsetHeight;
+    el.style.animation = `scroll-left ${speed}s linear infinite`;
+    el.style.animationDelay = `-${progress * speed}s`;
+    el.style.animationPlayState = 'running';
+    el.style.transform = '';
+  }, [speed]);
+
+  const handleTouchStart = React.useCallback((e: React.TouchEvent) => {
+    setIsDragging(true);
+    dragState.current.startX = e.touches[0].clientX;
+    pauseAnimation();
+  }, [pauseAnimation]);
+
+  const handleTouchMove = React.useCallback((e: React.TouchEvent) => {
+    if (!isDragging || !trackRef.current) return;
+    const deltaX = e.touches[0].clientX - dragState.current.startX;
+    const newX = dragState.current.lastTranslateX + deltaX;
+    dragState.current.currentTranslateX = newX;
+    trackRef.current.style.transform = `translateX(${newX}px)`;
+  }, [isDragging]);
+
+  const handleTouchEnd = React.useCallback(() => {
+    setIsDragging(false);
+    resumeAnimation();
+  }, [resumeAnimation]);
+
+  const handleMouseDown = React.useCallback((e: React.MouseEvent) => {
+    setIsDragging(true);
+    dragState.current.startX = e.clientX;
+    pauseAnimation();
+  }, [pauseAnimation]);
+
+  const handleMouseMove = React.useCallback((e: React.MouseEvent) => {
+    if (!isDragging || !trackRef.current) return;
+    const deltaX = e.clientX - dragState.current.startX;
+    const newX = dragState.current.lastTranslateX + deltaX;
+    dragState.current.currentTranslateX = newX;
+    trackRef.current.style.transform = `translateX(${newX}px)`;
+  }, [isDragging]);
+
+  const handleMouseUpOrLeave = React.useCallback(() => {
+    if (isDragging) {
+      setIsDragging(false);
+      resumeAnimation();
+    }
+  }, [isDragging, resumeAnimation]);
+
+  return (
+    <div
+      className="tool-stack-marquee-container"
+      style={{
+        boxSizing: 'border-box',
+        display: 'flex',
+        flexDirection: 'row',
+        alignItems: 'center',
+        padding: '20px 0px',
+        width: '970px',
+        height: '108px',
+        background: 'rgba(0, 0, 0, 0.01)',
+        border: '1px solid rgba(255, 255, 255, 0.15)',
+        boxShadow: 'inset 80px 0px 40px -20px #0A0A0A, inset -80px 0px 40px -20px #0A0A0A',
+        borderRadius: '4px',
+        flex: 'none',
+        order: 1,
+        flexGrow: 1,
+        overflow: 'hidden',
+        position: 'relative',
+        cursor: isDragging ? 'grabbing' : 'grab',
+        touchAction: 'pan-y',
+      }}
+      onTouchStart={handleTouchStart}
+      onTouchMove={handleTouchMove}
+      onTouchEnd={handleTouchEnd}
+      onMouseDown={handleMouseDown}
+      onMouseMove={handleMouseMove}
+      onMouseUp={handleMouseUpOrLeave}
+      onMouseLeave={handleMouseUpOrLeave}
+    >
+      <div
+        ref={trackRef}
+        className="animate-scroll-left"
+        style={{
+          display: 'flex',
+          flexDirection: 'row',
+          minWidth: 'max-content',
+          alignItems: 'center',
+          animationDuration: `${speed}s`,
+          animationDirection: 'normal',
+          userSelect: 'none',
+          WebkitUserSelect: 'none',
+        }}
+      >
+        {[...category.tools, ...category.tools].map((tool, index) => (
+          <div
+            key={`${rowIndex}-${index}`}
+            style={{
+              boxSizing: 'border-box',
+              display: 'flex',
+              flexDirection: 'row',
+              justifyContent: 'center',
+              alignItems: 'center',
+              padding: '0 24px',
+              width: '194px',
+              height: '68px',
+              background: 'rgba(255, 255, 255, 0.02)',
+              border: '1px solid rgba(255, 255, 255, 0.1)',
+              borderRadius: '12px',
+              flex: 'none',
+              marginRight: '20px',
+              gap: '12px',
+              transition: 'all 0.3s ease',
+            }}
+            className="hover:bg-[rgba(255,255,255,0.05)] hover:border-[rgba(255,255,255,0.3)] hover:-translate-y-1 cursor-pointer"
+          >
+            <tool.icon size={22} color="rgba(255, 255, 255, 0.8)" />
+            <span
+              style={{
+                fontFamily: 'Inter, sans-serif',
+                fontStyle: 'normal',
+                fontWeight: 400,
+                fontSize: '16.7px',
+                lineHeight: '28px',
+                display: 'flex',
+                alignItems: 'center',
+                letterSpacing: '-0.36px',
+                color: 'rgba(255, 255, 255, 0.8)',
+              }}
+            >
+              {tool.name}
+            </span>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 export default function ToolStackGrid() {
   return (
     <div
@@ -123,7 +312,7 @@ export default function ToolStackGrid() {
                 lineHeight: '48px',
                 display: 'flex',
                 alignItems: 'center',
-                textAlign: 'left', // Aligning text to the left within its container
+                textAlign: 'left',
                 letterSpacing: '-0.96px',
                 color: '#FFFFFF',
                 margin: 0,
@@ -134,83 +323,7 @@ export default function ToolStackGrid() {
           </div>
 
           {/* Right Side: Animated Marquee Track of Tools */}
-          <div
-            className="tool-stack-marquee-container"
-            style={{
-              boxSizing: 'border-box',
-              display: 'flex',
-              flexDirection: 'row',
-              alignItems: 'center',
-              padding: '20px 0px',
-              width: '970px',
-              height: '108px',
-              background: 'rgba(0, 0, 0, 0.01)',
-              border: '1px solid rgba(255, 255, 255, 0.15)',
-              // Added dual-inset shadows to create vignette masks on both entry and exit points
-              boxShadow: 'inset 80px 0px 40px -20px #0A0A0A, inset -80px 0px 40px -20px #0A0A0A',
-              borderRadius: '4px',
-              flex: 'none',
-              order: 1,
-              flexGrow: 1,
-              overflow: 'hidden',
-              position: 'relative',
-            }}
-          >
-            <div
-              className={`animate-scroll-left`}
-              // Staggering animation duration for visual dynamism, all flowing left
-              style={{
-                display: 'flex',
-                flexDirection: 'row',
-                minWidth: 'max-content',
-                alignItems: 'center',
-                animationDuration: rowIndex % 2 === 0 ? '40s' : '45s',
-                animationDirection: 'normal',
-              }}
-            >
-              {/* Duplicate the array exactly once (2 sets total) to create a seamless 50% loop */}
-              {[...category.tools, ...category.tools].map((tool, index) => (
-                <div
-                  key={`${rowIndex}-${index}`}
-                  style={{
-                    boxSizing: 'border-box',
-                    display: 'flex',
-                    flexDirection: 'row',
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                    padding: '0 24px',
-                    width: '194px',
-                    height: '68px',
-                    background: 'rgba(255, 255, 255, 0.02)',
-                    border: '1px solid rgba(255, 255, 255, 0.1)',
-                    borderRadius: '12px',
-                    flex: 'none',
-                    marginRight: '20px', // Gap between tool boxes
-                    gap: '12px',
-                    transition: 'all 0.3s ease',
-                  }}
-                  className="hover:bg-[rgba(255,255,255,0.05)] hover:border-[rgba(255,255,255,0.3)] hover:-translate-y-1 cursor-pointer"
-                >
-                  <tool.icon size={22} color="rgba(255, 255, 255, 0.8)" />
-                  <span
-                    style={{
-                      fontFamily: 'Inter, sans-serif',
-                      fontStyle: 'normal',
-                      fontWeight: 400,
-                      fontSize: '16.7px',
-                      lineHeight: '28px',
-                      display: 'flex',
-                      alignItems: 'center',
-                      letterSpacing: '-0.36px',
-                      color: 'rgba(255, 255, 255, 0.8)',
-                    }}
-                  >
-                    {tool.name}
-                  </span>
-                </div>
-              ))}
-            </div>
-          </div>
+          <ToolMarqueeTrack category={category} rowIndex={rowIndex} />
         </div>
       ))}
     </div>

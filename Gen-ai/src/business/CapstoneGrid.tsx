@@ -95,8 +95,8 @@ function CapstoneCard({ card }: { card: CapstoneCardData }) {
         alignItems: 'center',
         padding: '24px 20px',
         isolation: 'isolate',
-        width: '318.96px',
-        height: '311px',
+        width: '100%',
+        height: '100%',
         background: isHovered
           ? 'linear-gradient(180deg, #0C0C0C 0%, #261308 100%)'
           : 'linear-gradient(180deg, #0A0A0A 0%, #160D06 100%)',
@@ -117,7 +117,7 @@ function CapstoneCard({ card }: { card: CapstoneCardData }) {
           alignItems: 'center',
           justifyContent: 'space-between',
           padding: 0,
-          width: '278.96px',
+          width: '100%',
           height: '100%',
         }}
       >
@@ -128,7 +128,7 @@ function CapstoneCard({ card }: { card: CapstoneCardData }) {
             flexDirection: 'column',
             alignItems: 'center',
             padding: 0,
-            width: '278.96px',
+            width: '100%',
             gap: '4px',
             flexShrink: 0,
           }}
@@ -145,7 +145,7 @@ function CapstoneCard({ card }: { card: CapstoneCardData }) {
               letterSpacing: '1px',
               textTransform: 'uppercase',
               color: '#FC6401', // Vibrant solid orange
-              width: '278.96px',
+              width: '100%',
               height: '15px',
               flexShrink: 0,
             }}
@@ -164,7 +164,7 @@ function CapstoneCard({ card }: { card: CapstoneCardData }) {
               lineHeight: '28px',
               textAlign: 'center',
               color: '#FFFFFF',
-              width: '253px',
+              width: '100%',
               flexShrink: 0,
             }}
           >
@@ -180,7 +180,7 @@ function CapstoneCard({ card }: { card: CapstoneCardData }) {
             alignItems: 'center',
             padding: '4px 0px 0px',
             gap: '10px',
-            width: '278.96px',
+            width: '100%',
             flex: 1,
             justifyContent: 'center',
           }}
@@ -189,8 +189,7 @@ function CapstoneCard({ card }: { card: CapstoneCardData }) {
           <p
             style={{
               margin: 0,
-              width: '272px',
-              height: '60px',
+              width: '100%',
               fontFamily: 'Inter',
               fontStyle: 'normal',
               fontWeight: 400,
@@ -216,7 +215,7 @@ function CapstoneCard({ card }: { card: CapstoneCardData }) {
               alignItems: 'center',
               padding: 0,
               gap: '6px',
-              width: '268px', // Wider to fit long pills side-by-side
+              width: '100%', // Wider to fit long pills side-by-side
               minHeight: '56px',
             }}
           >
@@ -265,7 +264,7 @@ function CapstoneCard({ card }: { card: CapstoneCardData }) {
             flexDirection: 'column',
             alignItems: 'center',
             padding: '8px 3.48px 0px',
-            width: '278.96px',
+            width: '100%',
             height: '48px',
             borderTop: 'none', // REMOVED border Top as per screenshot
             flexShrink: 0,
@@ -273,7 +272,7 @@ function CapstoneCard({ card }: { card: CapstoneCardData }) {
         >
           <span
             style={{
-              width: '272px',
+              width: '100%',
               height: '40px',
               fontFamily: 'Inter',
               fontStyle: 'normal',
@@ -319,23 +318,86 @@ export default function CapstoneGrid() {
         paddingBottom: '100px',
       }}
     >
-      {rows.map((row, rowIdx) => (
+      {/* Mobile/Tablet: 2 independent marquee rows — row1=[1-4], row2=[5-8] */}
+      <div
+        className="mobile-marquee-mobile-only"
+        style={{
+          width: '100%',
+          position: 'relative',
+          flexDirection: 'column',
+          gap: '24px',
+        }}
+      >
+        {[0, 1].map((rowIdx) => {
+          const rowCards = capstoneCards.slice(rowIdx * 4, rowIdx * 4 + 4);
+          const durations = ['32s', '36s'];
+          return (
+            <div
+              key={rowIdx}
+              style={{
+                width: '100%',
+                overflow: 'hidden',
+                position: 'relative',
+              }}
+            >
+              <div
+                className="animate-scroll-left"
+                style={{
+                  display: 'flex',
+                  flexDirection: 'row',
+                  minWidth: 'max-content',
+                  gap: '14px',
+                  padding: '0 14px',
+                  animationDuration: durations[rowIdx],
+                }}
+              >
+                {[...rowCards, ...rowCards].map((card, idx) => (
+                  <div key={idx} style={{ width: '310px', flexShrink: 0 }}>
+                    <CapstoneCard card={card} />
+                  </div>
+                ))}
+              </div>
+            </div>
+          );
+        })}
+      </div>
+
+      {/* Desktop: 2-row grid */}
+      <div
+        className="desktop-only-grid"
+        style={{
+          width: '100%',
+        }}
+      >
         <div
-          key={rowIdx}
-          className="capstone-row"
           style={{
             display: 'flex',
-            flexDirection: 'row',
+            flexDirection: 'column',
             gap: '24px',
             width: '100%',
-            justifyContent: 'center',
           }}
         >
-          {row.map((card) => (
-            <CapstoneCard key={card.id} card={card} />
+          {rows.map((row, rowIdx) => (
+            <div
+              key={rowIdx}
+              className="capstone-row"
+              style={{
+                display: 'flex',
+                flexDirection: 'row',
+                gap: '24px',
+                width: '100%',
+                justifyContent: 'center',
+              }}
+            >
+              {row.map((card) => (
+                <div key={card.id} className="capstone-card-wrapper">
+                  <CapstoneCard card={card} />
+                </div>
+              ))}
+            </div>
           ))}
         </div>
-      ))}
+      </div>
     </div>
   );
 }

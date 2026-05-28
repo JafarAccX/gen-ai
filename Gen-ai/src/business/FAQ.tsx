@@ -20,7 +20,8 @@ const FAQItem: React.FC<FAQItemProps> = ({ question, answer, isOpen, onClick }) 
         flexDirection: 'column',
         alignItems: 'flex-start',
         padding: '24px 32px',
-        width: '1239px', // Match header width
+        width: '100%',
+        maxWidth: '1239px', // Match header width
         background: 'rgba(255, 255, 255, 0.02)',
         border: '1px solid rgba(255, 255, 255, 0.08)',
         borderRadius: '16px',
@@ -139,6 +140,7 @@ export default function FAQ() {
   return (
     <div
       id="faq-container"
+      className="responsive-section"
       style={{
         position: 'relative',
         width: '1239px',

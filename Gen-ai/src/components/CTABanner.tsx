@@ -1,3 +1,4 @@
+import React from 'react';
 import { ASSETS } from '../constants/GenAIv2Constants';
 
 export default function CTABanner() {
@@ -6,166 +7,246 @@ export default function CTABanner() {
       id="cta-banner-wrapper"
       className="cta-outer"
       style={{
-        width: '100%',
-        maxWidth: '1296px',
-        margin: '80px auto 0',
-        padding: '0 clamp(16px, 5vw, 72px)',
-        zIndex: 2,
         position: 'relative',
-        boxSizing: 'border-box',
+        width: '1296px',
+        height: '318px',
+        margin: '120px auto 100px',
+        zIndex: 100,
       }}
     >
-      {/* Gradient card — layout container */}
+      {/* Background Container */}
       <div
         id="cta-bg-container"
         style={{
-          position: 'relative',
+          position: 'absolute',
           width: '100%',
-          background: 'linear-gradient(93.27deg, #AF4907 0.66%, #C37848 49.96%, #F6F6F5 99.27%)',
+          height: '100%',
+          background: '#000000',
           borderRadius: '20px',
-          overflow: 'visible',
-          border: '1px solid rgba(0, 0, 0, 0.15)',
-          display: 'flex',
-          alignItems: 'center',
-          minHeight: '318px',
+          overflow: 'hidden',
+          border: '1px solid rgba(255, 255, 255, 0.1)',
         }}
       >
-        {/* Content — responsive padding via Tailwind */}
+        {/* Main Background Gradient (Brownish Orange) */}
         <div
-          id="cta-content"
-          className="cta-content"
           style={{
-            position: 'relative',
-            zIndex: 10,
-            display: 'flex',
-            flexDirection: 'column',
-            gap: '18px',
+            position: 'absolute',
             width: '100%',
-            maxWidth: '700px',
-            padding: 'clamp(32px, 4vw, 56px) clamp(24px, 5vw, 64px)',
+            height: '100%',
+            background: 'linear-gradient(93.27deg, #FC6401 0.66%, #AE4501 5.4%, #853501 10.14%, #3E1900 21.04%, #000000 33.37%)',
+            borderRadius: '20px',
+            zIndex: 1,
+          }}
+        />
+
+        {/* Mask Group – Purple/Dark Gradient Overlay */}
+        <div
+          style={{
+            position: 'absolute',
+            width: '100%',
+            height: '100%',
+            background: 'linear-gradient(242.56deg, rgba(62, 56, 224, 0.5) -18.34%, #000000 -4.97%, #060110 12.6%, rgba(33, 8, 85, 0.855422) 19.77%, rgba(62, 56, 224, 0.5) 33.14%)',
+            opacity: 0.8,
+            zIndex: 1,
+          }}
+        />
+
+        {/* Circular Shape Graphic */}
+        <div
+          style={{
             boxSizing: 'border-box',
+            position: 'absolute',
+            width: '266px',
+            height: '217px',
+            left: '-120.49px',
+            top: '-180.98px',
+            border: '7px solid #BFBFBF',
+            transform: 'rotate(-28.21deg)',
+            borderRadius: '50%',
+            zIndex: 3,
+            pointerEvents: 'none',
+          }}
+        />
+
+        {/* Top Left Curve 2 */}
+        <div
+          style={{
+            boxSizing: 'border-box',
+            position: 'absolute',
+            width: '220px',
+            height: '180px',
+            left: '-80px',
+            top: '-120px',
+            border: '7px solid rgba(191, 191, 191, 0.5)',
+            transform: 'rotate(-28.21deg)',
+            borderRadius: '50%',
+            zIndex: 3,
+            pointerEvents: 'none',
+          }}
+        />
+      </div>
+
+      {/* Content Section */}
+      <div
+        id="cta-content"
+        style={{
+          position: 'absolute',
+          width: '697px',
+          left: '125px',
+          top: '58px',
+          zIndex: 10,
+          display: 'flex',
+          flexDirection: 'column',
+          gap: '12px',
+        }}
+      >
+        <h2
+          style={{
+            fontFamily: "'Poppins', sans-serif",
+            fontStyle: 'normal',
+            fontWeight: 600,
+            fontSize: '32px',
+            lineHeight: '48px',
+            color: '#FFFFFF',
+            margin: 0,
           }}
         >
-          <h2
-            style={{
-              fontFamily: "'Poppins', sans-serif",
-              fontWeight: 600,
-              fontSize: 'clamp(24px, 3.2vw, 32px)',
-              lineHeight: '1.2',
-              color: '#FFFFFF',
-              margin: 0,
-            }}
-          >
-            Ready to lead AI inside your company?
-          </h2>
+          Ready to lead AI inside your company?
+        </h2>
 
-          <p
-            style={{
-              fontFamily: "'Poppins', sans-serif",
-              fontWeight: 400,
-              fontSize: '16px',
-              lineHeight: '22px',
-              color: 'rgba(255, 255, 255, 0.85)',
-              margin: 0,
-              maxWidth: '620px',
-            }}
-          >
-            Next cohort: rolling admissions. 60 seats. Apply, talk to admissions, and decide on the call — no commitment until Day 14.
-          </p>
+        <p
+          style={{
+            fontFamily: "'Poppins', sans-serif",
+            fontWeight: 400,
+            fontSize: '16px',
+            lineHeight: '24px',
+            color: '#B4B4B4',
+            maxWidth: '697px',
+            margin: 0,
+          }}
+        >
+          Next cohort: rolling admissions. 60 seats. Apply, talk to admissions, and decide on the call no commitment until Day 14.
+        </p>
 
-          {/* Form Group — always row, wraps on very small screens */}
+        {/* Form Group */}
+        <div
+          id="cta-form-group"
+          style={{
+            display: 'flex',
+            flexDirection: 'row',
+            alignItems: 'center',
+            padding: 0,
+            gap: '15px',
+            marginTop: '8px',
+          }}
+        >
+          {/* Email Input */}
           <div
-            id="cta-form-group"
+            id="cta-email-input"
             style={{
+              boxSizing: 'border-box',
+              width: '277px',
+              height: '50px',
+              background: 'rgba(75, 30, 0, 0.05)',
+              border: '1px solid #787878',
+              borderRadius: '50px',
               display: 'flex',
-              flexDirection: 'row',
+              flexDirection: 'column',
+              justifyContent: 'center',
               alignItems: 'center',
-              flexWrap: 'wrap',
-              gap: '22px',
-              marginTop: '4px',
+              padding: '16px',
+              backdropFilter: 'blur(50px)',
             }}
           >
-            {/* Email Input */}
-            <div
-              id="cta-email-input"
+            <span
               style={{
-                flexGrow: 1,
-                flexShrink: 1,
-                flexBasis: '336px',
-                minWidth: '240px',
-                maxWidth: '336px',
-                height: '40px',
-                background: 'rgba(255, 255, 255, 0.15)',
-                border: '1px solid rgba(255, 255, 255, 0.35)',
-                borderRadius: '50px',
+                fontFamily: "'Poppins', sans-serif",
+                fontStyle: 'normal',
+                fontWeight: 400,
+                fontSize: '14px',
+                lineHeight: '28px',
                 display: 'flex',
                 alignItems: 'center',
-                padding: '0 24px',
-                backdropFilter: 'blur(50px)',
+                textAlign: 'right',
+                letterSpacing: '-0.2px',
+                color: '#B4B4B4',
               }}
             >
-              <span style={{ color: 'rgba(255, 255, 255, 0.7)', fontSize: '14px', letterSpacing: '-0.2px' }}>
-                abc@gmail.com
-              </span>
-            </div>
+              abc@gmail.com
+            </span>
+          </div>
 
-            {/* Apply Now Button */}
+          {/* Apply Now Button with Orange Border */}
+          <div
+            id="cta-button-wrapper"
+            style={{
+              position: 'relative',
+              width: '160px',
+              height: '50px',
+              padding: '1.5px',
+              borderRadius: '12px',
+              background: '#FC6401',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              cursor: 'pointer',
+              transition: 'all 0.3s ease',
+            }}
+          >
             <button
               style={{
-                height: '50px',
-                padding: '0 32px',
-                background: 'rgba(202, 85, 9, 0.25)',
-                border: '1px solid #943E06',
-                borderRadius: '9px',
+                width: '100%',
+                height: '100%',
+                background: '#000000',
+                border: 'none',
+                borderRadius: '11px',
                 color: '#FFFFFF',
-                fontFamily: 'inherit',
-                fontWeight: 500,
-                fontSize: '14px',
+                fontFamily: "'Poppins', sans-serif",
+                fontWeight: 600,
+                fontSize: '16px',
                 cursor: 'pointer',
-                whiteSpace: 'nowrap',
-                boxShadow: '2px 2px 4px rgba(0, 0, 0, 0.25)',
-                transition: 'opacity 0.2s',
-                flexShrink: 0,
               }}
             >
               Apply Now
             </button>
           </div>
-
-          <p
-            className="cta-fine-print"
-            style={{
-              fontFamily: "'Poppins', sans-serif",
-              fontSize: '12px',
-              color: 'rgba(255, 255, 255, 0.6)',
-              margin: 0,
-              lineHeight: 1.5,
-            }}
-          >
-            EMI from ₹11,500/mo · 14-day refund · LangChain Academy free certification included
-          </p>
         </div>
 
-        {/* Right Side Image — desktop only */}
-        <div
-          id="cta-right-graphic"
-          className="cta-right-img hidden md:block"
+        <p
           style={{
-            position: 'absolute',
-            right: 'clamp(12px, 3vw, 34px)',
-            top: '-126px',
-            width: 'clamp(360px, 34.5vw, 447px)',
-            height: 'clamp(410px, 39.3vw, 509px)',
-            zIndex: 20,
-            pointerEvents: 'none',
+            fontFamily: "'Poppins', sans-serif",
+            fontSize: '12px',
+            color: 'rgba(180, 180, 180, 0.7)',
+            marginTop: '12px',
+            margin: 0,
           }}
         >
-          <img
-            src={ASSETS.ctaFrame}
-            alt="CTA Graphic"
-            style={{ width: '100%', height: '100%', objectFit: 'contain' }}
-          />
-        </div>
+          EMI from ₹11,500/mo · 14-day refund · LangChain Academy free certification included
+        </p>
+      </div>
+
+      {/* Right Side Image (SVG Frame) */}
+      <div
+        id="cta-right-graphic"
+        style={{
+          position: 'absolute',
+          right: '40px',
+          top: '-120px',
+          width: '447px',
+          height: '509px',
+          zIndex: 20,
+          pointerEvents: 'none',
+        }}
+      >
+        <img
+          src={ASSETS.ctaFrame}
+          alt="CTA Graphic"
+          style={{
+            width: '100%',
+            height: '100%',
+            objectFit: 'contain',
+          }}
+        />
       </div>
     </div>
   );

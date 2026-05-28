@@ -5,10 +5,11 @@ export default function CTABanner() {
   return (
     <div
       id="cta-banner-wrapper"
+      className="cta-outer"
       style={{
         position: 'relative',
         width: '1296px',
-        height: '330px',
+        height: '318px',
         margin: '120px auto 100px',
         zIndex: 100,
       }}
@@ -20,40 +21,80 @@ export default function CTABanner() {
           position: 'absolute',
           width: '100%',
           height: '100%',
-          background: '#000000',
-          borderRadius: '24px',
+          borderRadius: '20px',
           overflow: 'hidden',
-          border: '1px solid rgba(255, 255, 255, 0.1)',
         }}
       >
-        {/* Main Background Gradient (Brownish Orange) */}
-        <div
+        {/* Exact SVG Background from Figma */}
+        <svg
+          width="1296"
+          height="318"
+          viewBox="0 0 1296 318"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          preserveAspectRatio="none"
           style={{
             position: 'absolute',
             width: '100%',
             height: '100%',
-            background: 'linear-gradient(93.27deg, #FC6401 0.66%, #AE4501 5.4%, #853501 10.14%, #3E1900 21.04%, #000000 33.37%)',
-            opacity: 0.8,
-            zIndex: 1,
+            top: 0,
+            left: 0,
           }}
-        />
-
-        {/* Top Left Curve */}
-        <div
-          style={{
-            boxSizing: 'border-box',
-            position: 'absolute',
-            width: '266px',
-            height: '217px',
-            left: '-120.49px',
-            top: '-180.98px',
-            border: '7px solid #BFBFBF',
-            transform: 'rotate(-28.21deg)',
-            borderRadius: '50%',
-            zIndex: 3,
-            pointerEvents: 'none',
-          }}
-        />
+        >
+          {/* Background gradient fill */}
+          <rect
+            width="1296"
+            height="318"
+            rx="20"
+            fill="url(#paint0_linear_cta)"
+          />
+          {/* Border stroke */}
+          <rect
+            x="0.5"
+            y="0.5"
+            width="1295"
+            height="317"
+            rx="19.5"
+            stroke="white"
+            strokeOpacity="0.1"
+          />
+          {/* Masked elliptical curve */}
+          <mask
+            id="mask0_cta"
+            style={{ maskType: 'luminance' }}
+            maskUnits="userSpaceOnUse"
+            x="0"
+            y="0"
+            width="1296"
+            height="318"
+          >
+            <rect width="1296" height="318" rx="20" fill="white" />
+          </mask>
+          <g mask="url(#mask0_cta)">
+            <path
+              d="M-35.6344 -115.028C28.0079 -149.167 101.004 -134.26 128.118 -83.715C155.231 -33.1704 127.276 35.8894 63.6338 70.0285C-0.00858408 104.168 -73.0052 89.2603 -100.118 38.7158C-127.232 -11.8288 -99.2768 -80.8886 -35.6344 -115.028Z"
+              stroke="#BFBFBF"
+              strokeWidth="7"
+            />
+          </g>
+          {/* Gradient definition */}
+          <defs>
+            <linearGradient
+              id="paint0_linear_cta"
+              x1="7.5"
+              y1="6.5"
+              x2="1289"
+              y2="305"
+              gradientUnits="userSpaceOnUse"
+            >
+              <stop stopColor="#FC6401" />
+              <stop offset="0.0480769" stopColor="#AE4501" />
+              <stop offset="0.0961538" stopColor="#853501" />
+              <stop offset="0.206731" stopColor="#3E1900" />
+              <stop offset="0.331731" />
+            </linearGradient>
+          </defs>
+        </svg>
       </div>
 
       {/* Content Section */}
@@ -61,9 +102,9 @@ export default function CTABanner() {
         id="cta-content"
         style={{
           position: 'absolute',
-          width: '600px',
-          left: '125px',
-          top: '40px',
+          width: '697px',
+          left: '93px',
+          top: '58px',
           zIndex: 10,
           display: 'flex',
           flexDirection: 'column',
@@ -73,9 +114,10 @@ export default function CTABanner() {
         <h2
           style={{
             fontFamily: "'Poppins', sans-serif",
+            fontStyle: 'normal',
             fontWeight: 600,
             fontSize: '32px',
-            lineHeight: '44px',
+            lineHeight: '48px',
             color: '#FFFFFF',
             margin: 0,
           }}
@@ -90,7 +132,7 @@ export default function CTABanner() {
             fontSize: '16px',
             lineHeight: '24px',
             color: '#B4B4B4',
-            maxWidth: '560px',
+            maxWidth: '697px',
             margin: 0,
           }}
         >
@@ -102,37 +144,54 @@ export default function CTABanner() {
           id="cta-form-group"
           style={{
             display: 'flex',
+            flexDirection: 'row',
             alignItems: 'center',
+            padding: 0,
             gap: '15px',
             marginTop: '8px',
           }}
         >
-          {/* Email Input */}
+          {/* Email Input — exact SVG specs: 276x49, rx=24.5 */}
           <div
+            id="cta-email-input"
             style={{
-              width: '277px',
-              height: '50px',
-              background: 'rgba(255, 255, 255, 0.05)',
-              border: '1px solid rgba(255, 255, 255, 0.2)',
-              borderRadius: '50px',
+              boxSizing: 'border-box',
+              width: '276px',
+              height: '49px',
+              background: 'rgba(75, 30, 0, 0.05)',
+              border: '1px solid #787878',
+              borderRadius: '24.5px',
               display: 'flex',
+              justifyContent: 'center',
               alignItems: 'center',
-              padding: '0 24px',
               backdropFilter: 'blur(50px)',
             }}
           >
-            <span style={{ color: 'rgba(180, 180, 180, 0.8)', fontSize: '14px', letterSpacing: '-0.2px' }}>abc@gmail.com</span>
+            <span
+              style={{
+                fontFamily: "'Poppins', sans-serif",
+                fontStyle: 'normal',
+                fontWeight: 400,
+                fontSize: '14px',
+                lineHeight: '28px',
+                letterSpacing: '-0.2px',
+                color: '#B4B4B4',
+              }}
+            >
+              abc@gmail.com
+            </span>
           </div>
 
-          {/* Apply Now Button with Partial Border */}
+          {/* Apply Now Button with Orange Border */}
           <div
+            id="cta-button-wrapper"
             style={{
               position: 'relative',
               width: '160px',
-              height: '50px',
+              height: '49px',
               padding: '1.5px',
               borderRadius: '12px',
-              background: 'linear-gradient(135deg, #FC6401 0%, #FC6401 40%, rgba(252, 100, 1, 0) 70%)',
+              background: '#FC6401',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
@@ -148,6 +207,7 @@ export default function CTABanner() {
                 border: 'none',
                 borderRadius: '11px',
                 color: '#FFFFFF',
+                fontFamily: "'Poppins', sans-serif",
                 fontWeight: 600,
                 fontSize: '16px',
                 cursor: 'pointer',
@@ -163,7 +223,8 @@ export default function CTABanner() {
             fontFamily: "'Poppins', sans-serif",
             fontSize: '12px',
             color: 'rgba(180, 180, 180, 0.7)',
-            marginTop: '12px',
+            marginTop: '4px',
+            margin: 0,
           }}
         >
           EMI from ₹11,500/mo · 14-day refund · LangChain Academy free certification included

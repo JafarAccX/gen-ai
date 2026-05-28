@@ -309,7 +309,7 @@ export default function AIBuildNinja() {
                 lineHeight: '16px',
                 letterSpacing: '1.2px',
                 textTransform: 'uppercase',
-                background: 'linear-gradient(90deg, #3E38E0 0%, #F7921E 100%)',
+                background: 'linear-gradient(90deg, #6366F1 0%, #A855F7 35%, #FC6401 70%, #F59E0B 100%)',
                 WebkitBackgroundClip: 'text',
                 WebkitTextFillColor: 'transparent',
                 backgroundClip: 'text',
@@ -367,37 +367,93 @@ export default function AIBuildNinja() {
         </div>
       </div>
 
-      {/* ── Cards Container (Frame 51613) ── */}
+      {/* Desktop: 4-column grid */}
       <div
-        className="ninja-cards-grid"
+        className="desktop-only-grid"
         style={{
-          boxSizing: 'border-box',
-          width: '1248px',
-          background: 'linear-gradient(180deg, #0A0A0A 0%, #1D1007 100%)',
-          border: '1px solid rgba(255, 251, 251, 0.15)',
-          borderRadius: '12px',
-          padding: '24px',
-          display: 'flex',
-          flexDirection: 'column',
-          gap: '24px',
+          width: '100%',
+          maxWidth: '1248px',
         }}
       >
-        {rows.map((row, rowIdx) => (
-          <div
-            key={rowIdx}
-            className="ninja-cards-row"
-            style={{
-              display: 'flex',
-              flexDirection: 'row',
-              gap: '24px',
-              width: '100%',
-            }}
-          >
-            {row.map((card, colIdx) => (
-              <SatCard key={`${rowIdx}-${colIdx}`} card={card} />
-            ))}
-          </div>
-        ))}
+        <div
+          className="ninja-cards-grid"
+          style={{
+            boxSizing: 'border-box',
+            width: '1248px',
+            background: 'linear-gradient(180deg, #0A0A0A 0%, #1D1007 100%)',
+            border: '1px solid rgba(255, 251, 251, 0.15)',
+            borderRadius: '12px',
+            padding: '24px',
+            display: 'flex',
+            flexDirection: 'column',
+            gap: '24px',
+          }}
+        >
+          {rows.map((row, rowIdx) => (
+            <div
+              key={rowIdx}
+              className="ninja-cards-row"
+              style={{
+                display: 'flex',
+                flexDirection: 'row',
+                gap: '24px',
+                width: '100%',
+              }}
+            >
+              {row.map((card, colIdx) => (
+                <SatCard key={`${rowIdx}-${colIdx}`} card={card} />
+              ))}
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Mobile/Tablet: 4 independent marquee rows — row1=[1-4], row2=[5-8], row3=[9-12], row4=[13-16] */}
+      <div
+        className="mobile-marquee-mobile-only ai-build-mobile-rail"
+        style={{
+          width: '100%',
+          position: 'relative',
+          borderRadius: '12px',
+          background: 'linear-gradient(180deg, #0A0A0A 0%, #1D1007 100%)',
+          border: '1px solid rgba(255, 251, 251, 0.15)',
+          padding: '16px 0',
+          flexDirection: 'column',
+          gap: '20px',
+        }}
+      >
+        {[0, 1, 2, 3].map((rowIdx) => {
+          const rowCards = saturdayCards.slice(rowIdx * 4, rowIdx * 4 + 4);
+          const durations = ['28s', '32s', '30s', '34s'];
+          return (
+            <div
+              key={rowIdx}
+              style={{
+                width: '100%',
+                overflow: 'hidden',
+                position: 'relative',
+              }}
+            >
+              <div
+                className="animate-scroll-left ai-build-mobile-track"
+                style={{
+                  display: 'flex',
+                  flexDirection: 'row',
+                  minWidth: 'max-content',
+                  gap: '12px',
+                  padding: '0 12px',
+                  animationDuration: durations[rowIdx],
+                }}
+              >
+                {[...rowCards, ...rowCards].map((card, idx) => (
+                  <div key={idx} className="ai-build-mobile-item" style={{ width: '280px', flexShrink: 0 }}>
+                    <SatCard card={card} />
+                  </div>
+                ))}
+              </div>
+            </div>
+          );
+        })}
       </div>
     </div>
   );
