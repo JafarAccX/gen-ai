@@ -100,6 +100,20 @@ body {
   animation: scroll-left 30s linear infinite;
 }
 
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-scroll {
+  animation: scroll 30s linear infinite;
+}
+
 /* Scroll-reveal: fade up */
 @keyframes fade-up-in {
   from {
@@ -729,6 +743,17 @@ body {
     line-height: 30px !important;
   }
 
+  /* CTA form group: stack email + button vertically */
+  #cta-form-group {
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 10px !important;
+  }
+
+  #cta-form-group > div {
+    width: 100% !important;
+  }
+
   /* Tool Stack rows — compact on mobile */
   .tools-row {
     flex-direction: row !important;
@@ -883,6 +908,17 @@ body {
   .cta-content p {
     font-size: 13px !important;
     line-height: 1.6 !important;
+  }
+
+  /* CTA form group: stack email + button vertically on small phones */
+  #cta-form-group {
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 10px !important;
+  }
+
+  #cta-form-group > div {
+    width: 100% !important;
   }
 
   /* Program cards */
@@ -1062,6 +1098,8 @@ body {
   div[style*="maxWidth: '1300px'"],
   div[style*="max-width: 1248px"],
   div[style*="maxWidth: '1248px'"],
+  div[style*="max-width: 1239px"],
+  div[style*="maxWidth: '1239px'"],
   div[style*="max-width: 1188px"],
   div[style*="maxWidth: '1188px'"],
   div[style*="max-width: 1041px"],
