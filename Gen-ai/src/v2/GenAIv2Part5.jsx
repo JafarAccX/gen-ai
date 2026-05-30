@@ -1,4 +1,7 @@
+import React, { useRef, useState, useCallback } from "react";
+import { Cpu, Bot, Mic, Code2, Activity, Zap } from "lucide-react";
 import { CheckSvg, CheckSvg16 } from "./GenAIv2Constants";
+import MobileMarquee from "../components/MobileMarquee";
 
 /* ─── shared section wrapper ─── */
 const SectionWrap = ({ children, className = "", id = "" }) => (
@@ -70,8 +73,8 @@ export const Mentors = ({ mentors }) => (
       sub="Senior AI engineers and product leaders from Apple, Meesho, and India's top startups. Each cohort gets a 1:8 mentor:learner ratio for capstone reviews."
     />
     <div className="mentors-track">
-      <div className="mentors-scroll">
-        {[...mentors, ...mentors, ...mentors, ...mentors].map((m, i) => (
+      <MobileMarquee speed={60} gap={28} resumeDelay={500} pauseOnHover={true}>
+        {mentors.map((m, i) => (
           <div key={i} className="mentor-card">
             {/* Main Card with Left-Fade */}
             <div className="mentor-card-body">
@@ -111,44 +114,344 @@ export const Mentors = ({ mentors }) => (
             </div>
           </div>
         ))}
-      </div>
+      </MobileMarquee>
     </div>
   </SectionWrap>
 );
 
 /* ─── Tool Stack ─── */
 const toolCategories = [
-  { l: "Foundation Models", t: ["GPT-5.5", "Claude Opus 4.7", "Gemini 2.5 Pro", "DeepSeek V3", "Llama 3.2", "Mistral Large"] },
-  { l: "Agent Frameworks", t: ["LangGraph", "CrewAI", "OpenAI Agents SDK", "AutoGen", "DSPy", "LlamaIndex"] },
-  { l: "Voice AI", t: ["Vapi", "ElevenLabs", "Retell AI", "Whisper v3", "Deepgram", "PlayHT"] },
-  { l: "Vibe Coding", t: ["Cursor", "Claude Code", "v0", "Bolt", "Lovable", "Replit Agent"] },
-  { l: "Eval & Observability", t: ["RAGAS", "DeepEval", "LangSmith", "LangFuse", "Phoenix", "W&B"] },
-  { l: "Automation & No-Code", t: ["N8N", "Make", "Zapier AI", "Flowise", "Voiceflow", "Bubble"] },
+  { 
+    l: "Foundation Models", 
+    icon: Cpu,
+    t: ["GPT-5.5", "Claude Opus 4.7", "Gemini 2.5 Pro", "DeepSeek V3", "Llama 3.2", "Mistral Large"] 
+  },
+  { 
+    l: "Agent Frameworks", 
+    icon: Bot,
+    t: ["LangGraph", "CrewAI", "OpenAI Agents SDK", "AutoGen", "DSPy", "LlamaIndex"] 
+  },
+  { 
+    l: "Voice AI", 
+    icon: Mic,
+    t: ["Vapi", "ElevenLabs", "Retell AI", "Whisper v3", "Deepgram", "PlayHT"] 
+  },
+  { 
+    l: "Vibe Coding", 
+    icon: Code2,
+    t: ["Cursor", "Claude Code", "v0", "Bolt", "Lovable", "Replit Agent"] 
+  },
+  { 
+    l: "Eval & Observability", 
+    icon: Activity,
+    t: ["RAGAS", "DeepEval", "LangSmith", "LangFuse", "Phoenix", "W&B"] 
+  },
+  { 
+    l: "Automation & No-Code", 
+    icon: Zap,
+    t: ["N8N", "Make", "Zapier AI", "Flowise", "Voiceflow", "Bubble"] 
+  },
 ];
 
+function ToolMarqueeTrack({ category, rowIndex }) {
+  const trackRef = useRef(null);
+  const [isDragging, setIsDragging] = useState(false);
+  const dragState = useRef({
+    startX: 0,
+    currentTranslateX: 0,
+    lastTranslateX: 0,
+  });
+
+  const speed = rowIndex % 2 === 0 ? 40 : 45;
+
+  const getCurrentTranslateX = useCallback(() => {
+    if (!trackRef.current) return 0;
+    const style = window.getComputedStyle(trackRef.current);
+    const matrix = style.transform;
+    if (matrix === 'none' || !matrix) return 0;
+    const values = matrix.match(/matrix.*\((.+)\)/);
+    if (values && values[1]) {
+      const parts = values[1].split(', ');
+      return parseFloat(parts[4]) || 0;
+    }
+    return 0;
+  }, []);
+
+  const pauseAnimation = useCallback(() => {
+    if (!trackRef.current) return;
+    const currentX = getCurrentTranslateX();
+    dragState.current.currentTranslateX = currentX;
+    dragState.current.lastTranslateX = currentX;
+    trackRef.current.style.animationPlayState = 'paused';
+    trackRef.current.style.transform = `translateX(${currentX}px)`;
+    trackRef.current.style.animation = 'none';
+  }, [getCurrentTranslateX]);
+
+  const resumeAnimation = useCallback(() => {
+    if (!trackRef.current) return;
+    const el = trackRef.current;
+    const totalWidth = el.scrollWidth / 2;
+    const currentX = dragState.current.currentTranslateX;
+    let normalizedX = currentX % totalWidth;
+    if (normalizedX > 0) normalizedX -= totalWidth;
+    const progress = Math.abs(normalizedX) / totalWidth;
+
+    el.style.transform = `translateX(${normalizedX}px)`;
+    void el.offsetHeight;
+    el.style.animation = 'none';
+    void el.offsetHeight;
+    el.style.animation = `scroll-left ${speed}s linear infinite`;
+    el.style.animationDelay = `-${progress * speed}s`;
+    el.style.animationPlayState = 'running';
+    el.style.transform = '';
+  }, [speed]);
+
+  const handleTouchStart = useCallback((e) => {
+    setIsDragging(true);
+    dragState.current.startX = e.touches[0].clientX;
+    pauseAnimation();
+  }, [pauseAnimation]);
+
+  const handleTouchMove = useCallback((e) => {
+    if (!isDragging || !trackRef.current) return;
+    const deltaX = e.touches[0].clientX - dragState.current.startX;
+    const newX = dragState.current.lastTranslateX + deltaX;
+    dragState.current.currentTranslateX = newX;
+    trackRef.current.style.transform = `translateX(${newX}px)`;
+  }, [isDragging]);
+
+  const handleTouchEnd = useCallback(() => {
+    setIsDragging(false);
+    resumeAnimation();
+  }, [resumeAnimation]);
+
+  const CategoryIcon = category.icon;
+
+  return (
+    <div
+      className="tools-marquee-track tool-stack-marquee-container"
+      style={{
+        boxSizing: 'border-box',
+        display: 'flex',
+        flexDirection: 'row',
+        alignItems: 'center',
+        padding: '20px 0px',
+        width: '970px',
+        height: '108px',
+        background: 'rgba(0, 0, 0, 0.01)',
+        border: '1px solid rgba(255, 255, 255, 0.15)',
+        boxShadow: 'inset 80px 0px 40px -20px #0A0A0A, inset -80px 0px 40px -20px #0A0A0A',
+        borderRadius: '4px',
+        flex: 'none',
+        order: 1,
+        flexGrow: 1,
+        overflow: 'hidden',
+        position: 'relative',
+        cursor: isDragging ? 'grabbing' : 'grab',
+        touchAction: 'pan-y',
+      }}
+      onTouchStart={handleTouchStart}
+      onTouchMove={handleTouchMove}
+      onTouchEnd={handleTouchEnd}
+    >
+      <div
+        ref={trackRef}
+        className="animate-scroll-left"
+        style={{
+          display: 'flex',
+          flexDirection: 'row',
+          minWidth: 'max-content',
+          alignItems: 'center',
+          animationDuration: `${speed}s`,
+          animationDirection: 'normal',
+          userSelect: 'none',
+          WebkitUserSelect: 'none',
+        }}
+      >
+        {[...category.t, ...category.t].map((toolName, index) => (
+          <div
+            key={`${rowIndex}-${index}`}
+            style={{
+              boxSizing: 'border-box',
+              display: 'flex',
+              flexDirection: 'row',
+              justifyContent: 'center',
+              alignItems: 'center',
+              padding: '0 24px',
+              width: '194px',
+              height: '68px',
+              background: 'rgba(255, 255, 255, 0.02)',
+              border: '1px solid rgba(255, 255, 255, 0.1)',
+              borderRadius: '12px',
+              flex: 'none',
+              marginRight: '20px',
+              gap: '12px',
+              transition: 'all 0.3s ease',
+            }}
+          >
+            <CategoryIcon size={22} color="rgba(255, 255, 255, 0.8)" />
+            <span
+              style={{
+                fontFamily: 'Inter, sans-serif',
+                fontStyle: 'normal',
+                fontWeight: 400,
+                fontSize: '16.7px',
+                lineHeight: '28px',
+                display: 'flex',
+                alignItems: 'center',
+                letterSpacing: '-0.36px',
+                color: 'rgba(255, 255, 255, 0.8)',
+              }}
+            >
+              {toolName}
+            </span>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 export const ToolStack = () => (
-  <SectionWrap id="tools" className="tools-fluid">
+  <SectionWrap id="tools" className="tools-fluid responsive-section tool-stack-grid-section">
     <SectionHead
       label="2026 Tool Stack"
       heading="Six categories. Updated quarterly. Frontier models within 30 days of release."
       sub="Every tool appears in at least one session activity. The full list is reviewed every quarter — your cohort never trains on yesterday's stack."
     />
-    <div className="tools-rows-v2">
-      {toolCategories.map((row, i) => (
-        <div key={i} className="tool-row-v2">
-          <div className="tool-cat-label-v2">{row.l}</div>
-          <div className="tool-marquee-wrap-v2">
+    <div
+      style={{
+        position: 'relative',
+        width: '1301px',
+        margin: '24px auto 0',
+        display: 'flex',
+        flexDirection: 'column',
+        gap: '24px',
+        zIndex: 10,
+      }}
+    >
+      {toolCategories.map((category, rowIndex) => {
+        const CategoryIcon = category.icon;
+        return (
+          <div
+            key={rowIndex}
+            className="tool-stack-row"
+            style={{
+              display: 'flex',
+              flexDirection: 'row',
+              alignItems: 'center',
+              padding: '0px',
+              width: '1301px',
+              height: '111px',
+            }}
+          >
+            {/* Left Side: Category Title */}
             <div
-              className="tool-marquee-track-v2"
-              style={{ animationDuration: i % 2 === 0 ? '38s' : '44s' }}
+              className="tool-stack-category-left"
+              style={{
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'center',
+                alignItems: 'center',
+                padding: '0px',
+                gap: '21px',
+                width: '331px',
+                height: '111px',
+                flex: 'none',
+                order: 0,
+                flexGrow: 0,
+              }}
             >
-              {[...row.t, ...row.t, ...row.t].map((t, j) => (
-                <span key={j} className="tool-marquee-pill-v2">{t}</span>
+              <h2
+                className="tool-stack-category-title"
+                style={{
+                  width: '331px',
+                  height: 'auto',
+                  fontFamily: 'Inter, sans-serif',
+                  fontStyle: 'normal',
+                  fontWeight: 400,
+                  fontSize: '24px',
+                  lineHeight: '48px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  textAlign: 'left',
+                  letterSpacing: '-0.96px',
+                  color: '#FFFFFF',
+                  margin: 0,
+                }}
+              >
+                {category.l}
+              </h2>
+            </div>
+
+            {/* Desktop static layout: no duplicate items, no scrolling animation */}
+            <div
+              className="tools-marquee-track tool-stack-marquee-container mobile-marquee-desktop-only"
+              style={{
+                boxSizing: 'border-box',
+                display: 'flex',
+                flexDirection: 'row',
+                alignItems: 'center',
+                padding: '20px 16px',
+                width: '970px',
+                height: '108px',
+                background: 'rgba(0, 0, 0, 0.01)',
+                border: '1px solid rgba(255, 255, 255, 0.15)',
+                borderRadius: '4px',
+                flex: 'none',
+                order: 1,
+                flexGrow: 1,
+                position: 'relative',
+                gap: '12px',
+              }}
+            >
+              {category.t.map((toolName, index) => (
+                <div
+                  key={index}
+                  style={{
+                    boxSizing: 'border-box',
+                    display: 'flex',
+                    flexDirection: 'row',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    padding: '0 8px',
+                    height: '68px',
+                    background: 'rgba(255, 255, 255, 0.02)',
+                    border: '1px solid rgba(255, 255, 255, 0.1)',
+                    borderRadius: '12px',
+                    flex: '1 1 0px',
+                    minWidth: '0px',
+                    gap: '8px',
+                    transition: 'all 0.3s ease',
+                  }}
+                  className="tool-stack-card hover:bg-[rgba(255,255,255,0.05)] hover:border-[rgba(255,255,255,0.3)] hover:-translate-y-1 cursor-pointer"
+                >
+                  <CategoryIcon size={22} color="rgba(255, 255, 255, 0.8)" />
+                  <span
+                    style={{
+                      fontFamily: 'Inter, sans-serif',
+                      fontStyle: 'normal',
+                      fontWeight: 400,
+                      fontSize: '14.5px',
+                      lineHeight: '18px',
+                      display: 'block',
+                      letterSpacing: '-0.2px',
+                      color: 'rgba(255, 255, 255, 0.8)',
+                    }}
+                  >
+                    {toolName}
+                  </span>
+                </div>
               ))}
             </div>
+
+            {/* Mobile marquee layout (Animations for mobiles/tablets only) */}
+            <div className="mobile-marquee-mobile-only" style={{ width: '68%', flexGrow: 1 }}>
+              <ToolMarqueeTrack category={category} rowIndex={rowIndex} />
+            </div>
           </div>
-        </div>
-      ))}
+        );
+      })}
     </div>
   </SectionWrap>
 );

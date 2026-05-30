@@ -157,6 +157,7 @@ function ToolMarqueeTrack({
         height: '108px',
         background: 'rgba(0, 0, 0, 0.01)',
         border: '1px solid rgba(255, 255, 255, 0.15)',
+        borderBottom: 'none',
         // Added dual-inset shadows to create vignette masks on both entry and exit points
         boxShadow: 'inset 80px 0px 40px -20px #0A0A0A, inset -80px 0px 40px -20px #0A0A0A',
         borderRadius: '4px',
@@ -273,6 +274,7 @@ export default function ToolStackGrid() {
               height: '111px',
               flex: 'none',
               flexGrow: 0,
+              borderBottom: 'none',
             }}
           >
             <h2

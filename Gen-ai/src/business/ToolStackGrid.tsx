@@ -260,10 +260,9 @@ export default function ToolStackGrid() {
     <div
       className="responsive-section tool-stack-grid-section"
       style={{
-        position: 'absolute',
+        position: 'relative',
         width: '1301px',
-        left: 'calc(50% - 1301px/2 + 0.5px)',
-        top: '7640px', // Placed dynamically below ToolStackHeader
+        margin: '24px auto 0',
         display: 'flex',
         flexDirection: 'column',
         gap: '24px', // Gap between rows
@@ -322,8 +321,71 @@ export default function ToolStackGrid() {
             </h2>
           </div>
 
-          {/* Right Side: Animated Marquee Track of Tools */}
-          <ToolMarqueeTrack category={category} rowIndex={rowIndex} />
+          {/* Desktop static layout: no duplicate items, no scrolling animation */}
+          <div
+            className="tools-marquee-track tool-stack-marquee-container mobile-marquee-desktop-only"
+            style={{
+              boxSizing: 'border-box',
+              display: 'flex',
+              flexDirection: 'row',
+              alignItems: 'center',
+              padding: '20px 16px',
+              width: '970px',
+              height: '108px',
+              background: 'rgba(0, 0, 0, 0.01)',
+              border: '1px solid rgba(255, 255, 255, 0.15)',
+              borderRadius: '4px',
+              flex: 'none',
+              order: 1,
+              flexGrow: 1,
+              position: 'relative',
+              gap: '12px',
+            }}
+          >
+            {category.tools.map((tool, index) => (
+              <div
+                key={index}
+                style={{
+                  boxSizing: 'border-box',
+                  display: 'flex',
+                  flexDirection: 'row',
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                  padding: '0 8px',
+                  height: '68px',
+                  background: 'rgba(255, 255, 255, 0.02)',
+                  border: '1px solid rgba(255, 255, 255, 0.1)',
+                  borderRadius: '12px',
+                  flex: '1 1 0px',
+                  minWidth: '0px',
+                  gap: '8px',
+                  transition: 'all 0.3s ease',
+                }}
+                className="tool-stack-card hover:bg-[rgba(255,255,255,0.05)] hover:border-[rgba(255,255,255,0.3)] hover:-translate-y-1 cursor-pointer"
+              >
+                <tool.icon size={22} color="rgba(255, 255, 255, 0.8)" />
+                <span
+                  style={{
+                    fontFamily: 'Inter, sans-serif',
+                    fontStyle: 'normal',
+                    fontWeight: 400,
+                    fontSize: '14.5px',
+                    lineHeight: '18px',
+                    display: 'block',
+                    letterSpacing: '-0.2px',
+                    color: 'rgba(255, 255, 255, 0.8)',
+                  }}
+                >
+                  {tool.name}
+                </span>
+              </div>
+            ))}
+          </div>
+
+          {/* Mobile marquee layout (Animations for mobiles/tablets only) */}
+          <div className="mobile-marquee-mobile-only" style={{ width: '68%', flexGrow: 1 }}>
+            <ToolMarqueeTrack category={category} rowIndex={rowIndex} />
+          </div>
         </div>
       ))}
     </div>

@@ -77,18 +77,18 @@ export const Hero = ({ activeTrack, setActiveTrack }) => {
             <img className="hero-photo" src="pm1.png" alt="Professional" />
             <img className="ibm-badge" src="assets/ibm.png" alt="In collaboration with IBM" />
             <img className="students-group-badge" src="/assets/happystudents.png" alt="Happy Students" />
-          </div>
-          <div className="float-badge live">
-            <img className="badge-icon" src="assets/liveclasses.png" alt="" />
-            <span className="text">Live Classes</span>
-          </div>
-          <div className="float-badge mentor">
-            <img className="badge-icon" src="assets/mentorconnect.png" alt="" />
-            <span className="text">Mentor Connect</span>
-          </div>
-          <div className="float-badge career">
-            <img className="badge-icon" src="assets/careersupport.png" alt="" />
-            <span className="text">Career Support</span>
+            <div className="float-badge live">
+              <img className="badge-icon" src="assets/liveclasses.png" alt="" />
+              <span className="text">Live Classes</span>
+            </div>
+            <div className="float-badge mentor">
+              <img className="badge-icon" src="assets/mentorconnect.png" alt="" />
+              <span className="text">Mentor Connect</span>
+            </div>
+            <div className="float-badge career">
+              <img className="badge-icon" src="assets/careersupport.png" alt="" />
+              <span className="text">Career Support</span>
+            </div>
           </div>
         </div>
 

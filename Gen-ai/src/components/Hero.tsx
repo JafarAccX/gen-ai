@@ -976,8 +976,8 @@ export default function Hero() {
                         <p className="text-center text-[#94A3B8] text-sm sm:text-base font-medium mb-10 max-w-[500px] mx-auto px-4 font-['Inter']">
                             Our learners are building AI-powered workflows, automation systems, and real-world applications across top companies.
                         </p>
-                        <div className="hero-social-proof-mobile-marquee">
-                            <div className="hero-social-proof-mobile-track">
+                        <div className="hero-social-proof-mobile-marquee" style={{ marginTop: '12px' }}>
+                            <div className="hero-social-proof-mobile-track" style={{ gap: '56px' }}>
                                 {[...mobileSocialProofLogos, ...mobileSocialProofLogos].map((brand, idx) => (
                                     <div key={`${brand.name}-${idx}`} className="hero-social-proof-mobile-logo-item">
                                         {brand.content}

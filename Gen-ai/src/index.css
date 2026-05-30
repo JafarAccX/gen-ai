@@ -643,6 +643,7 @@ html[data-track="tech"] #root>div>* {
 .mobile-marquee-wrapper {
   position: relative;
   width: 100%;
+  padding: 10px 0;
   overflow: hidden;
   -webkit-mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
   mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
@@ -653,6 +654,7 @@ html[data-track="tech"] #root>div>* {
   flex-direction: row;
   align-items: stretch;
   min-width: max-content;
+  max-width: none !important;
   animation: mobile-marquee-scroll 30s linear infinite;
   will-change: transform;
   user-select: none;
@@ -664,6 +666,11 @@ html[data-track="tech"] #root>div>* {
   flex-direction: row;
   align-items: stretch;
   flex-shrink: 0;
+  max-width: none !important;
+}
+
+.mobile-marquee-set>div {
+  max-width: none !important;
 }
 
 .mobile-marquee-mobile-only {
@@ -821,19 +828,24 @@ html[data-track="tech"] #root>div>* {
 
 @media (max-width: 520px) {
   #root>div #cta-form-group {
-    align-items: stretch !important;
-    flex-direction: column !important;
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 10px !important;
+    width: 100% !important;
   }
 
   #root>div #cta-email-input {
-    flex-basis: auto !important;
-    min-width: 0 !important;
-    max-width: none !important;
-    width: 100%;
+    flex: 1 1 auto !important;
+    min-width: 140px !important;
+    max-width: 240px !important;
+    width: auto !important;
   }
 
   #root>div #cta-button-wrapper {
-    width: 100% !important;
+    width: 130px !important;
+    flex: 0 0 auto !important;
   }
 
   #root>div #cta-form-group button {
@@ -887,6 +899,10 @@ html[data-track="tech"] #root>div>* {
     transform: none !important;
     top: auto !important;
     margin: 104px auto 20px !important;
+  }
+
+  .hero .track-toggle {
+    margin-top: 16px !important;
   }
 
   /* -----------------------------------------------------------------------
@@ -964,58 +980,13 @@ html[data-track="tech"] #root>div>* {
     padding-bottom: 40px !important;
   }
 
-  .program-cards-container {
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: center !important;
+  .arch-header-group {
+    margin-bottom: 24px !important;
+  }
+
+  .prog-cards-mobile-marquee {
     width: 100% !important;
-    height: auto !important;
-    padding: 0 8px !important;
-    gap: clamp(24px, 4vw, 36px) !important;
-  }
-
-  .program-card {
-    width: 100% !important;
-    max-width: 400px !important;
-    height: 360px !important;
-    margin: 0 auto !important;
-    position: relative !important;
-  }
-
-  .program-card-bg {
-    position: relative !important;
-    width: 100% !important;
-    max-width: 100% !important;
-    height: 350px !important;
-    left: 0 !important;
-    background-image: none !important;
-    background: linear-gradient(180deg, rgba(255, 255, 255, 0.03) 0%, rgba(252, 100, 1, 0.03) 100%) !important;
-    border: 1px solid rgba(255, 255, 255, 0.1) !important;
-    border-radius: 16px !important;
-    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3) !important;
-  }
-
-  .program-card-bg>div:last-child>div:nth-child(2) {
-    font-size: 16px !important;
-    line-height: 24px !important;
-    margin-bottom: 8px !important;
-  }
-
-  .program-card-bg>div:last-child>div:nth-child(3) {
-    font-size: 13px !important;
-    line-height: 18px !important;
-  }
-
-  .program-card-icon {
-    left: 50% !important;
-    transform: translateX(-50%) !important;
-  }
-
-  .program-card-content {
-    left: 50% !important;
-    transform: translateX(-50%) !important;
-    width: 276px !important;
-    padding-top: 24px !important;
+    overflow: hidden !important;
   }
 
   .arch-header-inner {
@@ -1198,8 +1169,10 @@ html[data-track="tech"] #root>div>* {
   /* -----------------------------------------------------------------------
      5. AI Build Ninja
      ----------------------------------------------------------------------- */
-  .ai-build-ninja-section {
+  .responsive-section.ai-build-ninja-section {
     width: 100% !important;
+    margin-top: 16px !important;
+    padding-top: 12px !important;
   }
 
   .ninja-header-group,
@@ -1452,6 +1425,13 @@ html[data-track="tech"] #root>div>* {
     width: 100% !important;
   }
 
+  /* Let the tech-track Tool Stack marquee bleed to the right screen edge
+     (logos "come from the end of screen") like the business track. */
+  .tool-stack-grid-section .section-inner {
+    padding-right: 0 !important;
+    max-width: none !important;
+  }
+
   .tool-stack-row {
     display: flex !important;
     flex-direction: row !important;
@@ -1495,7 +1475,7 @@ html[data-track="tech"] #root>div>* {
     border-radius: 8px !important;
   }
 
-  .tool-stack-marquee-container > div > div {
+  .tool-stack-marquee-container>div>div {
     width: 124px !important;
     height: 44px !important;
     padding: 0 10px !important;
@@ -1680,17 +1660,19 @@ html[data-track="tech"] #root>div>* {
   }
 
   #cta-form-group {
-    flex-direction: column !important;
-    align-items: stretch !important;
-    gap: 12px !important;
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    gap: 15px !important;
   }
 
   #cta-form-group>div:first-child {
-    width: 100% !important;
+    width: 276px !important;
   }
 
   #cta-form-group>div:last-child {
-    width: 100% !important;
+    width: 160px !important;
   }
 
   #cta-form-group button {
@@ -1909,18 +1891,24 @@ html[data-track="tech"] #root>div>* {
     width: 100% !important;
     height: auto !important;
     overflow: hidden !important;
-    padding-top: 60px !important;
+    margin-top: 16px !important;
+    padding-top: 16px !important;
     padding-bottom: 60px !important;
   }
 
-  .arch-header-group,
+  .arch-header-group {
+    width: 100% !important;
+    height: auto !important;
+    padding: 0 16px !important;
+  }
+
   .arch-header-inner,
   .arch-tag-wrapper,
   .arch-title-wrapper,
   .arch-subtitle-desc {
     width: 100% !important;
     height: auto !important;
-    padding: 0 16px !important;
+    padding: 0 !important;
   }
 
   .arch-title-heading {
@@ -1932,45 +1920,7 @@ html[data-track="tech"] #root>div>* {
     height: auto !important;
   }
 
-  .program-cards-container {
-    width: 100% !important;
-    height: auto !important;
-    flex-direction: column !important;
-    align-items: center !important;
-    gap: 24px !important;
-  }
-
-  .program-card {
-    width: 100% !important;
-    max-width: 350px !important;
-    height: 380px !important;
-    margin: 0 !important;
-    z-index: 1 !important;
-  }
-
-  .program-card-bg {
-    width: 100% !important;
-    height: 100% !important;
-    left: 0 !important;
-    background-size: 100% 100% !important;
-  }
-
-  .program-card-icon {
-    left: 50% !important;
-    transform: translateX(-50%) !important;
-  }
-
-  .program-card-content {
-    width: 100% !important;
-    left: 0 !important;
-    padding-left: 20px !important;
-    padding-right: 20px !important;
-  }
-
-  .program-card-tags-wrapper {
-    width: 100% !important;
-    padding: 0 16px !important;
-  }
+  /* Stale .program-card* overrides removed — marquee cards now use .prog-* classes */
 }
 
 /* ==========================================================================
@@ -2406,5 +2356,400 @@ html[data-track="tech"] #root>div>* {
     top: -95px !important;
     width: 320px !important;
     height: 380px !important;
+  }
+}
+
+/* Floating Badges for Business and Tech Track Hero Cards */
+.float-badge {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  padding: 8px 16px;
+  gap: 8px;
+  background: #fff;
+  border-radius: 9999px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  z-index: 30;
+  transition: transform .3s;
+  width: auto;
+  height: auto;
+}
+
+.float-badge:hover {
+  transform: scale(1.05);
+}
+
+.float-badge img.badge-icon {
+  width: 16px;
+  height: 16px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+.float-badge .text {
+  font-weight: 600;
+  font-size: 13px;
+  font-family: 'Inter', sans-serif;
+  white-space: nowrap;
+}
+
+.float-badge.live {
+  top: 44%;
+  left: 16px;
+}
+
+.float-badge.live .text {
+  color: #1CA425;
+}
+
+.float-badge.mentor {
+  top: 56%;
+  right: 16px;
+}
+
+.float-badge.mentor .text {
+  color: #F96736;
+}
+
+.float-badge.career {
+  bottom: 14%;
+  left: 16px;
+}
+
+.float-badge.career .text {
+  color: #4C5BFA;
+}
+
+/* Floating badges responsive rules for mobile/smaller screens */
+@media (max-width: 640px) {
+  .float-badge {
+    padding: 5px 10px;
+    gap: 6px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+  }
+
+  .float-badge img.badge-icon {
+    width: 14px;
+    height: 14px;
+  }
+
+  .float-badge .text {
+    font-size: 11px;
+  }
+
+  .float-badge.live {
+    top: 38%;
+    left: 10px;
+  }
+
+  .float-badge.mentor {
+    top: 50%;
+    right: 10px;
+  }
+
+  .float-badge.career {
+    bottom: 12%;
+    left: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .float-badge {
+    display: flex;
+    padding: 4px 9px;
+    gap: 5px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.12);
+  }
+
+  .float-badge img.badge-icon {
+    width: 11px;
+    height: 11px;
+  }
+
+  .float-badge .text {
+    font-size: 10px;
+  }
+
+  .float-badge.live {
+    top: 44%;
+    left: 8px;
+  }
+
+  .float-badge.mentor {
+    top: 56%;
+    right: 8px;
+  }
+
+  .float-badge.career {
+    bottom: 14%;
+    left: 8px;
+  }
+}
+
+/* Business Track Hero Card Structure (Identical to Tech Track but with Dark Theme Gradient) */
+.business-hero-card {
+  position: relative;
+  width: 100%;
+  max-width: 609px;
+  aspect-ratio: 609/683;
+  max-height: 683px;
+  background: linear-gradient(180deg, #000000 0%, #FC6401 100%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  overflow: hidden;
+  z-index: 10;
+  box-shadow: 0 30px 60px -20px rgba(252, 100, 1, 0.25);
+}
+
+.business-hero-card img.hero-photo {
+  position: absolute;
+  bottom: -28px;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 100%;
+  width: auto;
+  object-fit: contain;
+  scale: 1.05;
+  z-index: 1;
+}
+
+.business-hero-card img.ibm-badge {
+  position: absolute;
+  top: 4%;
+  right: 4%;
+  max-height: 52px;
+  width: auto;
+  object-fit: contain;
+  z-index: 2;
+}
+
+.business-hero-card .students-group-badge {
+  position: absolute;
+  top: 24px;
+  left: 24px;
+  width: 172px;
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* Responsive rules for Business Track card */
+@media (max-width: 1024px) {
+  .business-hero-card {
+    max-width: 480px;
+    height: auto;
+    max-height: 520px;
+    border-radius: 24px;
+  }
+
+  .business-hero-card img.hero-photo {
+    bottom: -15px;
+  }
+
+  .business-hero-card .students-group-badge {
+    width: 140px;
+    top: 16px;
+    left: 16px;
+  }
+
+  .business-hero-card img.ibm-badge {
+    max-height: 48px;
+  }
+}
+
+@media (max-width: 640px) {
+  .business-hero-card {
+    max-width: 340px;
+    max-height: 400px;
+    border-radius: 20px;
+  }
+
+  .business-hero-card .students-group-badge {
+    width: 110px;
+    top: 12px;
+    left: 12px;
+  }
+
+  .business-hero-card img.ibm-badge {
+    max-height: 40px;
+  }
+}
+
+@media (max-width: 480px) {
+  .business-hero-card {
+    max-width: 280px;
+    max-height: 340px;
+    border-radius: 18px;
+  }
+
+  .business-hero-card .students-group-badge {
+    width: 90px;
+    top: 10px;
+    left: 10px;
+  }
+
+  .business-hero-card img.ibm-badge {
+    max-height: 36px;
+    right: 3%;
+    top: 4%;
+  }
+}
+
+@media (max-width: 360px) {
+  .business-hero-card {
+    max-width: 260px;
+    max-height: 310px;
+    border-radius: 16px;
+  }
+
+  .business-hero-card .students-group-badge {
+    width: 80px;
+  }
+
+  .business-hero-card img.ibm-badge {
+    max-height: 30px;
+  }
+}
+
+/* Scoped dark-theme styling overrides for the Business Track stats-bar and company logo section */
+.business-hero-section .stats-bar {
+  background: rgba(255, 255, 255, 0.02) !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  backdrop-filter: blur(1.5px) !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4) !important;
+  margin-top: 16px;
+  margin-bottom: 24px;
+}
+
+.business-hero-section .stat {
+  border-right: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+.business-hero-section .stat:last-child {
+  border-right: none !important;
+}
+
+.business-hero-section .stat-icon {
+  background: rgba(255, 255, 255, 0.04) !important;
+}
+
+.business-hero-section .stat-label {
+  color: #ffffff !important;
+}
+
+.business-hero-section .stat-sub {
+  color: #a0a8b8 !important;
+}
+
+.business-hero-section .learners-label {
+  color: #9c9c9c !important;
+  text-align: center;
+}
+
+.business-hero-section .learners-logos {
+  max-width: 679px;
+  margin-bottom: 24px;
+}
+
+.business-hero-section .logo-set {
+  opacity: 0.6;
+}
+
+.business-hero-section .logo-set img {
+  filter: brightness(0) invert(1) !important;
+  /* Ensure image logos are clean white on dark background */
+}
+
+.business-hero-section .logo-set .gov-item {
+  color: #ffffff !important;
+}
+
+.business-hero-section .learners-logos::before {
+  background: linear-gradient(90deg, #000000, transparent) !important;
+}
+
+.business-hero-section .learners-logos::after {
+  background: linear-gradient(270deg, #000000, transparent) !important;
+}
+
+/* Scoped dark-theme styling overrides for the Business Track hero CTAs */
+.business-hero-section .hero-ctas .cta-pill,
+.business-hero-section .hero-ctas .cta-arrow {
+  background: #FC6401 !important;
+  color: #ffffff !important;
+}
+
+.business-hero-section .hero-ctas .cta-link {
+  color: #ffffff !important;
+  border-bottom-color: #FC6401 !important;
+}
+
+.business-hero-section .hero-ctas .cta-link svg {
+  stroke: #ffffff !important;
+}
+
+/* Ensure mobile CTA buttons are horizontal and side-by-side on all screens <= 480px */
+@media (max-width: 480px) {
+  .hero-ctas {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    justify-content: center !important;
+    align-items: center !important;
+    gap: 8px !important;
+    width: 100% !important;
+  }
+
+  .cta-primary {
+    width: auto !important;
+    justify-content: center !important;
+  }
+
+  .cta-pill {
+    font-size: 11px !important;
+    padding: 8px 12px !important;
+    line-height: 20px !important;
+    width: auto !important;
+  }
+
+  .cta-arrow {
+    width: 32px !important;
+    height: 32px !important;
+  }
+
+  .cta-arrow svg {
+    width: 16px !important;
+    height: 16px !important;
+  }
+
+  .cta-link {
+    font-size: 12px !important;
+    justify-content: center !important;
+    white-space: nowrap !important;
+    gap: 4px !important;
+  }
+
+  .cta-link svg {
+    width: 16px !important;
+    height: 16px !important;
+  }
+}
+
+/* Reduce large vertical gap between Mentors and Tool Stack sections on responsive screens */
+@media (max-width: 1279px) {
+  .tool-stack-header-section {
+    margin-top: 8px !important;
+  }
+
+  .tool-stack-grid-section {
+    margin-top: 0px !important;
+  }
+
+  .mentors-fluid {
+    padding-bottom: 8px !important;
+  }
+
+  .tools-fluid.tool-stack-grid-section {
+    padding-top: 16px !important;
   }
 }

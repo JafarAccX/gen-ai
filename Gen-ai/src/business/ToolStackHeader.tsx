@@ -11,11 +11,11 @@ export default function ToolStackHeader() {
         alignItems: 'center', // visually centered
         padding: '0px',
         gap: '24px',
-        position: 'absolute',
-        width: '1239px',
-        height: '140px',
-        left: 'calc(50% - 1239px / 2)', // Centered horizontally (matches left: 101px on 1440px canvas)
-        top: '7450px', // Placed perfectly below the Mentors Profile section
+        position: 'relative',
+        width: '100%',
+        maxWidth: '1239px',
+        height: 'auto',
+        margin: '60px auto 0',
         zIndex: 10,
       }}
     >
@@ -41,6 +41,7 @@ export default function ToolStackHeader() {
             lineHeight: '16px',
             display: 'flex',
             alignItems: 'center',
+            justifyContent: 'center',
             letterSpacing: '1.2px',
             textTransform: 'uppercase',
             background: 'linear-gradient(90deg, #3E38E0 0%, #F7921E 100%)',
@@ -60,9 +61,9 @@ export default function ToolStackHeader() {
           flexDirection: 'column',
           alignItems: 'center',
           padding: '0px',
-          gap: '6px',
-          width: '1239px',
-          height: '104px',
+          gap: '12px',
+          width: '100%',
+          height: 'auto',
         }}
       >
         {/* Main Heading */}
@@ -70,15 +71,17 @@ export default function ToolStackHeader() {
           style={{
             margin: 0,
             padding: 0,
-            width: 'fit-content',
-            height: '60px',
+            width: '100%',
+            maxWidth: '900px',
+            height: 'auto',
             fontFamily: 'Inter, sans-serif',
             fontStyle: 'normal',
             fontWeight: 500,
             fontSize: '32px',
-            lineHeight: '60px',
+            lineHeight: '1.3',
             display: 'flex',
             alignItems: 'center',
+            justifyContent: 'center',
             textAlign: 'center',
             color: '#F5F7FF',
           }}
@@ -91,19 +94,19 @@ export default function ToolStackHeader() {
           style={{
             margin: 0,
             padding: 0,
-            width: '679px',
-            height: '38px',
+            width: '100%',
+            maxWidth: '679px',
+            height: 'auto',
             fontFamily: 'Inter, sans-serif',
             fontStyle: 'normal',
             fontWeight: 500,
             fontSize: '16px',
-            lineHeight: '19px',
+            lineHeight: '24px',
             textAlign: 'center',
             color: '#C2C2C2',
           }}
         >
-          Every tool appears in at least one session activity. The full list is reviewed every quarter
-          your cohort never trains on yesterday's stack.
+          Every tool appears in at least one session activity. The full list is reviewed every quarter — your cohort never trains on yesterday's stack.
         </p>
       </div>
     </div>

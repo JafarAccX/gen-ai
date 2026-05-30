@@ -39,13 +39,12 @@ export default function OutcomesHiring() {
       style={{
         display: 'flex',
         flexDirection: 'column',
-        alignItems: 'flex-start',
+        alignItems: 'center',
         padding: 0,
         gap: '40px',
-        position: 'absolute',
+        position: 'relative',
         width: '1276px',
-        left: '85px',
-        top: '6000px',
+        margin: '60px auto 0',
       }}
     >
       {/* Header Stack */}

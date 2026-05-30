@@ -200,8 +200,8 @@ export default function Curriculum() {
 
   return (
     <div
-      className="responsive-section curriculum-section absolute flex flex-col items-center p-0 gap-[48px] w-[1276px]"
-      style={{ left: 'calc(50% - 1276px / 2)', top: '2050px', paddingBottom: '120px' }}
+      className="responsive-section curriculum-section relative flex flex-col items-center p-0 gap-[48px] w-[1276px]"
+      style={{ margin: '60px auto 0', paddingBottom: '120px' }}
     >
       {/* Header Group */}
       <div className="curr-header-group flex flex-col items-center p-0 gap-[20px] w-[1188px] h-[96px] flex-none order-0 grow-0">

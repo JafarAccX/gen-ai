@@ -733,6 +733,7 @@ body {
   box-shadow: 0 30px 60px -20px rgba(150, 67, 13, 0.25);
 }
 
+
 .hero-card img.hero-photo {
   position: absolute;
   bottom: -28px;
@@ -772,8 +773,8 @@ body {
   position: absolute;
   display: flex;
   align-items: center;
-  padding: 10px 20px;
-  gap: 12px;
+  padding: 8px 16px;
+  gap: 8px;
   background: #fff;
   border-radius: 9999px;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
@@ -789,46 +790,43 @@ body {
 }
 
 .float-badge img.badge-icon {
-  width: 20px;
-  height: 20px;
+  width: 16px;
+  height: 16px;
   object-fit: contain;
   flex-shrink: 0
 }
 
+.float-badge .text {
+  font-weight: 600;
+  font-size: 13px;
+  white-space: nowrap
+}
+
 .float-badge.live {
-  top: 300px;
+  top: 44%;
   left: 16px
 }
 
 .float-badge.live .text {
-  font-weight: 600;
-  font-size: 15px;
   color: #1CA425;
-  white-space: nowrap
 }
 
 .float-badge.mentor {
-  top: 385px;
+  top: 56%;
   right: 16px
 }
 
 .float-badge.mentor .text {
-  font-weight: 600;
-  font-size: 15px;
   color: #F96736;
-  white-space: nowrap
 }
 
 .float-badge.career {
-  bottom: 95px;
+  bottom: 14%;
   left: 16px
 }
 
 .float-badge.career .text {
-  font-weight: 600;
-  font-size: 15px;
   color: #4C5BFA;
-  white-space: nowrap
 }
 
 /* ── SOCIAL PROOF ── */
@@ -1126,6 +1124,19 @@ body {
   display: flex;
   gap: 24px;
   align-items: center
+}
+
+.curr-left-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.curr-title-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
 }
 
 .curr-num {
@@ -1654,7 +1665,8 @@ body {
   left: 50%;
   transform: translateX(-50%);
   width: 181px;
-  height: 58px;
+  min-height: 58px;
+  height: auto;
   z-index: 50;
   border-radius: 35px;
   padding: 6px 14px;
@@ -3221,31 +3233,31 @@ body {
 
   /* Floating badges reposition relative to hero card */
   .float-badge {
-    padding: 8px 16px;
-    gap: 10px;
+    padding: 7px 12px;
+    gap: 7px;
   }
 
   .float-badge img.badge-icon {
-    width: 18px;
-    height: 18px;
+    width: 16px;
+    height: 16px;
   }
 
   .float-badge .text {
-    font-size: 13px;
+    font-size: 12px;
   }
 
   .float-badge.live {
-    top: 200px;
+    top: 44%;
     left: 12px;
   }
 
   .float-badge.mentor {
-    top: 260px;
+    top: 56%;
     right: 12px;
   }
 
   .float-badge.career {
-    bottom: 60px;
+    bottom: 14%;
     left: 12px;
   }
 
@@ -3492,10 +3504,11 @@ body {
     max-height: 40px;
   }
 
-  /* Floating badges — tighter to card */
+  /* Floating badges — compact for mobile card */
   .float-badge {
-    padding: 6px 12px;
-    gap: 8px;
+    padding: 5px 10px;
+    gap: 6px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.12);
   }
 
   .float-badge img.badge-icon {
@@ -3667,9 +3680,20 @@ body {
     display: none;
   }
 
+  .curr-title-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    gap: 12px;
+  }
+
   .curr-title {
     font-size: 16px;
     line-height: 24px;
+    flex: 1;
+    min-width: 0;
   }
 
   .curr-num {
@@ -3816,7 +3840,7 @@ body {
   }
 
   .mentors-track {
-    height: 285px;
+    height: 269px;
   }
 
   .mentors-scroll {
@@ -3857,7 +3881,8 @@ body {
 
   .mentor-info-pill {
     width: 164px;
-    height: 53px;
+    min-height: 53px;
+    height: auto;
     left: 50%;
     transform: translateX(-50%);
   }
@@ -4085,14 +4110,18 @@ body {
 
   /* CTA form group — mobile */
   .cta-form-group {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 12px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
   }
 
   .cta-email-input {
-    width: 100%;
-    max-width: 280px;
+    flex: 1 1 auto;
+    min-width: 140px;
+    max-width: 240px;
+    width: auto;
   }
 }
 
@@ -4223,39 +4252,80 @@ body {
     top: 4%;
   }
 
-  /* Floating badges — hide on very small screens to prevent overflow */
+  /* Floating badges — compact on small screens */
   .float-badge {
-    display: none;
+    display: flex;
+    padding: 4px 9px;
+    gap: 5px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.12);
+  }
+
+  .float-badge img.badge-icon {
+    width: 11px;
+    height: 11px;
+  }
+
+  .float-badge .text {
+    font-size: 10px;
+  }
+
+  .float-badge.live {
+    top: 44%;
+    left: 8px;
+  }
+
+  .float-badge.mentor {
+    top: 56%;
+    right: 8px;
+  }
+
+  .float-badge.career {
+    bottom: 14%;
+    left: 8px;
   }
 
   /* CTAs */
   .hero-ctas {
-    flex-direction: column;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
     align-items: center;
-    gap: 10px;
+    gap: 8px;
     width: 100%;
   }
 
   .cta-primary {
-    width: 100%;
+    width: auto;
     justify-content: center;
   }
 
   .cta-pill {
-    font-size: 13px;
-    padding: 10px 18px;
-    line-height: 24px;
+    font-size: 11px;
+    padding: 8px 12px;
+    line-height: 20px;
     width: auto;
   }
 
   .cta-arrow {
-    width: 38px;
-    height: 38px;
+    width: 32px;
+    height: 32px;
+  }
+
+  .cta-arrow svg {
+    width: 16px;
+    height: 16px;
   }
 
   .cta-link {
-    font-size: 14px;
+    font-size: 12px;
     justify-content: center;
+    white-space: nowrap;
+    gap: 4px;
+  }
+
+  .cta-link svg {
+    width: 16px;
+    height: 16px;
   }
 
   /* Social proof */
@@ -4380,6 +4450,8 @@ body {
   .curr-title {
     font-size: 14px;
     line-height: 22px;
+    flex: 1;
+    min-width: 0;
   }
 
   .curr-week-tag {
@@ -4503,7 +4575,7 @@ body {
 
   /* Mentors */
   .mentors-track {
-    height: 255px;
+    height: 229px;
   }
 
   .mentors-scroll {
@@ -4549,7 +4621,8 @@ body {
 
   .mentor-info-pill {
     width: 139px;
-    height: 48px;
+    min-height: 48px;
+    height: auto;
     left: 50%;
     transform: translateX(-50%);
   }
@@ -4959,6 +5032,8 @@ body {
   .curr-title {
     font-size: 13px;
     line-height: 20px;
+    flex: 1;
+    min-width: 0;
   }
 
   .curr-num {
@@ -4999,7 +5074,7 @@ body {
 
   /* Mentors */
   .mentors-track {
-    height: 228px;
+    height: 204px;
   }
 
   .mentors-scroll {
@@ -5045,7 +5120,8 @@ body {
 
   .mentor-info-pill {
     width: 122px;
-    height: 42px;
+    min-height: 42px;
+    height: auto;
     left: 50%;
     transform: translateX(-50%);
     padding: 4px 10px;

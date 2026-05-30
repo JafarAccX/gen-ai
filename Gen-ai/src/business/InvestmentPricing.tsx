@@ -7,11 +7,10 @@ export default function InvestmentPricing() {
     <div
       className="responsive-section investment-pricing-section"
       style={{
-        position: 'absolute',
+        position: 'relative',
         width: '1060px',
         height: '600px',
-        left: 'calc(50% - 1060px / 2)',
-        top: '9589px', // Positioned 216px below InvestmentHeader (9373px)
+        margin: '24px auto 0',
         zIndex: 10,
         display: 'flex',
         flexDirection: 'row',

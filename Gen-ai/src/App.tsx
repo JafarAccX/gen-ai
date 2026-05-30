@@ -40,7 +40,7 @@ function App() {
   }
 
   return (
-    <div className="relative bg-[#000000] text-white" style={{ overflowX: 'clip', minHeight: '11830px' }}>
+    <div className="relative bg-[#000000] text-white" style={{ overflowX: 'clip', minHeight: '100vh' }}>
       <Header />
       <TrackToggle activeTrack={activeTrack} onTrackChange={setActiveTrack} />
       <TrackBadge />
@@ -63,8 +63,8 @@ function App() {
       <div
         className="responsive-section bottom-section-stack"
         style={{
-          position: 'absolute',
-          top: '10252px',
+          position: 'relative',
+          marginTop: '60px',
           width: '100%',
           display: 'flex',
           flexDirection: 'column',

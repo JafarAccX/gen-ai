@@ -5,11 +5,10 @@ export default function OutcomesLogos() {
     <div
       className="responsive-section outcomes-logos-section"
       style={{
-        position: 'absolute',
+        position: 'relative',
         width: '100%',
         height: '80px',
-        top: '6660px', // Perfectly positioned below OutcomesCards
-        left: 0,
+        margin: '24px auto 0',
         overflow: 'hidden',
         display: 'flex',
         flexDirection: 'row',

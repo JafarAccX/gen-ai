@@ -2,8 +2,82 @@ import { FaWhatsapp } from "react-icons/fa";
 import { ASSETS, ALUMNI_LOGOS } from "../constants/GenAIv2Constants";
 
 export default function Hero({ onDownloadBrochure }: { onDownloadBrochure?: () => void }) {
+    const mobileSocialProofLogos = [
+        {
+            name: "Microsoft",
+            content: (
+                <span style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', fontFamily: "'Inter', sans-serif", fontWeight: 600, fontSize: '18px', color: '#EAEAEA', whiteSpace: 'nowrap' }}>
+                    <span style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 9px)', gridTemplateRows: 'repeat(2, 9px)', gap: '2px', flexShrink: 0 }}>
+                        <span style={{ background: '#F25022' }} />
+                        <span style={{ background: '#7FBA00' }} />
+                        <span style={{ background: '#00A4EF' }} />
+                        <span style={{ background: '#FFB900' }} />
+                    </span>
+                    Microsoft
+                </span>
+            ),
+        },
+        {
+            name: "Deloitte",
+            content: (
+                <span style={{ display: 'inline-flex', alignItems: 'center', fontFamily: "'Inter', sans-serif", fontWeight: 800, fontSize: '22px', color: '#EAEAEA', whiteSpace: 'nowrap' }}>
+                    Deloitte
+                    <span style={{ width: 5, height: 5, borderRadius: '50%', background: '#86BC25', marginLeft: 3, alignSelf: 'flex-end', marginBottom: 4 }} />
+                </span>
+            ),
+        },
+        {
+            name: "Paisabazaar",
+            content: (
+                <span style={{ display: 'inline-flex', alignItems: 'center', fontFamily: "'Georgia', serif", fontWeight: 500, fontSize: '20px', color: '#EAEAEA', whiteSpace: 'nowrap' }}>
+                    <em style={{ color: '#0B78FF', fontStyle: 'normal' }}>paisa</em>bazaar
+                    <span style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', width: 24, height: 24, borderRadius: '50%', background: '#0B78FF', color: '#FFFFFF', fontFamily: "'Inter', sans-serif", fontSize: 8, fontWeight: 700, marginLeft: 4, transform: 'rotate(-20deg)' }}>com</span>
+                </span>
+            ),
+        },
+        {
+            name: "Bajaj Finserv",
+            content: (
+                <span style={{ display: 'inline-flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', fontFamily: "'Inter', sans-serif", color: '#EAEAEA', lineHeight: 1, flexShrink: 0 }}>
+                    <span style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', width: 26, height: 22, borderRadius: 6, border: '4px solid #DFDFDF', fontSize: 16, fontWeight: 800, marginBottom: 1 }}>B</span>
+                    <span style={{ fontSize: 10, fontWeight: 800, letterSpacing: 0.5 }}>BAJAJ</span>
+                    <span style={{ fontSize: 9, fontWeight: 800, letterSpacing: 0.2, color: '#FFA000' }}>FINSERV</span>
+                </span>
+            ),
+        },
+        {
+            name: "Indian Government",
+            content: (
+                <span style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', fontFamily: "'Inter', sans-serif", fontWeight: 600, fontSize: '15px', color: '#EAEAEA', whiteSpace: 'nowrap' }}>
+                    <span style={{ fontSize: 16 }}>🇮🇳</span>
+                    Indian Government
+                </span>
+            ),
+        },
+        {
+            name: "Razorpay",
+            content: (
+                <span style={{ display: 'inline-flex', alignItems: 'center', fontFamily: "'Inter', sans-serif", fontSize: '22px', fontWeight: 800, fontStyle: 'italic', color: '#EAEAEA', whiteSpace: 'nowrap' }}>
+                    Razorpay
+                </span>
+            ),
+        },
+        {
+            name: "Mastercard",
+            content: (
+                <span style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', fontFamily: "'Inter', sans-serif", fontSize: '14px', fontWeight: 700, color: '#EAEAEA', whiteSpace: 'nowrap' }}>
+                    <span style={{ position: 'relative', width: 32, height: 20, display: 'inline-block' }}>
+                        <span style={{ position: 'absolute', left: 0, top: 0, width: 20, height: 20, borderRadius: '50%', background: '#EB001B' }} />
+                        <span style={{ position: 'absolute', right: 0, top: 0, width: 20, height: 20, borderRadius: '50%', background: '#F79E1B', opacity: 0.92 }} />
+                    </span>
+                    mastercard
+                </span>
+            ),
+        },
+    ];
+
     return (
-        <section className="w-full relative min-h-[600px] xl:h-[1250px] bg-[#000000] overflow-hidden flex flex-col items-center justify-start xl:justify-center pt-[120px] xl:pt-0 pb-12 xl:pb-0">
+        <section className="business-hero-section w-full relative min-h-[600px] xl:h-[1250px] bg-[#000000] overflow-hidden flex flex-col items-center justify-start xl:justify-center pt-[120px] xl:pt-0 pb-[-10] xl:pb-0">
             {/* Background dots - restricted to hero top part using image */}
             <img
                 src="/assets/dot-vector.png"
@@ -686,32 +760,38 @@ export default function Hero({ onDownloadBrochure }: { onDownloadBrochure?: () =
                             flexGrow: 0,
                             position: 'relative',
                             overflow: 'hidden',
+                            display: 'flex',
+                            alignItems: 'center',
                         }}>
                             {/* Frame 51405 - Logo layout (Animated Track) */}
                             <div style={{
-                                position: 'absolute',
-                                height: '69px',
-                                left: '49px',
-                                top: '13px',
-                                width: 'calc(100% - 49px)', // take up remaining width for scroll
+                                width: '100%',
+                                overflow: 'hidden',
+                                position: 'relative',
                             }}>
-                                <div className="absolute flex h-full min-w-max animate-scroll-left">
+                                <div className="animate-scroll-left" style={{
+                                    display: 'flex',
+                                    flexDirection: 'row',
+                                    minWidth: 'max-content',
+                                    alignItems: 'center',
+                                    gap: '48px',
+                                }}>
                                     {[1, 2].map((key) => (
-                                        <div key={key} style={{ position: 'relative', width: '1325.91px', height: '69px', flexShrink: 0 }}>
+                                        <div key={key} style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', gap: '48px', paddingRight: '48px', flexShrink: 0 }}>
                                             {/* Microsoft */}
-                                            <img src="/assets/microsoft.png" alt="Microsoft" style={{ position: 'absolute', width: '141px', height: '34px', left: '0px', top: '18px', objectFit: 'contain' }} />
+                                            <img src="/assets/microsoft.png" alt="Microsoft" style={{ height: '32px', objectFit: 'contain' }} />
                                             {/* Deloitte */}
-                                            <img src="/assets/deloitte.png" alt="Deloitte" style={{ position: 'absolute', width: '122px', height: '32px', left: '183px', top: '19px', objectFit: 'contain' }} />
+                                            <img src="/assets/deloitte.png" alt="Deloitte" style={{ height: '32px', objectFit: 'contain' }} />
                                             {/* Paisabazaar */}
-                                            <img src="/assets/paisabazaar.png" alt="Paisabazaar" style={{ position: 'absolute', width: '209px', height: '34px', left: '347px', top: '18px', objectFit: 'contain' }} />
+                                            <img src="/assets/paisabazaar.png" alt="Paisabazaar" style={{ height: '32px', objectFit: 'contain' }} />
                                             {/* Bajaj Finserv */}
-                                            <img src="/assets/bajajfinserv.png" alt="Bajaj Finserv" style={{ position: 'absolute', width: '60px', height: '60px', left: '598px', top: '5px', objectFit: 'contain' }} />
+                                            <img src="/assets/bajajfinserv.png" alt="Bajaj Finserv" style={{ height: '48px', objectFit: 'contain' }} />
                                             {/* Indian Government */}
-                                            <img src="/assets/indiangovernment.png" alt="Indian Government" style={{ position: 'absolute', width: '215px', height: '41px', left: '700px', top: '14px', objectFit: 'contain' }} />
+                                            <img src="/assets/indiangovernment.png" alt="Indian Government" style={{ height: '36px', objectFit: 'contain' }} />
                                             {/* Razorpay */}
-                                            <img src="/assets/Razorpay.png" alt="Razorpay" style={{ position: 'absolute', width: '143px', height: '67px', left: '957px', top: '1px', objectFit: 'contain' }} />
+                                            <img src="/assets/Razorpay.png" alt="Razorpay" style={{ height: '48px', objectFit: 'contain' }} />
                                             {/* Mastercard */}
-                                            <img src="/assets/companyLogos/new/mastercard.svg" alt="Mastercard" style={{ position: 'absolute', width: '183.91px', height: '37px', left: '1142px', top: '16px', objectFit: 'contain' }} />
+                                            <img src="/assets/companyLogos/new/mastercard.svg" alt="Mastercard" style={{ height: '36px', objectFit: 'contain' }} />
                                         </div>
                                     ))}
                                 </div>
@@ -725,7 +805,8 @@ export default function Hero({ onDownloadBrochure }: { onDownloadBrochure?: () =
                                 left: '0px',
                                 top: '0px',
                                 background: 'linear-gradient(90deg, #000000 0%, #000000 41.6%, rgba(0, 0, 0, 0) 100%)',
-                                pointerEvents: 'none'
+                                pointerEvents: 'none',
+                                zIndex: 2,
                             }} />
 
                             {/* Rectangle 10046 - Right Fade Gradient Overlay */}
@@ -733,11 +814,12 @@ export default function Hero({ onDownloadBrochure }: { onDownloadBrochure?: () =
                                 position: 'absolute',
                                 width: '175px',
                                 height: '96px',
-                                left: '985px',
+                                right: '0px',
                                 top: '0px',
                                 background: 'linear-gradient(90deg, #000000 0%, #000000 41.6%, rgba(0, 0, 0, 0) 100%)',
                                 transform: 'matrix(-1, 0, 0, 1, 0, 0)',
-                                pointerEvents: 'none'
+                                pointerEvents: 'none',
+                                zIndex: 2,
                             }} />
                         </div>
                     </div>
@@ -764,72 +846,117 @@ export default function Hero({ onDownloadBrochure }: { onDownloadBrochure?: () =
 
                     {/* ② Girl Image Mobile - Shifted here to sit between Title and Content */}
                     <div className="w-full h-auto relative flex justify-center mt-4">
-                        <div className="relative w-full max-w-[320px] sm:max-w-[450px] aspect-[620/650] bg-gradient-to-b from-[#000000] to-[#FC6401] rounded-[21px] border border-[#202020] overflow-hidden shadow-2xl shadow-orange-950/20">
-                            <img src="/pm1.png" alt="Lead AI" className="absolute bottom-[-10px] left-[50%] -translate-x-1/2 h-[92%] w-auto object-contain z-10 pointer-events-none" />
+                        <div className="business-hero-card">
+                            <img className="hero-photo" src="/pm1.png" alt="Lead AI" />
+                            <img className="ibm-badge" src="/Logo Prototype 1.png" alt="In collaboration with IBM" />
+                            <img className="students-group-badge" src="/assets/happystudents.png" alt="Happy Students" />
+                            <div className="float-badge live">
+                                <img className="badge-icon" src="/assets/liveclasses.png" alt="" />
+                                <span className="text">Live Classes</span>
+                            </div>
+                            <div className="float-badge mentor">
+                                <img className="badge-icon" src="/assets/mentorconnect.png" alt="" />
+                                <span className="text">Mentor Connect</span>
+                            </div>
+                            <div className="float-badge career">
+                                <img className="badge-icon" src="/assets/careersupport.png" alt="" />
+                                <span className="text">Career Support</span>
+                            </div>
                         </div>
                     </div>
 
-                    {/* ③ Metrics Card Mobile - Forced horizontal */}
-                    <div className="hero-metrics-card w-full max-w-[720px] rounded-[16px] flex flex-row items-stretch justify-between py-3 px-2 sm:px-4 gap-1 sm:gap-4 relative overflow-hidden border border-white/[0.08] bg-white/[0.02] backdrop-blur-md select-none mt-2">
-                        {/* 16 weeks */}
-                        <div className="flex-1 flex flex-col items-center justify-center text-center px-1 border-r border-white/10">
-                            <span className="text-[13px] sm:text-[16px] font-bold text-white font-['Inter'] leading-tight">16 weeks</span>
-                            <span className="text-[9px] sm:text-[11px] text-[#7C7C7C] font-['Inter'] mt-1">3 tracks · 48+ live sessions</span>
-                        </div>
-                        {/* 16 ships */}
-                        <div className="flex-1 flex flex-col items-center justify-center text-center px-1 border-r border-white/10">
-                            <span className="text-[13px] sm:text-[16px] font-bold text-white font-['Inter'] leading-tight">16 ships</span>
-                            <span className="text-[9px] sm:text-[11px] text-[#7C7C7C] font-['Inter'] mt-1">Saturday domain projects</span>
-                        </div>
-                        {/* Price */}
-                        <div className="flex-1 flex flex-col items-center justify-center text-center px-1">
-                            <span className="text-[13px] sm:text-[16px] font-bold text-white font-['Inter'] leading-tight">₹1,25,000</span>
-                            <span className="text-[9px] sm:text-[11px] text-[#7C7C7C] font-['Inter'] mt-1">EMI from ₹11,500/mo</span>
-                        </div>
-                    </div>
- 
-                    {/* ④ Company Logos Section Mobile — Sliding Marquee */}
-                    <div className="w-full flex flex-col gap-3 items-center mt-6 overflow-hidden">
-                        <div className="text-[10px] sm:text-[11px] font-bold text-white/60 tracking-[0.1em] uppercase">
-                            LEARNERS WORKING ACROSS 1700+ COMPANIES
-                        </div>
-                        <div className="hero-mobile-logos-marquee relative w-full max-w-[450px] h-[36px] overflow-hidden flex items-center">
-                            <div className="flex h-full min-w-max animate-scroll-left gap-8 pr-8" style={{ animationDuration: '16s' }}>
-                                {/* First Set */}
-                                <div className="flex flex-row items-center gap-8 opacity-60 grayscale brightness-[1.5] flex-shrink-0">
-                                    <img src="/assets/microsoft.png" alt="Microsoft" className="h-[18px] object-contain" />
-                                    <img src="/assets/bajajfinserv.png" alt="Bajaj Finserv" className="h-[18px] object-contain" />
-                                    <img src="/assets/deloitte.png" alt="Deloitte" className="h-[18px] object-contain" />
-                                    <img src="/assets/indiangovernment.png" alt="Indian Government" className="h-[22px] object-contain" />
-                                </div>
-                                {/* Second Set for seamless loop */}
-                                <div className="flex flex-row items-center gap-8 opacity-60 grayscale brightness-[1.5] flex-shrink-0">
-                                    <img src="/assets/microsoft.png" alt="Microsoft" className="h-[18px] object-contain" />
-                                    <img src="/assets/bajajfinserv.png" alt="Bajaj Finserv" className="h-[18px] object-contain" />
-                                    <img src="/assets/deloitte.png" alt="Deloitte" className="h-[18px] object-contain" />
-                                    <img src="/assets/indiangovernment.png" alt="Indian Government" className="h-[22px] object-contain" />
-                                </div>
+                    {/* ③ Metrics Card Mobile - Staged exactly like the Tech Track */}
+                    <div className="stats-bar">
+                        <div className="stat">
+                            <div className="stat-icon">
+                                <svg viewBox="0 0 18 20" fill="none">
+                                    <path d="M0 3a1 1 0 011-1h16a1 1 0 011 1v1H0V3zm0 15h18v1a1 1 0 01-1 1H1a1 1 0 01-1-1v-1zm0-12h18v12H0V6zm12-5a1 1 0 112 0 1 1 0 01-2 0zM4 1a1 1 0 112 0 1 1 0 01-2 0z" fill="url(#bg1)" />
+                                    <defs>
+                                        <linearGradient id="bg1" x1="9" y1="0" x2="9" y2="20" gradientUnits="userSpaceOnUse">
+                                            <stop stopColor="#3E38E0" /><stop offset="1" stopColor="#F7921E" />
+                                        </linearGradient>
+                                    </defs>
+                                </svg>
                             </div>
-                            {/* Gradient Vignettes */}
-                            <div className="absolute top-0 left-0 bottom-0 w-[40px] bg-gradient-to-r from-black to-transparent pointer-events-none z-10" />
-                            <div className="absolute top-0 right-0 bottom-0 w-[40px] bg-gradient-to-l from-black to-transparent pointer-events-none z-10" />
+                            <div>
+                                <div className="stat-label">16 weeks</div>
+                                <div className="stat-sub">3 tracks · 48+ live sessions</div>
+                            </div>
+                        </div>
+                        <div className="stat">
+                            <div className="stat-icon">
+                                <svg viewBox="0 0 20 18" fill="none">
+                                    <rect x="1" y="4" width="18" height="12" rx="2" stroke="url(#bg2)" strokeWidth="1.5" />
+                                    <path d="M6 4V2.5A1.5 1.5 0 017.5 1h5A1.5 1.5 0 0114 2.5V4" stroke="url(#bg2)" strokeWidth="1.5" />
+                                    <path d="M1 9h18" stroke="url(#bg2)" strokeWidth="1.5" />
+                                    <defs>
+                                        <linearGradient id="bg2" x1="10" y1="0" x2="10" y2="18" gradientUnits="userSpaceOnUse">
+                                            <stop stopColor="#3E38E0" /><stop offset="1" stopColor="#F7921E" />
+                                        </linearGradient>
+                                    </defs>
+                                </svg>
+                            </div>
+                            <div>
+                                <div className="stat-label">16 ships</div>
+                                <div className="stat-sub">Saturday domain projects</div>
+                            </div>
+                        </div>
+                        <div className="stat">
+                            <div className="stat-icon">
+                                <svg viewBox="0 0 20 20" fill="none">
+                                    <path d="M10 1l2.5 5.5L18 7l-4.5 4 1.5 6-5-3-5 3 1.5-6L2 7l5.5-.5L10 1z" stroke="url(#bg3)" strokeWidth="1.5" strokeLinejoin="round" />
+                                    <defs>
+                                        <linearGradient id="bg3" x1="10" y1="0" x2="10" y2="20" gradientUnits="userSpaceOnUse">
+                                            <stop stopColor="#3E38E0" /><stop offset="1" stopColor="#F7921E" />
+                                        </linearGradient>
+                                    </defs>
+                                </svg>
+                            </div>
+                            <div>
+                                <div className="stat-label">₹1,25,000</div>
+                                <div className="stat-sub">EMI from ₹11,500/mo</div>
+                            </div>
                         </div>
                     </div>
- 
+
+                    {/* ④ Company Logos Section Mobile — Staged exactly like the Tech Track */}
+                    <div className="learners-label">Learners working across 1700+ companies</div>
+                    <div className="learners-logos">
+                        <div className="logo-track">
+                            <div className="logo-track-inner">
+                                {[0, 1].map(k => (
+                                    <div key={k} className="logo-set">
+                                        <img src="/assets/microsoft.png" alt="Microsoft" style={{ height: 28 }} />
+                                        <span style={{ fontWeight: 700, fontSize: 15, color: '#DFDFDF' }}>BAJAJ <span style={{ color: '#FFA000' }}>FINSERV</span></span>
+                                        <span style={{ fontWeight: 700, fontSize: 18, color: '#FFFFFF' }}>Deloitte<span style={{ display: 'inline-block', width: 6, height: 6, borderRadius: '50%', background: '#86BC25', marginLeft: 2, verticalAlign: 'baseline' }}></span></span>
+                                        <div className="gov-item"><span style={{ fontSize: 16 }}>🇮🇳</span> Indian Government</div>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                    </div>
+
                     {/* ⑤ Actions Mobile */}
-                    <div className="hero-mobile-buttons flex flex-row flex-wrap items-center justify-center gap-4 sm:gap-10 pt-8">
-                        <a href="#apply" className="group flex items-center justify-center cursor-pointer select-none">
-                            <button className="hero-mobile-btn-apply inline-flex items-center justify-center px-6 py-3 min-h-[48px] sm:min-h-[52px] bg-[#FC6401] border-none rounded-full font-bold text-white text-[13px] xs:text-[14px] sm:text-[15px] tracking-wide transition-all duration-300 shadow-[0_4px_20px_rgba(252,100,1,0.2)] w-auto max-w-[90vw]">
-                                Apply for Business Track
-                            </button>
+                    {/* ⑤ Actions Mobile */}
+                    <div className="hero-ctas">
+                        <a href="#apply" className="cta-primary">
+                            <span className="cta-pill">Apply for Business Track</span>
+                            <span className="cta-arrow">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+                                    <path d="M12 19V5" /><path d="M5 12l7-7 7 7" />
+                                </svg>
+                            </span>
                         </a>
-                        <a href="#curriculum" className="hero-mobile-btn-curr group flex items-center gap-2 text-white/90 font-semibold text-[14px] sm:text-[15px] border-b border-white/20 pb-1">
-                            <span>See the curriculum</span>
+                        <a href="#curriculum" className="cta-link">
+                            See the curriculum{" "}
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+                                <path d="M12 19V5" /><path d="M5 12l7-7 7 7" />
+                            </svg>
                         </a>
                     </div>
 
                     {/* ⑥ Social Proof Mobile Section */}
-                    <div className="hero-social-proof-mobile mt-24 border-t border-white/5 pt-16 pb-16 w-full overflow-hidden">
+                    <div className="social-proof border-t border-white/5 w-full overflow-hidden" style={{ marginTop: '48px', paddingTop: '0px', paddingBottom: '30px' }}>
                         <div className="flex justify-center mb-4">
                             <div
                                 className="font-['Open_Sans',sans-serif] font-bold text-[12px] leading-[16px] tracking-[1.2px] uppercase bg-clip-text text-transparent flex gap-0"
@@ -839,17 +966,14 @@ export default function Hero({ onDownloadBrochure }: { onDownloadBrochure?: () =
                             </div>
                         </div>
                         <p className="text-center text-[#F5F7FF] text-xl sm:text-2xl font-medium mb-3 px-4 leading-tight font-['Inter']">Our Alumni Are Working Across 1700+ Top MNCs</p>
-                        <p className="social-proof-subtitle text-center text-[#94A3B8] text-sm sm:text-base font-medium mb-10 max-w-[500px] mx-auto px-4 font-['Inter']">
+                        <p className="text-center text-[#94A3B8] text-sm sm:text-base font-medium max-w-[500px] mx-auto px-4 font-['Inter']" style={{ marginBottom: '16px' }}>
                             Our learners are building AI-powered workflows, automation systems, and real-world applications across top companies.
                         </p>
-                        <div className="social-proof-logos-wrapper relative w-full overflow-hidden mt-8 mb-4" style={{
-                            WebkitMaskImage: 'linear-gradient(to right, transparent, black 15%, black 85%, transparent)',
-                            maskImage: 'linear-gradient(to right, transparent, black 15%, black 85%, transparent)',
-                        }}>
-                            <div className="flex w-max gap-12 sm:gap-16 animate-scroll">
-                                {[...ALUMNI_LOGOS, ...ALUMNI_LOGOS].map((brand, idx) => (
-                                    <div key={`${brand.name}-${idx}`} className="flex items-center justify-center px-6 sm:px-8">
-                                        <img src={brand.url} alt={brand.name} loading="lazy" style={{ height: '24px' }} className="object-contain" />
+                        <div className="hero-social-proof-mobile-marquee" style={{ marginTop: '12px' }}>
+                            <div className="hero-social-proof-mobile-track" style={{ gap: '56px' }}>
+                                {[...mobileSocialProofLogos, ...mobileSocialProofLogos].map((brand, idx) => (
+                                    <div key={`${brand.name}-${idx}`} className="hero-social-proof-mobile-logo-item">
+                                        {brand.content}
                                     </div>
                                 ))}
                             </div>

@@ -10,12 +10,12 @@ export default function MentorsHeader() {
         flexDirection: 'column',
         alignItems: 'center',
         padding: '0px',
-        gap: '16px',
-        position: 'absolute',
-        width: '1276px',
-        height: '140px',
-        left: 'calc(50% - 1276px / 2)', // Centered horizontally
-        top: '6850px', // Placed perfectly below OutcomesLogos with elegant gap
+        gap: '24px',
+        position: 'relative',
+        width: '100%',
+        maxWidth: '1276px',
+        height: 'auto',
+        margin: '60px auto 0',
         zIndex: 10,
       }}
     >
@@ -41,6 +41,7 @@ export default function MentorsHeader() {
             lineHeight: '16px',
             display: 'flex',
             alignItems: 'center',
+            justifyContent: 'center',
             letterSpacing: '1.2px',
             textTransform: 'uppercase',
             background: 'linear-gradient(90deg, #3E38E0 0%, #F7921E 100%)',
@@ -60,9 +61,9 @@ export default function MentorsHeader() {
           flexDirection: 'column',
           alignItems: 'center',
           padding: '0px',
-          gap: '6px',
-          width: '1276px',
-          height: '104px',
+          gap: '12px',
+          width: '100%',
+          height: 'auto',
         }}
       >
         {/* Main Heading */}
@@ -70,15 +71,17 @@ export default function MentorsHeader() {
           style={{
             margin: 0,
             padding: 0,
-            width: 'fit-content',
-            height: '60px',
+            width: '100%',
+            maxWidth: '900px',
+            height: 'auto',
             fontFamily: 'Inter, sans-serif',
             fontStyle: 'normal',
             fontWeight: 500,
             fontSize: '32px',
-            lineHeight: '60px',
+            lineHeight: '1.3',
             display: 'flex',
             alignItems: 'center',
+            justifyContent: 'center',
             textAlign: 'center',
             color: '#F5F7FF',
           }}
@@ -91,19 +94,19 @@ export default function MentorsHeader() {
           style={{
             margin: 0,
             padding: 0,
-            width: '835px',
-            height: '38px',
+            width: '100%',
+            maxWidth: '835px',
+            height: 'auto',
             fontFamily: 'Inter, sans-serif',
             fontStyle: 'normal',
             fontWeight: 500,
             fontSize: '16px',
-            lineHeight: '19px',
+            lineHeight: '24px',
             textAlign: 'center',
             color: '#C2C2C2',
           }}
         >
-          Senior AI engineers and product leaders from Apple, Mesha, and India's top startups.
-          Each cohort gets a 1:8 mentor:learner ratio for capstone reviews.
+          Senior AI engineers and product leaders from Apple, Meesho, and India's top startups. Each cohort gets a 1:8 mentor:learner ratio for capstone reviews.
         </p>
       </div>
     </div>

@@ -7,13 +7,12 @@ export default function CapstoneMenu() {
       style={{
         display: 'flex',
         flexDirection: 'column',
-        alignItems: 'flex-start',
+        alignItems: 'center',
         padding: 0,
         gap: '16px',
-        position: 'absolute',
+        position: 'relative',
         width: '1276px',
-        left: 'calc(50% - 1276px / 2)',
-        top: '4985px',
+        margin: '60px auto 0',
       }}
     >
       {/* Container */}

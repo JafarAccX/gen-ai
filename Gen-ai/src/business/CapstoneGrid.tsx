@@ -1,4 +1,5 @@
 import React from 'react';
+import MobileMarquee from '../components/MobileMarquee';
 
 interface CapstoneCardData {
   id: string;
@@ -297,12 +298,6 @@ function CapstoneCard({ card }: { card: CapstoneCardData }) {
 }
 
 export default function CapstoneGrid() {
-  // Group into 2 rows of 4 cards
-  const rows = [
-    capstoneCards.slice(0, 4),
-    capstoneCards.slice(4, 8),
-  ];
-
   return (
     <div
       className="responsive-section capstone-grid-section"
@@ -311,14 +306,13 @@ export default function CapstoneGrid() {
         flexDirection: 'column',
         alignItems: 'center',
         gap: '24px', // Match column gap of 24px
-        position: 'absolute',
+        position: 'relative',
         width: '1348px',
-        left: 'calc(50% - 1348px / 2)',
-        top: '5180px',
+        margin: '24px auto 0',
         paddingBottom: '100px',
       }}
     >
-      {/* Mobile/Tablet: 2 independent marquee rows — row1=[1-4], row2=[5-8] */}
+      {/* Mobile: 2 independent marquee rows (Animations for mobiles/tablets only) */}
       <div
         className="mobile-marquee-mobile-only"
         style={{
@@ -330,71 +324,34 @@ export default function CapstoneGrid() {
       >
         {[0, 1].map((rowIdx) => {
           const rowCards = capstoneCards.slice(rowIdx * 4, rowIdx * 4 + 4);
-          const durations = ['32s', '36s'];
+          const speeds = [32, 36];
           return (
-            <div
-              key={rowIdx}
-              style={{
-                width: '100%',
-                overflow: 'hidden',
-                position: 'relative',
-              }}
-            >
-              <div
-                className="animate-scroll-left"
-                style={{
-                  display: 'flex',
-                  flexDirection: 'row',
-                  minWidth: 'max-content',
-                  gap: '14px',
-                  padding: '0 14px',
-                  animationDuration: durations[rowIdx],
-                }}
-              >
-                {[...rowCards, ...rowCards].map((card, idx) => (
-                  <div key={idx} style={{ width: '310px', flexShrink: 0 }}>
-                    <CapstoneCard card={card} />
-                  </div>
-                ))}
-              </div>
-            </div>
+            <MobileMarquee key={rowIdx} speed={speeds[rowIdx]} gap={14} resumeDelay={4000}>
+              {rowCards.map((card, idx) => (
+                <div key={idx} style={{ width: '310px', flexShrink: 0 }}>
+                  <CapstoneCard card={card} />
+                </div>
+              ))}
+            </MobileMarquee>
           );
         })}
       </div>
 
-      {/* Desktop: 2-row grid */}
+      {/* Desktop: 4-column static grid (No animations) */}
       <div
         className="desktop-only-grid"
         style={{
           width: '100%',
         }}
       >
-        <div
-          style={{
-            display: 'flex',
-            flexDirection: 'column',
-            gap: '24px',
-            width: '100%',
-          }}
-        >
-          {rows.map((row, rowIdx) => (
-            <div
-              key={rowIdx}
-              className="capstone-row"
-              style={{
-                display: 'flex',
-                flexDirection: 'row',
-                gap: '24px',
-                width: '100%',
-                justifyContent: 'center',
-              }}
-            >
-              {row.map((card) => (
-                <div key={card.id} className="capstone-card-wrapper">
-                  <CapstoneCard card={card} />
-                </div>
-              ))}
-            </div>
+        <div style={{
+          width: '100%',
+          display: 'grid',
+          gridTemplateColumns: 'repeat(4, minmax(0, 1fr))',
+          gap: '24px',
+        }}>
+          {capstoneCards.map((card) => (
+            <CapstoneCard key={card.id} card={card} />
           ))}
         </div>
       </div>

@@ -19,10 +19,10 @@ export const Curriculum = ({ modules, openCurr, setOpenCurr }) => {
                 <div className="curr-top">
                   <div className="curr-left">
                     <span className="curr-num">{String(i + 1).padStart(2, "0")}</span>
-                    <div>
-                      <div style={{ display: "flex", alignItems: "center", gap: 8, flexWrap: "wrap" }}>
+                    <div className="curr-left-content">
+                      <div className="curr-title-row">
                         <span className="curr-title">{m.t}</span>
-                        <span className="curr-week-tag">{m.w}</span>
+                        <span className="curr-week-tag">{m.w.replace(/^WEEK 0/, 'WEEK ')}</span>
                       </div>
                     </div>
                   </div>

@@ -10,11 +10,11 @@ export default function InvestmentHeader() {
         alignItems: 'center',
         padding: '0px',
         gap: '24px',
-        position: 'absolute',
-        width: '1239px',
-        height: '140px',
-        left: 'calc(50% - 1239px / 2)',
-        top: '9373px', // Placed precisely below the Alternatives Table
+        position: 'relative',
+        width: '100%',
+        maxWidth: '1239px',
+        height: 'auto',
+        margin: '60px auto 0',
         zIndex: 10,
       }}
     >
@@ -24,9 +24,9 @@ export default function InvestmentHeader() {
           flexDirection: 'column',
           alignItems: 'center',
           padding: '0px',
-          gap: '20px',
-          width: '1239px',
-          height: '140px',
+          gap: '24px',
+          width: '100%',
+          height: 'auto',
         }}
       >
         {/* Top Tag: INVESTMENT */}
@@ -36,7 +36,7 @@ export default function InvestmentHeader() {
             flexDirection: 'column',
             alignItems: 'center',
             padding: '0px',
-            width: '1239px',
+            width: '100%',
             height: '16px',
           }}
         >
@@ -71,22 +71,25 @@ export default function InvestmentHeader() {
             flexDirection: 'column',
             alignItems: 'center',
             padding: '0px',
-            gap: '6px',
-            width: '1239px',
-            height: '104px',
+            gap: '12px',
+            width: '100%',
+            height: 'auto',
           }}
         >
           <div
             style={{
-              width: 'auto',
-              height: '60px',
+              width: '100%',
+              maxWidth: '900px',
+              height: 'auto',
               fontFamily: 'Inter, sans-serif',
               fontStyle: 'normal',
               fontWeight: 500,
               fontSize: '32px',
-              lineHeight: '60px',
+              lineHeight: '1.3',
               display: 'flex',
               alignItems: 'center',
+              justifyContent: 'center',
+              textAlign: 'center',
               color: '#F5F7FF',
             }}
           >
@@ -94,13 +97,14 @@ export default function InvestmentHeader() {
           </div>
           <div
             style={{
-              width: '797px',
-              height: '38px',
+              width: '100%',
+              maxWidth: '797px',
+              height: 'auto',
               fontFamily: 'Inter, sans-serif',
               fontStyle: 'normal',
               fontWeight: 500,
               fontSize: '16px',
-              lineHeight: '19px',
+              lineHeight: '24px',
               textAlign: 'center',
               color: '#C2C2C2',
             }}

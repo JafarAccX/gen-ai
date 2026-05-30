@@ -9,10 +9,12 @@ export default function HonestAnswersHeader() {
         alignItems: 'center',
         padding: '0px',
         position: 'relative',
-        width: '1239px',
-        height: '72px',
+        width: '100%',
+        maxWidth: '1239px',
+        height: 'auto',
         margin: '0 auto',
         zIndex: 10,
+        gap: '12px',
       }}
     >
       <div
@@ -21,13 +23,13 @@ export default function HonestAnswersHeader() {
           flexDirection: 'column',
           alignItems: 'center',
           padding: '0px',
-          width: '1239px',
+          width: '100%',
           height: '16px',
         }}
       >
         <div
           style={{
-            width: '90px',
+            width: 'fit-content',
             height: '16px',
             fontFamily: 'Inter, sans-serif',
             fontStyle: 'normal',
@@ -51,13 +53,14 @@ export default function HonestAnswersHeader() {
 
       <div
         style={{
-          width: '1239px',
-          height: '56px',
+          width: '100%',
+          maxWidth: '1239px',
+          height: 'auto',
           fontFamily: 'Inter, sans-serif',
           fontStyle: 'normal',
           fontWeight: 500,
           fontSize: '32px',
-          lineHeight: '56px',
+          lineHeight: '1.3',
           textAlign: 'center',
           color: '#F5F7FF',
         }}

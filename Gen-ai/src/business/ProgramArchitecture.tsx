@@ -44,7 +44,7 @@ export default function ProgramArchitecture() {
                     padding: '0px',
                     gap: '16px',
                     width: '1041px',
-                    height: '146px',
+                    height: 'auto',
                     zIndex: 10,
                     marginBottom: '54px'
                 }}>
@@ -55,7 +55,7 @@ export default function ProgramArchitecture() {
                         padding: '0px',
                         gap: '20px',
                         width: '1041px',
-                        height: '146px',
+                        height: 'auto',
                         flex: 'none',
                         order: 0,
                         alignSelf: 'stretch',
@@ -104,7 +104,7 @@ export default function ProgramArchitecture() {
                             alignItems: 'center',
                             padding: '0px',
                             width: '1041px',
-                            height: '110px',
+                            height: 'auto',
                             flex: 'none',
                             order: 1,
                             alignSelf: 'stretch',
@@ -132,8 +132,10 @@ export default function ProgramArchitecture() {
                             </h2>
 
                             <p className="arch-subtitle-desc" style={{
-                                width: '1041px',
-                                height: '50px',
+                                width: '100%',
+                                maxWidth: '880px',
+                                height: 'auto',
+                                margin: '0 auto',
                                 fontFamily: "'Inter', sans-serif",
                                 fontStyle: 'normal',
                                 fontWeight: 500,
@@ -152,8 +154,8 @@ export default function ProgramArchitecture() {
                     </div>
                 </div>
 
-                {/* Phase Cards — Desktop */}
-                <div className="mobile-marquee-desktop-only prog-cards-outer" style={{
+                {/* Phase Cards — Desktop (No animations) */}
+                <div className="prog-cards-outer mobile-marquee-desktop-only" style={{
                     display: 'flex',
                     flexDirection: 'row',
                     flexWrap: 'nowrap',
@@ -188,14 +190,14 @@ export default function ProgramArchitecture() {
                                     position: 'absolute',
                                     width: isCenter ? '479px' : '435px',
                                     height: '350px',
-                                    left: isCenter ? '4px' : '0px', // Center the 479px bg in 487px container
+                                    left: isCenter ? '4px' : '0px',
                                     top: '0.3px',
                                     backgroundImage: phase.bgImg,
                                     backgroundSize: 'cover',
                                     backgroundRepeat: 'no-repeat',
                                     backgroundPosition: 'center',
                                 }}>
-                                    {/* Background+Border Icon */}
+                                    {/* Icon */}
                                     <div className="prog-card-icon" style={{
                                         boxSizing: 'border-box',
                                         display: 'flex',
@@ -206,7 +208,7 @@ export default function ProgramArchitecture() {
                                         position: 'absolute',
                                         width: '80px',
                                         height: '80px',
-                                        left: isCenter ? '199.5px' : '177.5px', // Centered horizontally within the card
+                                        left: isCenter ? '199.5px' : '177.5px',
                                         top: '24px',
                                         background: 'linear-gradient(90deg, #0A0A0A 0%, #282828 100%)',
                                         border: '2px solid rgba(255, 255, 255, 0.1)',
@@ -228,7 +230,6 @@ export default function ProgramArchitecture() {
                                         left: isCenter ? '100px' : '79.5px',
                                         top: '104px'
                                     }}>
-                                        {/* Phase Label */}
                                         <div style={{
                                             fontFamily: "'Inter', sans-serif",
                                             fontStyle: 'normal',
@@ -246,8 +247,6 @@ export default function ProgramArchitecture() {
                                         }}>
                                             {phase.phase}
                                         </div>
-
-                                        {/* Title */}
                                         <div style={{
                                             fontFamily: "'Inter', sans-serif",
                                             fontStyle: 'normal',
@@ -263,8 +262,6 @@ export default function ProgramArchitecture() {
                                         }}>
                                             {phase.title}
                                         </div>
-
-                                        {/* Description */}
                                         <div style={{
                                             fontFamily: "'Inter', sans-serif",
                                             fontStyle: 'normal',
@@ -281,7 +278,7 @@ export default function ProgramArchitecture() {
                                         </div>
                                     </div>
 
-                                    {/* Tags - pinned to bottom of card for cross-card alignment */}
+                                    {/* Tags */}
                                     <div className="prog-card-tags" style={{
                                         display: 'flex',
                                         flexDirection: 'row',
@@ -327,16 +324,16 @@ export default function ProgramArchitecture() {
                     })}
                 </div>
 
-                {/* Phase Cards — Mobile Marquee (same card structure as desktop but with dark theme colors) */}
+                {/* Phase Cards — Mobile Marquee (Animations for mobiles/tablets only) */}
                 <div className="mobile-marquee-mobile-only prog-cards-mobile-marquee" style={{ width: '100%' }}>
-                    <MobileMarquee speed={25} gap={0}>
+                    <MobileMarquee speed={25} gap={0} resumeDelay={4000}>
                         {phases.map((phase, idx) => {
                             const isCenter = idx === 1;
                             const cardWidth = isCenter ? '487px' : '439px';
 
                             return (
-                                <div key={idx} className="prog-mobile-card-item" style={{ 
-                                    flexShrink: 0, 
+                                <div key={idx} className="prog-mobile-card-item" style={{
+                                    flexShrink: 0,
                                     width: cardWidth,
                                     margin: isCenter ? '0px -66px' : '0px',
                                     zIndex: isCenter ? 10 : 1,

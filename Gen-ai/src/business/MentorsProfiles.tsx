@@ -1,4 +1,5 @@
 import React from 'react';
+import MobileMarquee from '../components/MobileMarquee';
 
 interface Mentor {
   name: string;
@@ -40,19 +41,15 @@ const mentors: Mentor[] = [
   },
 ];
 
-// Triple the array to ensure robust repetition and no blank gaps in the infinite scroll
-const displayMentors = [...mentors, ...mentors, ...mentors];
-
 export default function MentorsProfiles() {
   return (
     <div
       className="responsive-section mentors-profiles-section"
       style={{
-        position: 'absolute',
+        position: 'relative',
         width: '100%',
         height: '280px',
-        top: '7050px', // Positioned perfectly below MentorsHeader
-        left: 0,
+        margin: '24px auto 0',
         display: 'flex',
         justifyContent: 'center',
         zIndex: 10,
@@ -68,10 +65,8 @@ export default function MentorsProfiles() {
         }}
       >
         {/* Main animating marquee track */}
-        <div className="absolute flex h-full min-w-max animate-scroll-left">
-          {/* First Set of Cards */}
-          <div className="flex flex-row gap-[24px] pr-[24px] flex-nowrap items-center">
-            {displayMentors.map((mentor, index) => (
+        <MobileMarquee speed={60} gap={24} resumeDelay={500} pauseOnHover={true}>
+          {mentors.map((mentor, index) => (
               <div
                 key={`set1-${index}`}
                 className="mentor-card-item"
@@ -116,7 +111,8 @@ export default function MentorsProfiles() {
                     boxSizing: 'border-box',
                     position: 'absolute',
                     width: '181px',
-                    height: '58px',
+                    minHeight: '58px',
+                    height: 'auto',
                     left: '13px',
                     top: '203px',
                     background: 'linear-gradient(90deg, rgba(0, 0, 0, 0.7) 0%, rgba(40, 40, 40, 0.7) 100%)',
@@ -205,145 +201,7 @@ export default function MentorsProfiles() {
                 </div>
               </div>
             ))}
-          </div>
-
-          {/* Second Set of Cards (Duplicate for infinite seamless scroll) */}
-          <div className="flex flex-row gap-[24px] pr-[24px] flex-nowrap items-center">
-            {displayMentors.map((mentor, index) => (
-              <div
-                key={`set2-${index}`}
-                className="mentor-card-item"
-                style={{
-                  position: 'relative',
-                  width: '231px',
-                  height: '261px',
-                  flexShrink: 0,
-                }}
-              >
-                {/* Main card base container */}
-                <div
-                  style={{
-                    position: 'absolute',
-                    width: '207px',
-                    height: '207px',
-                    left: 0,
-                    top: '20px',
-                    background: 'linear-gradient(90deg, #0A0A0A 0%, #282828 100%)',
-                    borderRadius: '15px',
-                    overflow: 'hidden',
-                  }}
-                >
-                  {/* Mentor Headshot */}
-                  <img
-                    src={mentor.image}
-                    alt={mentor.name}
-                    style={{
-                      position: 'absolute',
-                      width: '134px',
-                      height: '200px',
-                      left: '37px',
-                      top: '7px',
-                      objectFit: 'contain',
-                    }}
-                  />
-                </div>
-
-                {/* Bottom Content Badge */}
-                <div
-                  style={{
-                    boxSizing: 'border-box',
-                    position: 'absolute',
-                    width: '181px',
-                    height: '58px',
-                    left: '13px',
-                    top: '203px',
-                    background: 'linear-gradient(90deg, rgba(10, 10, 10, 0.7) 0%, rgba(40, 40, 40, 0.7) 100%)',
-                    backdropFilter: 'blur(8px)',
-                    WebkitBackdropFilter: 'blur(8px)',
-                    borderRadius: '35px',
-                    display: 'flex',
-                    flexDirection: 'column',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    padding: '4px 12px',
-                    border: '1px solid rgba(255, 255, 255, 0.12)',
-                    boxShadow: 'inset 0 -1px 12px rgba(252, 100, 1, 0.15), 0 4px 12px rgba(0,0,0,0.4)', // Dynamic subtle warm bottom glow
-                    zIndex: 5,
-                  }}
-                >
-                  <div
-                    style={{
-                      fontFamily: 'Inter, sans-serif',
-                      fontStyle: 'normal',
-                      fontWeight: 600,
-                      fontSize: mentor.name.length > 20 ? '11px' : '13px',
-                      lineHeight: mentor.name.length > 20 ? '12px' : '16px',
-                      textAlign: 'center',
-                      color: '#FFFFFF',
-                      whiteSpace: 'nowrap',
-                    }}
-                  >
-                    {mentor.name.includes('Vijaybhai') ? (
-                      <>
-                        Prashant Vijaybhai
-                        <br />
-                        Sahatiya
-                      </>
-                    ) : (
-                      mentor.name
-                    )}
-                  </div>
-                  <div
-                    style={{
-                      fontFamily: 'Inter, sans-serif',
-                      fontStyle: 'normal',
-                      fontWeight: 500,
-                      fontSize: '9px',
-                      lineHeight: '11px',
-                      textAlign: 'center',
-                      color: '#E0E0E0',
-                      marginTop: '2px',
-                      opacity: 0.85,
-                    }}
-                  >
-                    {mentor.role}
-                  </div>
-                </div>
-
-                {/* Top-Right Circular Brand Logo Overlap */}
-                <div
-                  style={{
-                    boxSizing: 'border-box',
-                    position: 'absolute',
-                    width: '50px',
-                    height: '50px',
-                    left: '181px',
-                    top: 0,
-                    background: '#0A0A0A',
-                    border: mentor.logo.includes('parul') || mentor.logo.includes('b_logo') ? '1px solid #FFFDFD' : '1px solid rgba(255, 255, 255, 0.15)',
-                    borderRadius: '35px',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    zIndex: 10,
-                    overflow: 'hidden',
-                    boxShadow: '0 4px 10px rgba(0,0,0,0.6)',
-                  }}
-                >
-                  <img
-                    src={mentor.logo}
-                    alt="Company logo"
-                    style={{
-                      width: mentor.logo.includes('zigram') ? '80%' : '100%',
-                      height: mentor.logo.includes('zigram') ? 'auto' : '100%',
-                      objectFit: 'contain',
-                    }}
-                  />
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
+        </MobileMarquee>
 
         {/* Left Fade-out Soft Vignette Gradient */}
         <div

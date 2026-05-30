@@ -1,4 +1,5 @@
 import React from 'react';
+import MobileMarquee from '../components/MobileMarquee';
 
 interface SaturdayCard {
   industry: string;
@@ -242,26 +243,19 @@ function SatCard({ card }: { card: SaturdayCard }) {
 }
 
 export default function AIBuildNinja() {
-  // Split cards into rows of 4
-  const rows = [];
-  for (let i = 0; i < saturdayCards.length; i += 4) {
-    rows.push(saturdayCards.slice(i, i + 4));
-  }
-
   return (
     <div
       className="responsive-section ai-build-ninja-section"
       style={{
         boxSizing: 'border-box',
-        position: 'absolute',
+        position: 'relative',
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
         padding: '24px 6px 60px',
         gap: '52px',
         width: '1288px',
-        left: 'calc(50% - 1288px / 2)',
-        top: '3920px',
+        margin: '60px auto 0',
         borderBottom: '1px solid #1F1F1F',
       }}
     >
@@ -367,91 +361,63 @@ export default function AIBuildNinja() {
         </div>
       </div>
 
-      {/* Desktop: 4-column grid */}
+      {/* Desktop: 4-column static grid (No animations) */}
       <div
         className="desktop-only-grid"
         style={{
           width: '100%',
           maxWidth: '1248px',
+          overflowX: 'auto',
+          overflowY: 'visible',
+          scrollbarWidth: 'none',
         }}
       >
         <div
-          className="ninja-cards-grid"
           style={{
             boxSizing: 'border-box',
-            width: '1248px',
+            width: 'max-content',
+            minWidth: '100%',
             background: 'linear-gradient(180deg, #0A0A0A 0%, #1D1007 100%)',
             border: '1px solid rgba(255, 251, 251, 0.15)',
             borderRadius: '12px',
             padding: '24px',
-            display: 'flex',
-            flexDirection: 'column',
-            gap: '24px',
+            display: 'grid',
+            gridTemplateColumns: 'repeat(4, minmax(180px, 280px))',
+            gap: '16px',
           }}
         >
-          {rows.map((row, rowIdx) => (
-            <div
-              key={rowIdx}
-              className="ninja-cards-row"
-              style={{
-                display: 'flex',
-                flexDirection: 'row',
-                gap: '24px',
-                width: '100%',
-              }}
-            >
-              {row.map((card, colIdx) => (
-                <SatCard key={`${rowIdx}-${colIdx}`} card={card} />
-              ))}
-            </div>
+          {saturdayCards.map((card, idx) => (
+            <SatCard key={idx} card={card} />
           ))}
         </div>
       </div>
 
-      {/* Mobile/Tablet: 4 independent marquee rows — row1=[1-4], row2=[5-8], row3=[9-12], row4=[13-16] */}
+      {/* Mobile: 4 independent marquee rows (Animations for mobiles/tablets only) */}
       <div
         className="mobile-marquee-mobile-only ai-build-mobile-rail"
         style={{
           width: '100%',
-          position: 'relative',
-          borderRadius: '12px',
+          maxWidth: '1248px',
+          boxSizing: 'border-box',
           background: 'linear-gradient(180deg, #0A0A0A 0%, #1D1007 100%)',
           border: '1px solid rgba(255, 251, 251, 0.15)',
-          padding: '16px 0',
+          borderRadius: '12px',
+          padding: '24px 0',
           flexDirection: 'column',
           gap: '20px',
         }}
       >
         {[0, 1, 2, 3].map((rowIdx) => {
           const rowCards = saturdayCards.slice(rowIdx * 4, rowIdx * 4 + 4);
-          const durations = ['28s', '32s', '30s', '34s'];
+          const speeds = [28, 32, 30, 34];
           return (
-            <div
-              key={rowIdx}
-              style={{
-                width: '100%',
-                overflow: 'hidden',
-                position: 'relative',
-              }}
-            >
-              <div
-                className="animate-scroll-left ai-build-mobile-track"
-                style={{
-                  display: 'flex',
-                  flexDirection: 'row',
-                  minWidth: 'max-content',
-                  gap: '12px',
-                  padding: '0 12px',
-                  animationDuration: durations[rowIdx],
-                }}
-              >
-                {[...rowCards, ...rowCards].map((card, idx) => (
-                  <div key={idx} className="ai-build-mobile-item" style={{ width: '280px', flexShrink: 0 }}>
-                    <SatCard card={card} />
-                  </div>
-                ))}
-              </div>
-            </div>
+            <MobileMarquee key={rowIdx} speed={speeds[rowIdx]} gap={12} resumeDelay={4000}>
+              {rowCards.map((card, idx) => (
+                <div key={idx} className="ai-build-mobile-item" style={{ width: '282px', flexShrink: 0 }}>
+                  <SatCard card={card} />
+                </div>
+              ))}
+            </MobileMarquee>
           );
         })}
       </div>
